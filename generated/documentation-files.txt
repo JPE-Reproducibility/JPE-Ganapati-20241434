@@ -1,0 +1,22 @@
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/AAG_2026_03_06.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Sharat G - AAG_2026_03_06.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Data/EDD_Data/wps6229.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Data/EDD_Data/Dictionary/Companion_Technical_Note201602.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Data/EDD_Data/Dictionary/MeasuresintheExporterDynamicsDatabaseV2.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Data/EDD_Data/Dictionary/WPS7452.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Data/EDD_Data/Dictionary/ddi-documentation-english_microdata-2545.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Data/EDD_Data/Dictionary/TechnicalNote/ConsolidationNote_2015_.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/__MACOSX/._AAG_2026_03_06.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/__MACOSX/Data/EDD_Data/._wps6229.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/__MACOSX/Data/EDD_Data/Dictionary/._Companion_Technical_Note201602.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/__MACOSX/Data/EDD_Data/Dictionary/._MeasuresintheExporterDynamicsDatabaseV2.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/__MACOSX/Data/EDD_Data/Dictionary/._WPS7452.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/__MACOSX/Data/EDD_Data/Dictionary/._ddi-documentation-english_microdata-2545.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/__MACOSX/Data/EDD_Data/Dictionary/TechnicalNote/._ConsolidationNote_2015_.pdf
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Sharat G - replication.md
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/replication.md
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/__MACOSX/._replication.md
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Data/CEPII/Gravity/gravdata_codebook.doc
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Data/CEPII/Gravity/gravdata_doc.doc
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/__MACOSX/Data/CEPII/Gravity/._gravdata_codebook.doc
+/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/__MACOSX/Data/CEPII/Gravity/._gravdata_doc.doc
