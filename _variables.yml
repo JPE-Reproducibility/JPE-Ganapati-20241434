@@ -1,6 +1,11 @@
-title: "Stand-in title"
-author: "Dr Prof James 'JayJay' Author"
-paper_id: 12345678
+title: "From Heterogeneous Firms to Heterogeneous Trade Elasticities: The Aggregate Implications of Firm Export Decisions"
+author: "Ganapati"
 round: 1
-repo: "https://www.github.com/standin"
-dropbox_rel_path: "JPE/Author-12345678/1"
+repo: "https://github.com/JPE-Reproducibility/JPE-Ganapati-20241434"
+paper_id: 20241434
+journal: "JPE"
+paper_slug: "Ganapati-20241434"
+dropbox_rel_path: "JPE/Ganapati-20241434/1"
+package_size_gb: 11.34
+package_max_file_size_gb: 9.0
+package_max_pkg_size_gb: 10
