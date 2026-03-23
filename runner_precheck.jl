@@ -18,7 +18,7 @@ if !isnothing(url)
     try
         run(`curl -fsSL -o package.zip $url`)
         @info "Download complete in $(round(time()-t0, digits=1))s"
-        downloaded_ok = true
+        global downloaded_ok = true
     catch e
         @error "curl download failed, will try local fallback" exception=e
     end
