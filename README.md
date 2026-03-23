@@ -8,6 +8,8 @@
 
 [![Run Precheck](https://github.com/JPE-Reproducibility/JPE-Ganapati-20241434/actions/workflows/precheck.yml/badge.svg)](https://github.com/JPE-Reproducibility/JPE-Ganapati-20241434/actions/workflows/precheck.yml)
 
+[![Run Precheck](https://github.com/JPE-Reproducibility/JPE-Ganapati-20241434/actions/workflows/precheck.yml/badge.svg)](https://github.com/JPE-Reproducibility/JPE-Ganapati-20241434/actions/workflows/precheck.yml)
+
 > This template is heavily based on the AEA Data Editor's template https://github.com/AEADataEditor/replication-template 
 > Thanks! 🙏
 
