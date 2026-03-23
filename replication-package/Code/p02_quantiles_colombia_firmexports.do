@@ -1,8 +1,8 @@
 // Export Colombia firm export percentiles
 clear all
 
-global raw_data "$ROOT/data//WorldBankData/Raw data"
-global clean_data "$ROOT/data//WorldBankData/Clean data"
+global raw_data "$ROOT/Data//WorldBankData/Raw data"
+global clean_data "$ROOT/Data/WorldBankData/Clean data"
 
 // Read in data from WOrld Bank
 use "$raw_data/COL_EXP_2012.dta", clear

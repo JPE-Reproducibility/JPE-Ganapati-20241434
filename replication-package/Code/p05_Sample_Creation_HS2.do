@@ -19,7 +19,6 @@ end
 // Setup HS 1-digit
 capture program drop setupdata_HS1
 program define setupdata_HS1
-  // EDD (Need an impute step here)
   use "$ROOT/Data/EDD_Data/CYH2D_manuf/CYH2D_manuf.dta", clear
   keep c h2 d y A1 A6i A6ii
   keep if inlist(y,2010,2012)

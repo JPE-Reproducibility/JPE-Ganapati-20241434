@@ -7,7 +7,6 @@
     hold off
     xlabel('Average Exporter Share','FontSize',16,'Interpreter','Latex')
     
-    % xlim([-.05 .010]);ylim([-.05 .010]);
     f =gca;
     ylim([-.4 .6]);
     legend([a b ],{'Developed', 'Developing'},'FontSize',14,'Location','best')

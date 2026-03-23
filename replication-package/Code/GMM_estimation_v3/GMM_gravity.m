@@ -16,7 +16,6 @@ function [ OUT, FE_EST  ] = GMM_gravity( d, epsilons,rhos_bar,kappa_tau,kappa_ep
     % Net Out Estimates
     EST     = [A_EST; B_EST]; 
     FE_EST  = d.FE_PZ_Ki*EST;
-    % FE_EST  = (d.FE'*d.PZ_K*d.FE)^-1*d.FE'*d.PZ_K*EST;
 
     % Recover GMM functions
     G_A     = A_EST - [d.FEA d.FE_C]*FE_EST;

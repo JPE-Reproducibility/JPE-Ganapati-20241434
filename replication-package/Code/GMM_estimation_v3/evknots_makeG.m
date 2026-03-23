@@ -23,7 +23,6 @@ function [Xknots,kG,Deriv]=evknots_makeG(kG,x,G,gg2)
         k = kG{g};
 
         gg = g-1;
-%         display(gg)
         for i=1:(n-2)
             NUM1 = POS((x(G==gg)-k(n-1))).^3 *(k(n)  -k(i));
             NUM2 = POS((x(G==gg)-k(n)  )).^3 *(k(n-1)-k(i));
@@ -41,32 +40,17 @@ function [Xknots,kG,Deriv]=evknots_makeG(kG,x,G,gg2)
     end
     Xknots = V;
 
-%     if nargin < 4
-%     %     Convert to index
-%         dc0 = repmat(G==0,1,max(1,length(kG{1})-1));
-%         dc1 = repmat(G==1,1,max(1,length(kG{1})-1));
-%         dc2 = repmat(G==2,1,max(1,length(kG{1})-1));
-%         dc3 = repmat(G==3,1,max(1,length(kG{1})-1));
-%     
-%         Xknots =   [ Xknots.*dc0  Xknots.*dc1  Xknots.*dc2  Xknots.*dc3];
-%         Deriv = [  Deriv.*dc0   Deriv.*dc1   Deriv.*dc2   Deriv.*dc3];
-%     else
-%         dc0 = repmat(G==0,1,max(1,length(kG{1})-1));
-%         dc1 = repmat(G==1,1,max(1,length(kG{1})-1));
-%     
-%         Xknots =   [ Xknots.*dc0  Xknots.*dc1 ];
-%         Deriv = [  Deriv.*dc0   Deriv.*dc1   ];
 
-        Xknots2 = [];
-        Deriv2 = [];
-        for i=1:max(size(kG))
-            dc = repmat(G==(i-1),1,max(1,length(kG{i})-1));
-            Xknots2 = [Xknots2 Xknots.*dc];
-            Deriv2 = [ Deriv2 Deriv.*dc];
-        end
-        Xknots = Xknots2;
-        Deriv = Deriv2;
-%     end
+
+    Xknots2 = [];
+    Deriv2 = [];
+    for i=1:max(size(kG))
+        dc = repmat(G==(i-1),1,max(1,length(kG{i})-1));
+        Xknots2 = [Xknots2 Xknots.*dc];
+        Deriv2 = [ Deriv2 Deriv.*dc];
+    end
+    Xknots = Xknots2;
+    Deriv = Deriv2;
 
 
 

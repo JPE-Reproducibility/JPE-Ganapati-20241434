@@ -19,14 +19,7 @@ function [ d ] = make_data_combo( M,knots,type,interaction,subset,bs,elements)
             filter = randi([min(filter) max(filter)],max(size(filter)),1);
         end
     end
-    
-%     switch interaction
-%         case 'fta_wto'
-%             J = M(:,2);
-% %             filter = (J  ~= 34) & (J  ~= 117);
-%             filter = find ((J  ~= 34) & (J  ~= 117));
-%             size( M(filter,1))
-%     end
+
 
     d.M         = M;
     d.N         = size(filter,1);
@@ -171,11 +164,8 @@ if nargin >= 4
                 disp('discrete measure of common currency + FTA')
                 d.category = d.comcur & d.fta_wto;
                 make_knots_dual_combo
-%                 make_knots_dual_same
                 d.ZA_K = [Zknots Zknots.*repmat(d.category,1,size(Zknots,2))  d.FEA  d.category];  
                 d.ZB_K = [Zknots Zknots.*repmat(d.category,1,size(Zknots,2))  d.FEB  d.category];  
-%                 d.ZA_K = [Zknots Zknots.*repmat(d.category,1,size(Zknots,2))  d.FEA ];  
-%                 d.ZB_K = [Zknots Zknots.*repmat(d.category,1,size(Zknots,2))  d.FEB ];  
                 d.X_K  = [Xknots Xknots.*repmat(d.category,1,size(Xknots,2)) ];
                 d.Deriv = [d.Deriv  d.Deriv.*repmat(d.category,1,size(Xknots,2)) ];
                 d.type1 = 'Deep Integration';
@@ -184,7 +174,6 @@ if nargin >= 4
                 disp('discrete measure of Language + Colonial')
                 d.category = d.colony | d.comlang;
                 make_knots_dual_combo
-%                 make_knots_dual_same
                 d.ZA_K = [Zknots Zknots.*repmat(d.category,1,size(Zknots,2))  d.FEA  d.category];  
                 d.ZB_K = [Zknots Zknots.*repmat(d.category,1,size(Zknots,2))  d.FEB  d.category];  
                 d.X_K  = [Xknots Xknots.*repmat(d.category,1,size(Xknots,2)) ];
@@ -196,7 +185,6 @@ if nargin >= 4
                 disp('discrete measure of colonial relationship')
                 d.category = d.colony;
                 make_knots_dual_combo
-%                 make_knots_dual_same
                 d.ZA_K = [Zknots Zknots.*repmat(d.colony,1,size(Zknots,2))  d.FEA  d.colony];  
                 d.ZB_K = [Zknots Zknots.*repmat(d.colony,1,size(Zknots,2))  d.FEB  d.colony];  
                 d.X_K  = [Xknots Xknots.*repmat(d.colony,1,size(Xknots,2)) ];
@@ -218,10 +206,7 @@ if nargin >= 4
                 disp('discrete measure of FTA, measured by WTO (via Penn World Tables)')
                 d.category = d.fta_wto;
                 make_knots_dual_combo
-%                 make_knots_dual_same
                 d.FE_C = [d.fta_wto];
-%                 d.ZA_K = [Zknots Zknots.*repmat(d.category,1,size(Zknots,2)) d.FEA  d.fta_wto];  
-%                 d.ZB_K = [Zknots Zknots.*repmat(d.category,1,size(Zknots,2)) d.FEB  d.fta_wto];  
                 d.ZA_K = [Zknots Zknots.*repmat(d.category,1,size(Zknots,2)) d.FEA  ];  
                 d.ZB_K = [Zknots Zknots.*repmat(d.category,1,size(Zknots,2)) d.FEB  ];  
                 d.X_K  = [Xknots Xknots.*repmat(d.category,1,size(Xknots,2))];
@@ -371,22 +356,6 @@ end
 %     CHECK IF THIS SEEMS REASONABLE (SHOULDN'T BE TOO BIG)
     sum(sum(inv(d.Z_K'*d.Z_K)))
 
-
-
-%     d.FEA2 = [ d.R_I  d.R_J(:,1:(size(d.R_J,2)-1))   ];
-%     dat = [ d.FEA2  d.category];
-%     regress(d.R_nE_ij,dat );
-% 
-%     [sum(d.R_J) ; 1:size(sum(d.R_J),2)]
-% % % 
-%     ff = (d.J  ~= 34) & (d.J  ~= 117);
-%     regress(d.R_nE_ij(ff),dat(ff,:) );
-
-
-% 
-%     sum(d.J  ~= 34)
-% 
-%     
 
 end
 

@@ -18,7 +18,6 @@ function graph_overlay( o,d,type,filename,gtitle,lit_overlay)
             o(i).SE_EQ_rho(j) = (d(i).Deriv(j,:)*6*o(i).V(d1R2,d1R2)*d(i).Deriv(j,:)')^.5;
         end
 
-%         percentile_se = norminv([0.025 0.975]);
         percentile_se = norminv([0.05 0.95]);
         
         o(i).UB_eps = o(i).epsilon + o(i).SE_EQ_eps*percentile_se(2);

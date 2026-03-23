@@ -37,11 +37,6 @@ if testing == 1
     labels = 1;
     
 else
-    % n_ij        = csvread([ ROOT '/Data/Int/WIOD_sampleB/n_ij_'     file_base ]);
-    % X_ij        = csvread([ ROOT '/Data/Int/WIOD_sampleB/XX_ij_'    file_base ]);
-    % N_ii        = csvread([ ROOT '/Data/Int/WIOD_sampleB/N_ii_'     file_base ]);
-    % G_ij        = csvread([ ROOT '/Data/Int/WIOD_sampleB/G_ij_'     file_base ]);
-    % labels      = importdata([ ROOT '/Data/Int/WIOD_sampleB/Names_' file_base ]);
     n_ij        = csvread([ data_dir 'n_ij_'     file_base ]);
     X_ij        = csvread([ data_dir 'XX_ij_'    file_base ]);
     N_ii        = csvread([ data_dir 'N_ii_'     file_base ]);
@@ -152,7 +147,6 @@ elseif testing ~= 1
             d = make_data_combo(M,3,'cubic','wealth_oI','',0,'all');
             d.sigma = sigma;  d.x = x;
             [~,o] =  GMM_wrapper_gravity( d, kappa_tau, kappa_epsilon,'CF_SPLINE',fix ,gamma_gravity,'all');
-            %p_overlay_elasticity( d,o,'rho_split'       ,'test' );
             save('ESTIMATES_SPLINE4','d','o','G_ij')
         end
         G_ijr        = csvread([  '../../Data/Int/WIOD_sampleB/G_ij_'     file_base ]);
@@ -170,7 +164,6 @@ elseif testing ~= 1
             d = make_data_combo(M,3,'cubic','wealth_odI','',0,'all');
             d.sigma = sigma;  d.x = x;
             [~,o] =  GMM_wrapper_gravity( d, kappa_tau, kappa_epsilon,'CF_SPLINE',fix ,gamma_gravity,'all');
-            %p_overlay_elasticity( d,o,'rho_split'       ,'test' );
             save('ESTIMATES_SPLINE6','d','o','G_ij')
         end
         G_ijr        = csvread([  '../../Data/Int/WIOD_sampleB/G_ij_'     file_base ]);
@@ -298,7 +291,6 @@ dlnxbar_sequence= zeros(dim,dim,segments);
 %% Do Loop
 for count = 1:segments
 
-%     disp(count)
     dln_r = (lr_segments(:,:,count+1))-(lr_segments(:,:,count));
     dln_f = (lf_segments(:,:,count+1))-(lf_segments(:,:,count));
     dln_F = (lF_segments(:,:,count+1))-(lF_segments(:,:,count));
@@ -439,9 +431,7 @@ for count = 1:segments
     Welfare_seq(:,count)    = Welfare';
 
     segment_diag = [ dlnw-dlnP TechShock' ToT' Extensive' Selection' Error'];
-%     segment_diag2 = mean(segment_diag)
 
-    %    save sequence dlnw, dlnP, dlnN
     dlnw_sequence(:,count) = dlnw;
     dlnP_sequence(:,count) = dlnP;
     dlnN_sequence(:,count) = dlnN;
@@ -453,10 +443,6 @@ for count = 1:segments
     y_ij = X_ij ./ repmat(sum(X_ij,2),1,dim);
     i_i = repmat(sum(X_ij,2)./ sum(X_ij,1)',1,dim);
     i_vec = sum(X_ij,2)./ sum(X_ij,1)';
-
-    if count == 1 && segments == 2
-        %save('test','X_ij','n_ij','x_ij','y_ij','i_i','i_vec')
-    end
 
     if sum(isnan(X_ij)) >0
         disp('ERROR')

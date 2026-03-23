@@ -309,52 +309,6 @@
     median(rho(poor))
     median(rho)
 
-    
-    % % --- Assume 'rho', 'rich', and 'poor' exist in your workspace ---
-    % 
-    % % 1. Calculate the median values
-    % median_rich = median(rho(rich));
-    % median_poor = median(rho(poor));
-    % 
-    % txt_rich = sprintf('Median = %.1f', median_rich);
-    % txt_poor = sprintf('Median = %.1f', median_poor);
-    % 
-    % edges = linspace(0, 4, 20);
-    % f = figure; % Create a new figure window AND capture its handle in 'f'
-    % 
-    % h1 = histogram(rho(rich), 'BinEdges', edges, 'FaceAlpha', 0.5, 'DisplayName', 'Developed Countries');
-    % hold on;
-    % 
-    % h2 = histogram(rho(poor), 'BinEdges', edges, 'FaceAlpha', 0.5, 'DisplayName', 'Developing Countries');
-    % 
-    % xline(median_rich, 'LineWidth', 2, 'LineStyle', '--', ...
-    %       'Color', 'black', 'HandleVisibility', 'off');
-    %       
-    % xline(median_poor, 'LineWidth', 2, 'LineStyle', ':', ...
-    %       'Color', 'black', 'HandleVisibility', 'off');
-    % 
-    % yl = ylim; % Get the top of the y-axis
-    % text(median_rich, yl(2) * 0.9, txt_rich, ...
-    %      'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom', ...
-    %      'FontSize', 12, 'Color', 'black', 'FontWeight', 'bold');
-    %      
-    % text(median_poor, yl(2) * 0.8, txt_poor, ...
-    %      'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom', ...
-    %      'FontSize', 12, 'Color', 'black', 'FontWeight', 'bold');
-    % 
-    % hold off; % Release the plot hold
-    %     
-    %     xlabel('$\rho$','FontSize',20,'Interpreter','Latex')
-    %     
-    %     % This legend will now only show 'Developed Countries' and 'Developing Countries'
-    %     legend('show', 'FontSize', 14, 'Location', 'best'); 
-    %     
-    %     exportgraphics(f,"../../Output/GFT_rho.pdf")
-
-
-
-
-
 
     rho = (sigma-1)/sigma*diag(x_ij)./s_i_pi ./ s_i_piD
     ymetric1 = @(c) ((rho(c)) );
@@ -573,13 +527,6 @@
           
 
     % %% Baseline
-    % mean_n_ij   = mean(n_ij_init-diag(diag(n_ij_init)),2);
-    % ln_n_ij     = log(mean_n_ij);
-
-    % %% Alternative n_ij (weighted)
-    % w_ij = X_ij_init-diag(diag(X_ij_init));
-    % mean_n_ij   = sum(w_ij.*n_ij_init-diag(diag(w_ij.*n_ij_init)),2)./sum(w_ij,2);
-    % ln_n_ij     = log(mean_n_ij);
 
     scatter(w_term_LN(all,0),w_term_2(all,0))
     hold on

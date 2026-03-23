@@ -336,11 +336,9 @@ forvalues year=1995/2018 {
 
 }
 
-// *Erase files.
-// forvalues year=1995/2018 {
-//
-// 		erase "temp_files/eu_importer_exporter_`year'.dta"
-// 		erase "temp_files/intra_eu_trade_`year'.dta"
-// 		erase "temp_files/eu_imports_from_non_eu_`year'.dta"
-//
-// }
+*Erase files.
+forvalues year=1995/2018 {
+		erase "temp_files/eu_importer_exporter_`year'.dta"
+		erase "temp_files/intra_eu_trade_`year'.dta"
+		erase "temp_files/eu_imports_from_non_eu_`year'.dta"
+}

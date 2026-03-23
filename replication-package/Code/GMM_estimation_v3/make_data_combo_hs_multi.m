@@ -46,7 +46,6 @@ function [ d ] = make_data_combo_hs_multi( M,knots,type,interaction,subset,bs,el
     d.ldist_od  = (M(filter,21));
     d.ldist_raw = (M(filter,22));
     d.ltariff_raw = (M(filter,23));
-%     d.R_zij     = gamma*(d.ldist_raw) + d.ltariff_raw;
 
 %% Create Fixed Effects Dummies
     % FE are different on J
@@ -56,7 +55,6 @@ function [ d ] = make_data_combo_hs_multi( M,knots,type,interaction,subset,bs,el
     if size(M,2) >= 24
 %         For multiple HS Categories
         d.h = (M(filter,24));
-%         if length(unique(d.h)) > 1
         colinear = d.h(1:(size(d.h,1)-1)) ~= d.h(2:size(d.h,1));
         colinear_idx_xj = [find(colinear==1); size(d.h,1)]
         colinear_idxj = find(max(d.R_J(colinear_idx_xj,:))~=0)
@@ -65,28 +63,18 @@ function [ d ] = make_data_combo_hs_multi( M,knots,type,interaction,subset,bs,el
 
         d.FEA = [ d.R_I(:,1:end) d.R_I(:,1:end)*0 d.R_J(:,elements_j)   d.R_J(:,elements_j)*0];
         d.FEB = [ d.R_I(:,1:end)*0 d.R_I(:,1:end) d.R_J(:,elements_j)*0 d.R_J(:,elements_j)  ];
-%         end
     end
 
 
 %% MAKE KNOTS
-%     if nargin >= 2
-%             k = knots;
-%     else
-%             k = 3;
-%     end
 
     if knots == 1
         Xknots  = d.R_nE_ij;
-                % Xknots  = d.R_N_ij;
-
-        
+    
         d.Deriv = ones(size(Xknots));
         k       = [];
     else
         x = d.R_nE_ij;
-                % x = d.R_N_ij;
-
         [Xknots,k,Deriv] = evknots(knots,x,type) ; 
         d.Deriv     = Deriv;
     end
@@ -94,26 +82,10 @@ function [ d ] = make_data_combo_hs_multi( M,knots,type,interaction,subset,bs,el
     d.Z1     =  d.ldist_raw;
     d.Z2     =  d.ltariff_raw;
 
-%     ztemp   = zeros(length( d.Z1), 1);
-%     for i   = 1:length( d.Z1)
-%         ztemp(i) = sum( d.Z1 <=  d.Z1(i))/length( d.Z1);
-%     end
-%     [Zknots1b, ~] = cosine_basis(ztemp, 11);
-
-%     ztemp   = zeros(length( d.Z2), 1);
-%     for i   = 1:length( d.Z2)
-%         ztemp(i) = sum( d.Z2 <=  d.Z2(i))/length( d.Z2);
-%     end
-%     [Zknots2b, ~] = cosine_basis(ztemp, 11);
-
-%     Zknots = [Zknots1b(:,2:end) Zknots2b(:,2:end) ];
-
     [Zknots1b] = evknots(knots,d.Z1,type) ; 
     [Zknots2b] = evknots(knots,d.Z2,type) ; 
 
 
-
-    % To Check - what is this doing?
     if max(size(filter)) > 4000
         Zknots = [Zknots1b Zknots2b];
     end
@@ -263,53 +235,15 @@ end
 %% Pre-Compute Projection Matrices (to save on computing cost down the road)
     disp('create projection')
     d.Z_K       = [d.ZA_K;d.ZB_K];
-%     tic
-%     d.PZ_K      = d.Z_K*(d.Z_K'*d.Z_K)^-1*d.Z_K';
-%     toc
-%     tic
-%     d.PZ_K      = d.Z_K*inv(d.Z_K'*d.Z_K)*d.Z_K';
-%     toc
-%     tic
-%     invA     = (d.Z_K/(d.Z_K'*d.Z_K))*d.Z_K';
-%     toc
-% 
-%     invA = pcg(d.Z_K'*d.Z_K,d.Z_K,[],1000);
-% 
-%     sum(sum(abs(d.PZ_K-invA)))
-
-%     tic
-%     d.PZ_K      = (d.Z_K/(d.Z_K'*d.Z_K))*d.Z_K';
-%     toc
     SS = sparse(d.Z_K);
     tic
     d.PZ_K      = (SS/(SS'*SS))*SS';
     toc
-
-
     d.FE        = sparse([[d.FEA d.FE_C];[d.FEB d.FE_C]]);
-%     tic
-%     d.FE_PZ_Ki  = (d.FE'*d.PZ_K*d.FE)^-1*d.FE'*d.PZ_K;
-%     toc
-
-
     tic
     d.FE_PZ_Ki  = (d.FE'*d.PZ_K*d.FE)\(d.FE'*d.PZ_K);
     toc
 
-
-%     tic
-%     d.FE_PZ_Ki  = (d.FE'*d.PZ_K*d.FE)^-1*d.FE'*d.PZ_K;
-%     toc
-%     tic
-%     invA = ((d.FE'*d.PZ_K*d.FE)\speye((size(d.FE,2))))*d.FE'*d.PZ_K;
-%     toc
-
-
-
-
-
-    % CHECK IF THIS SEEMS REASONABLE (SHOULDN'T BE TOO BIG)
-%     sum(sum(inv(d.Z_K'*d.Z_K)))
 
 end
 

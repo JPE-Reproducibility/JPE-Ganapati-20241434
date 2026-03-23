@@ -1,6 +1,6 @@
 ## Appendix: Detailed PII Detection Results
 
-*Generated on 2026-03-10 18:45:51*
+*Generated on 2026-03-23 11:44:25*
 
 This appendix lists all detected instances of potential personally identifiable information (PII) in the project files. Each entry shows the matched PII terms and, for data files, sample values to help verify whether the flagged content is indeed sensitive.
 
@@ -57,7 +57,7 @@ This appendix lists all detected instances of potential personally identifiable 
   - Matched terms: country
   - Sample values: 0.0, 1.0
 
-**/replication-package/Data/CEPII/GeoDist/dist_cepii.zip**
+**/replication-package/Data/CEPII/GeoDist/dist_cepii.xls**
 
 - Variable: `colony`
   - Matched terms: lon
@@ -407,12 +407,6 @@ This appendix lists all detected instances of potential personally identifiable 
   - Matched terms: lat
   - Sample values: 0.0, 1.0
 
-**/replication-package/Data/China_Exports/Final/Final Data.dta**
-
-- Variable: `country_name` (label: *country_en*)
-  - Matched terms: country, name
-  - Sample values: Aruba, Afghanistan, Angola
-
 **/replication-package/Data/China_Exports/Raw/exports_2007.dta**
 
 - Variable: `origdestcountry`
@@ -497,13 +491,13 @@ This appendix lists all detected instances of potential personally identifiable 
   - Matched terms: name
   - Sample values: Number of Exporters, Number of Entrants, Number of Exiters
 
-**/replication-package/Data/EORA/Raw_data/Eora26_2012_bp.zip**
+**/replication-package/Data/EORA/Raw_data/Eora26_2012_bp/index_readme.txt**
 
 - Variable: `The M index describes rows/columns in the complete MRIO table with Primary Input and Final Demand rows included interwoven with Industry and Commodity blocks`
   - Matched terms: block, loc
   - Sample values: with Final demand and Primary input rows/columns removed, concatenated together	
 
-**/replication-package/Data/EORA/Raw_data/Eora26_2012_bp/index_readme.txt**
+**/replication-package/Data/EORA/Raw_data/index_readme.txt**
 
 - Variable: `The M index describes rows/columns in the complete MRIO table with Primary Input and Final Demand rows included interwoven with Industry and Commodity blocks`
   - Matched terms: block, loc
@@ -536,19 +530,37 @@ This appendix lists all detected instances of potential personally identifiable 
   - Matched terms: country
   - Sample values: Austria
 
-**/replication-package/Data/Teti/tariff2010_beta1-2024-12.zip**
+**/replication-package/Data/TRAINS/temp_files/European_Union.dta**
+
+- Variable: `country` (label: *country*)
+  - Matched terms: country
+  - Sample values: BEL, FRA, DEU
+
+**/replication-package/Data/TRAINS/temp_files/eu_exporters.dta**
+
+- Variable: `exporter` (label: *country*)
+  - Matched terms: country
+  - Sample values: BEL, FRA, DEU
+
+**/replication-package/Data/TRAINS/temp_files/eu_importers.dta**
+
+- Variable: `importer` (label: *country*)
+  - Matched terms: country
+  - Sample values: BEL, FRA, DEU
+
+**/replication-package/Data/Teti/tariff2010_beta1-2024-12.dta**
 
 - Variable: `tariff` (label: *Eff. Applied Tariff (mfn=linear, pref by RTA-Name)*)
   - Matched terms: name
   - Sample values: 6.0, 0.0, 2.0
 
-**/replication-package/Data/Teti/tariff2012_beta1-2024-12.zip**
+**/replication-package/Data/Teti/tariff2012_beta1-2024-12.dta**
 
 - Variable: `tariff` (label: *Eff. Applied Tariff (mfn=linear, pref by RTA-Name)*)
   - Matched terms: name
   - Sample values: 6.0, 0.0, 2.0
 
-**/replication-package/Data/Teti/tariff2014_beta1-2024-12.zip**
+**/replication-package/Data/Teti/tariff2014_beta1-2024-12.dta**
 
 - Variable: `tariff` (label: *Eff. Applied Tariff (mfn=linear, pref by RTA-Name)*)
   - Matched terms: name
@@ -680,15 +692,11 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   elast_epsd  = diff(log(epsilon(n_ij)))./diff(ln_range);
   ```
-- Line 34: loc, location
+- Line 32: loc, location
   ```
   legend('Baseline Estimate', 'Piecewise Log-Pareto','FontSize',18,'Location', 'northwest')
   ```
-- Line 36: lon
-  ```
-  % ylabel('\partial ln \epsilon (n ) / \partial ln (n)','FontSize',18)
-  ```
-- Line 37: lat
+- Line 34: lat
   ```
   ylabel('$\theta^{e}(\sigma-1)$','FontSize',24,'Interpreter','Latex')
   ```
@@ -699,11 +707,11 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   %   location mu, evaluated at the probabilities in p.
   ```
-- Line 16: lat
+- Line 14: lat
   ```
   % Calculate the standard log-Pareto value
   ```
-- Line 19: loc, location
+- Line 17: loc, location
   ```
   % Add the location parameter to shift the distribution
   ```
@@ -857,41 +865,17 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   xlabel('Average Exporter Share','FontSize',16,'Interpreter','Latex')
   ```
-- Line 91: loc, location
+- Line 90: loc, location
   ```
   legend([a b ],{'Developed', 'Developing'},'FontSize',14,'Location','best')
   ```
-- Line 94: lat
+- Line 93: lat
   ```
   ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{EKK}})/{ \log \hat{W}_{EKK}}$'},'FontSize',16,'Inter
   ```
-- Line 95: lat
+- Line 94: lat
   ```
   exportgraphics(f,"../../Output/relative_12345_GFT_EKK.pdf")
-  ```
-- Line 100: lat
-  ```
-  %     ylabel({'$({\log \hat{W}_{Constant} - \log \hat{W}_{EKK}})/{ \log \hat{W}_{EKK}}$'},'FontSize'
-  ```
-- Line 102: lat
-  ```
-  %     exportgraphics(f,"../../Output/crelative_12345_GFT_EKK.pdf")
-  ```
-- Line 106: lat
-  ```
-  %     ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{EKK}})/{ \log \hat{W}_{Semi}}$'},'FontSize',16
-  ```
-- Line 108: lat
-  ```
-  %     exportgraphics(f,"../../Output/crelative_12345_GFT_EKK_1.pdf")
-  ```
-- Line 112: lat
-  ```
-  %     ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{EKK}})/{ \log \hat{W}_{Constant}}$'},'FontSize
-  ```
-- Line 114: lat
-  ```
-  %     exportgraphics(f,"../../Output/crelative_12345_GFT_EKK_2.pdf")
   ```
 
 **/replication-package/Code/GFT_v2/GFT_agg_plot.m**
@@ -900,7 +884,7 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   xlabel('Average Exporter Share','FontSize',16,'Interpreter','Latex')
   ```
-- Line 13: loc, location
+- Line 12: loc, location
   ```
   legend([a b ],{'Developed', 'Developing'},'FontSize',14,'Location','best')
   ```
@@ -1169,311 +1153,291 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   xlabel('$\rho$','FontSize',20,'Interpreter','Latex')
   ```
-- Line 315: lat
-  ```
-  % % 1. Calculate the median values
-  ```
-- Line 325: name
-  ```
-  % h1 = histogram(rho(rich), 'BinEdges', edges, 'FaceAlpha', 0.5, 'DisplayName', 'Developed Countries
-  ```
-- Line 328: name
-  ```
-  % h2 = histogram(rho(poor), 'BinEdges', edges, 'FaceAlpha', 0.5, 'DisplayName', 'Developing Countrie
-  ```
-- Line 347: lat
-  ```
-  %     xlabel('$\rho$','FontSize',20,'Interpreter','Latex')
-  ```
-- Line 350: loc, location
-  ```
-  %     legend('show', 'FontSize', 14, 'Location', 'best');
-  ```
-- Line 363: loc, location
+- Line 317: loc, location
   ```
   legend([a b ],{'Semiparametric - Developed', 'Semiparametric - Developing' },'FontSize',14,'Location
   ```
-- Line 365: lat
+- Line 319: lat
   ```
   xlabel('Average Exporter Share','FontSize',16,'Interpreter','Latex')
   ```
-- Line 366: lat
+- Line 320: lat
   ```
   ylabel('$\rho$','FontSize',20,'Interpreter','Latex')
   ```
-- Line 369: lat
+- Line 323: lat
   ```
   ylabel('$x_{ii}/s_{i}^\pi\times d \log(\hat{W})$','FontSize',20,'Interpreter','Latex')
   ```
-- Line 378: lat
+- Line 332: lat
   ```
   xlabel('Import Share $\log(1/x_{ii})$','FontSize',16,'Interpreter','Latex');
   ```
-- Line 379: lat
+- Line 333: lat
   ```
   ylabel('$\log \hat{n}_{ii}$','FontSize',16,'Interpreter','Latex');
   ```
-- Line 385: lat
+- Line 339: lat
   ```
   xlabel('Average Exporter Share','FontSize',16,'Interpreter','Latex')
   ```
-- Line 386: lat
+- Line 340: lat
   ```
   ylabel('$\log \hat{n}_{ii}$','FontSize',16,'Interpreter','Latex');
   ```
-- Line 392: lat
+- Line 346: lat
   ```
   ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{Constant}})/{ \log \hat{W}_{Constant}}$'},'FontSize'
   ```
-- Line 395: lat
+- Line 349: lat
   ```
   exportgraphics(f,"../../Output/relative_12345_GFT.pdf")
   ```
-- Line 411: lat
+- Line 365: lat
   ```
   ylabel({'$({\log W^{Neoclassical}_{Semi} - \log W^{Neoclassical}_{Constant}})/{ \log \hat{W}_{Consta
   ```
-- Line 412: lat
+- Line 366: lat
   ```
   exportgraphics(f, "../../Output/relative_123_GFT.pdf")
   ```
-- Line 417: lat
+- Line 371: lat
   ```
   ylabel({'$({\log W^{Firm}_{Semi} - \log W^{Firm}_{Constant}})/{ \log \hat{W}_{Constant}}$'},'FontSiz
   ```
-- Line 418: lat
+- Line 372: lat
   ```
   exportgraphics(f,"../../Output/relative_45_GFT.pdf")
   ```
-- Line 423: lat
+- Line 377: lat
   ```
   ylabel({'$({\log W^{Entry}_{Semi} - \log W^{Entry}_{Constant}})/{ \log \hat{W}_{Constant}}$'},'FontS
   ```
-- Line 425: lat
+- Line 379: lat
   ```
   exportgraphics(f,"../../Output/relative_4_GFT.pdf")
   ```
-- Line 430: lat
+- Line 384: lat
   ```
   ylabel({'$({\log W^{Selection}_{Semi} - \log W^{Selection}_{Constant}})/{ \log \hat{W}_{Constant}}$'
   ```
-- Line 432: lat
+- Line 386: lat
   ```
   exportgraphics(f, "../../Output/relative_5_GFT.pdf")
   ```
-- Line 442: city
+- Line 396: city
   ```
   theta_tp   = 4;    % Simonovska  and  Waugh  (2014a)  estimate  a  trade  elasticity  of  4.10  or  
   ```
-- Line 445: lon
+- Line 399: lon
   ```
   epsilon_TP = @(n)  rho_TP(n);
   ```
-- Line 447: lon
+- Line 401: lon
   ```
   ratio_TP   = @(n) rho_TP(n)./epsilon_TP(n);
   ```
-- Line 451: lon
+- Line 405: lon
   ```
   bot1 = arrayfun(@(lb,ub) integral(rho_TP,lb,ub)  ,zeros(C),n_ij)./arrayfun(epsilon_TP,n_ij);
   ```
-- Line 452: lat
+- Line 406: lat
   ```
   precalculated_integrals = top1./bot1;
   ```
-- Line 453: lat, lon
+- Line 407: lat, lon
   ```
   FGFT = @(n_ii_hat)    GFT(n_ii_hat,X_ij,epsilon_TP,rho_TP,rho_bar_TP,ratio_TP,n_ij,x_ij,1,precalcula
   ```
-- Line 454: lat, lon
+- Line 408: lat, lon
   ```
   % FGFT = @(n_ii_hat) GFT_v9(n_ii_hat,X_ij,epsilon_TP,rho_TP,rho_bar_TP,ratio_TP,n_ij,x_ij,1,precalcu
   ```
-- Line 458: city
+- Line 412: city
   ```
   elasticity       = -1/(sigma-1);
   ```
-- Line 459: city
+- Line 413: city
   ```
   W_hat_splineTP_1 = diag(x_ij).^elasticity;
   ```
-- Line 460: city
+- Line 414: city
   ```
   W_hat_splineTP_2 = (n_ii_hat_TP.*N_hat_TP).^elasticity;
   ```
-- Line 461: city
+- Line 415: city
   ```
   W_hat_splineTP_3 = ( arrayfun(rho_bar_TP,n_ii_hat_TP.*diag(n_ij))./arrayfun(rho_bar_TP,diag(n_ij))  
   ```
-- Line 473: lat
+- Line 427: lat
   ```
   ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{TP}})/{ \log \hat{W}_{TP}}$'},'FontSize',16,'Interpr
   ```
-- Line 475: lat
+- Line 429: lat
   ```
   exportgraphics(f,"../../Output/relative_12345_GFT_TP.pdf")
   ```
-- Line 480: lat
+- Line 434: lat
   ```
   ylabel({'$({\log \hat{W}_{Constant} - \log \hat{W}_{TP}})/{ \log \hat{W}_{TP}}$'},'FontSize',16,'Int
   ```
-- Line 482: lat
+- Line 436: lat
   ```
   exportgraphics(f,"../../Output/crelative_12345_GFT_TP.pdf")
   ```
-- Line 486: lat
+- Line 440: lat
   ```
   ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{TP}})/{ \log \hat{W}_{Semi}}$'},'FontSize',16,'Inter
   ```
-- Line 488: lat
+- Line 442: lat
   ```
   exportgraphics(f,"../../Output/crelative_12345_GFT_TP_1.pdf")
   ```
-- Line 492: lat
+- Line 446: lat
   ```
   ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{TP}})/{ \log \hat{W}_{Constant}}$'},'FontSize',16,'I
   ```
-- Line 494: lat
+- Line 448: lat
   ```
   exportgraphics(f,"../../Output/crelative_12345_GFT_TP_2.pdf")
   ```
-- Line 513: lon
+- Line 467: lon
   ```
   epsilon_LN       = @(n) rho_LN(n);
   ```
-- Line 514: lon
+- Line 468: lon
   ```
   ratio_LN         = @(n) rho_LN(n)./epsilon_LN(n);
   ```
-- Line 517: lon
+- Line 471: lon
   ```
   bot1             = arrayfun(@(lb,ub) integral(rho_LN,lb,ub)  ,zeros(C),n_ij)./arrayfun(epsilon_LN,n_
   ```
-- Line 518: lat
+- Line 472: lat
   ```
   precalculated_integrals = top1./bot1;
   ```
-- Line 519: lat, lon
+- Line 473: lat, lon
   ```
   FGFT = @(n_ii_hat) GFT(n_ii_hat,X_ij,epsilon_LN,rho_LN,rho_bar_LN,ratio_LN,n_ij,x_ij,1,precalculated
   ```
-- Line 522: city
+- Line 476: city
   ```
   elasticity       = -1/(sigma-1);
   ```
-- Line 523: city
+- Line 477: city
   ```
   W_hat_splineLN_1 = diag(x_ij).^elasticity;
   ```
-- Line 524: city
+- Line 478: city
   ```
   W_hat_splineLN_2 = (n_ii_hat_LN.*N_hat_LN).^elasticity;
   ```
-- Line 525: city
+- Line 479: city
   ```
   W_hat_splineLN_3 = ( arrayfun(rho_bar_LN,n_ii_hat_LN.*diag(n_ij))./arrayfun(rho_bar_LN,diag(n_ij))  
   ```
-- Line 539: lat
+- Line 493: lat
   ```
   ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{LN}})/{ \log \hat{W}_{LN}}$'},'FontSize',16,'Interpr
   ```
-- Line 541: lat
+- Line 495: lat
   ```
   exportgraphics(f,"../../Output/relative_12345_GFT_LN.pdf")
   ```
-- Line 542: lat
+- Line 496: lat
   ```
   % exportgraphics(f,"../../Output/relative_12345_GFT_LN06.pdf")
   ```
-- Line 549: lat
+- Line 503: lat
   ```
   ylabel({'$({\log \hat{W}_{Constant} - \log \hat{W}_{LN}})/{ \log \hat{W}_{LN}}$'},'FontSize',16,'Int
   ```
-- Line 551: lat
+- Line 505: lat
   ```
   exportgraphics(f,"../../Output/crelative_12345_GFT_LN.pdf")
   ```
-- Line 555: lat
+- Line 509: lat
   ```
   ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{LN}})/{ \log \hat{W}_{Semi}}$'},'FontSize',16,'Inter
   ```
-- Line 557: lat
+- Line 511: lat
   ```
   exportgraphics(f,"../../Output/relative_12345_GFT_LN_1.pdf")
   ```
-- Line 561: lat
+- Line 515: lat
   ```
   ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{LN}})/{ \log \hat{W}_{Constant}}$'},'FontSize',16,'I
   ```
-- Line 563: lat
+- Line 517: lat
   ```
   exportgraphics(f,"../../Output/relative_12345_GFT_LN_2.pdf")
   ```
-- Line 588: lat
+- Line 535: lat
   ```
   xlabel("Log Normal Welfare Gain",'FontSize',16,'Interpreter','Latex')
   ```
-- Line 589: lat
+- Line 536: lat
   ```
   ylabel("Constant Elasticitiy Welfare Gain",'FontSize',16,'Interpreter','Latex')
   ```
-- Line 600: loc, location
+- Line 547: loc, location
   ```
   legend([a b ],{'Developed', 'Developing' },'FontSize',14,'Location','southeast')
   ```
-- Line 601: lat
+- Line 548: lat
   ```
   ylabel("Log Normal Welfare Gain $\hat{W}$",'FontSize',16,'Interpreter','Latex')
   ```
-- Line 602: lat
+- Line 549: lat
   ```
   xlabel("Semiparametric Welfare Gain $\hat{W}$",'FontSize',16,'Interpreter','Latex')
   ```
-- Line 614: loc, location
+- Line 561: loc, location
   ```
   legend([a b ],{'Developed', 'Developing' },'FontSize',14,'Location','southeast')
   ```
-- Line 615: lat
+- Line 562: lat
   ```
   ylabel("Truncated Pareto Welfare Gain $\hat{W}$",'FontSize',16,'Interpreter','Latex')
   ```
-- Line 616: lat
+- Line 563: lat
   ```
   xlabel("Semiparametric Welfare Gain $\hat{W}$",'FontSize',16,'Interpreter','Latex')
   ```
-- Line 628: loc, location
+- Line 575: loc, location
   ```
   legend([a b ],{'Developed', 'Developing' },'FontSize',14,'Location','southeast')
   ```
-- Line 629: lat
+- Line 576: lat
   ```
   ylabel("Log-Normal Welfare Gain $\hat{W}$",'FontSize',16,'Interpreter','Latex')
   ```
-- Line 630: city, lat
+- Line 577: city, lat
   ```
   xlabel("Constant Elasticity Welfare Gain $\hat{W}$",'FontSize',16,'Interpreter','Latex')
   ```
-- Line 646: loc, location
+- Line 593: loc, location
   ```
   legend([a b ],{'Developed', 'Developing' },'FontSize',14,'Location','southeast')
   ```
-- Line 650: lat
+- Line 597: lat
   ```
   xlabel('Semiparametric $\hat{W}$','FontSize',16,'Interpreter','Latex');
   ```
-- Line 651: city, lat
+- Line 598: city, lat
   ```
   ylabel('Constant Elasticity $\hat{W}$','FontSize',16,'Interpreter','Latex')
   ```
-- Line 666: loc, location
+- Line 613: loc, location
   ```
   legend([a b ],{'Developed', 'Developing' },'FontSize',14,'Location','southeast')
   ```
-- Line 667: lat
+- Line 614: lat
   ```
   xlabel('Semiparametric $\hat{W}$','FontSize',16,'Interpreter','Latex');
   ```
-- Line 668: city, lat
+- Line 615: city, lat
   ```
   ylabel('Constant Elasticity $\hat{W}$','FontSize',16,'Interpreter','Latex')
   ```
@@ -1534,15 +1498,15 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   A_EST   = d.Z1                                      - d.X_K * (epsilons') * kappa_epsilon  ;
   ```
-- Line 26: second
+- Line 25: second
   ```
   %% Output types - first for GMM; second and third for SE computation
   ```
-- Line 50: lon
+- Line 49: lon
   ```
   xi_tilde_epsilon_mean = fct_mean(f1);
   ```
-- Line 52: lon
+- Line 51: lon
   ```
   kappa_r_implied = xi_tilde_epsilon_mean/xi_tilde_rho_mean;
   ```
@@ -1589,47 +1553,47 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   U  = GMM_gravity( d, ests(R1),ests(R2),kappa_tau,kappa_epsilon,1, W_init,fix,gamma,gravity );
   ```
-- Line 77: second
+- Line 66: second
   ```
   disp("Create Optimal Second Stage Weighting Matrix - Invert")
   ```
-- Line 81: second
+- Line 70: second
   ```
   %% Second Stage
   ```
-- Line 82: second
+- Line 71: second
   ```
   disp("Second Stage")
   ```
-- Line 85: lon
+- Line 74: lon
   ```
   C       = @(x) GMM_gravity( d, x(R1),x(R2),kappa_tau,kappa_epsilon,0, W_init,fix,gamma,gravity );
   ```
-- Line 86: dob
+- Line 75: dob
   ```
   [ests2]  = fminunc(@(x) C(x)   ,ests,optimset('TolFun',1e-10,'TolX',1e-12,'MaxFunEvals',50000,'Displ
   ```
-- Line 91: lon
+- Line 80: lon
   ```
   C       = @(x) GMM_gravity( d, x(R1),x(R2),kappa_tau,kappa_epsilon,0, W_init,fix,x(R3:end),gravity )
   ```
-- Line 92: dob
+- Line 81: dob
   ```
   [ests2]  = fminunc(@(x) C(x)   ,ests,optimset('TolFun',1e-10,'TolX',1e-12,'MaxFunEvals',50000,'Displ
   ```
-- Line 109: lon
+- Line 98: lon
   ```
   G       = @(x) GMM_gravity( d, x(R1),x(R2),kappa_tau,kappa_epsilon,2, W,fix,x(R3:end),gravity);
   ```
-- Line 129: lon
+- Line 118: lon
   ```
   U       = GMM_gravity( d, ests2(R1),ests2(R2),kappa_tau,kappa_epsilon,1, W,fix ,ests2(R3:end),gravit
   ```
-- Line 186: lon
+- Line 157: lon
   ```
   o.est_epsilon=ests2(R1);
   ```
-- Line 188: name
+- Line 159: name
   ```
   o.filename  = filename;
   ```
@@ -1648,22 +1612,6 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   [~,o] =  GMM_wrapper_gravity( d, kappa_tau, kappa_epsilon,'base',0,gamma_gravity,grav_spec );
   ```
-- Line 29: lon
-  ```
-  epsilon = @(n) exp((lnn(n)*o.est_epsilon')');
-  ```
-- Line 30: lon
-  ```
-  ratio   = @(n) rho_bar(n)./epsilon(n);
-  ```
-- Line 35: lon
-  ```
-  %     bot1 = arrayfun(@(lb,ub) integral(rho,lb,ub)  ,zeros(C),n_ij)./arrayfun(epsilon_bar,n_ij);
-  ```
-- Line 38: lat
-  ```
-  %     precalculated_integrals = top1./bot1; % Also Equal to (rho_power+1)/(rho_power+1-e_power);
-  ```
 
 **/replication-package/Code/GMM_estimation_v3/Master_script_gravity_v3.m**
 
@@ -1677,371 +1625,311 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
 - Line 23: name
   ```
-  %basefile = '2012_Tuw.csv'; name = '2012_T';  grav_spec = 'all';
-  ```
-- Line 24: name
-  ```
   basefile = '2012_Tetiuw.csv'; name = '2012_Teti';  grav_spec = 'all';
   ```
-- Line 25: name
-  ```
-  % basefile = '2012_Tetiuw.csv'; name = '2012_Teti';  grav_spec = 'dist';
-  ```
-- Line 32: lon
+- Line 30: lon
   ```
   [~,o] =  GMM_wrapper_gravity( d, kappa_tau, kappa_epsilon,'base',fix,gamma_guess,grav_spec );
   ```
-- Line 33: lon
+- Line 31: lon
   ```
   start = size(o.ests2,2)-2*size(o.est_epsilon,2)-1;
   ```
-- Line 36: city
+- Line 34: city
   ```
   p_overlay_elasticity( d,o,'theta'       ,'../../Output/full_SE' );
   ```
-- Line 38: lon
+- Line 36: lon
   ```
   o.title = '+ Gravity (FTA + common curr + language + colony)';
   ```
-- Line 39: city
-  ```
-  % p_overlay_elasticity( d,o,'theta'       ,'../../Output/test' );
-  ```
-- Line 46: lat
+- Line 39: lat
   ```
   Simulation_Data_v10
   ```
-- Line 51: lon
+- Line 44: lon
   ```
   [~,o] =  GMM_wrapper_gravity( d, kappa_tau, kappa_epsilon,'base',0,gamma_gravity,grav_spec );
   ```
-- Line 53: lon
+- Line 46: lon
   ```
   o.title = '+ Gravity (FTA + common curr + language + colony)';
   ```
-- Line 56: city, lon
+- Line 49: city, lon
   ```
   p_overlay_elasticity( d,o,'epsilon_CC'   ,'../../Output/F2a_base_' );
   ```
-- Line 57: city
+- Line 50: city
   ```
   p_overlay_elasticity( d,o,'rho_CC'       ,'../../Output/F2a_base_' );
   ```
-- Line 58: city
+- Line 51: city
   ```
   p_overlay_elasticity( d,o,'extensive_CC'       ,'../../Output/F2a_base_' );
   ```
-- Line 59: city
+- Line 52: city
   ```
   h01 = p_overlay_elasticity( d,o, 'theta', '../../Output/F2a_base_'   );
   ```
-- Line 66: lon
+- Line 59: lon
   ```
   [~,oIV] =  GMM_wrapper_gravity( dIV, kappa_tau, kappa_epsilon,'base',2,[1 1],'dist' );
   ```
-- Line 67: city
+- Line 60: city
   ```
   p_overlay_elasticity( dIV,oIV,'theta'       ,'../../Output/F5_IV_' );
   ```
-- Line 68: lon
+- Line 61: lon
   ```
   start = size(oIV.ests2,2)-2*size(oIV.est_epsilon,2)-1;
   ```
-- Line 73: lon
+- Line 66: lon
   ```
   types2 = {'rho','epsilon','theta','intensive','extensive'};
   ```
-- Line 83: lon
+- Line 76: lon
   ```
   [~,o2q_Wo1] =  GMM_wrapper_gravity( d2q_Wo1, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity,'all
   ```
-- Line 91: lon
+- Line 84: lon
   ```
   [~,o2q_Wo1] =  GMM_wrapper_gravity( d2q_Wo1, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity,'all
   ```
-- Line 101: lon
+- Line 94: lon
   ```
   [~,o2q_Wo] =  GMM_wrapper_gravity( d2q_Wo, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity,'all')
   ```
-- Line 102: city
+- Line 95: city
   ```
   p_overlay_elasticity( d2q_Wo,o2q_Wo,'theta_split'       ,'../../Output/test' );
   ```
-- Line 106: city
-  ```
-  % p_overlay_elasticity( d2q_Wo,o2q_Wo, 'intensive_split', '../../Output/F3a_'   );
-  ```
-- Line 107: city
-  ```
-  % p_overlay_elasticity( d2q_Wo,o2q_Wo, 'extensive_split', '../../Output/F3a_'   );
-  ```
-- Line 112: lon
+- Line 101: lon
   ```
   [~,oIVs] =  GMM_wrapper_gravity( dIVs, kappa_tau, kappa_epsilon,'base',0,gamma_gravityIV,'dist' );
   ```
-- Line 113: city
+- Line 102: city
   ```
   p_overlay_elasticity( dIVs,oIVs,'theta_split'       ,'../../Output/F5_IVo_' );
   ```
-- Line 125: lon
+- Line 113: lon
   ```
   [~,o2q_Wd] =  GMM_wrapper_gravity( d2q_Wd, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity,'all')
   ```
-- Line 135: lon
+- Line 123: lon
   ```
   [~,o2q_comcur] =  GMM_wrapper_gravity( d2q_comcur, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravit
   ```
-- Line 138: lon
+- Line 126: lon
   ```
   %% Language or Colony
   ```
-- Line 144: lon
+- Line 132: lon
   ```
   [~,o2q_LC] =  GMM_wrapper_gravity( d2q_LC, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity,'all')
   ```
-- Line 152: lon
+- Line 140: lon
   ```
   [~,obase_alt] =  GMM_wrapper_gravity( base_alt, kappa_tau, kappa_epsilon,'base_alt',fix,gamma_gravit
   ```
-- Line 167: lon
+- Line 154: lon
   ```
   [~,obase_alt] =  GMM_wrapper_gravity( base_alt, kappa_tau, kappa_epsilon,'base_alt',fix,gamma_gravit
   ```
-- Line 178: lon
+- Line 165: lon
   ```
   [~,obase_alt] =  GMM_wrapper_gravity( base_alt, kappa_tau, kappa_epsilon,'base_alt',fix,gamma_gravit
   ```
-- Line 188: lon
+- Line 175: lon
   ```
   [~,obase_alt] =  GMM_wrapper_gravity( base_alt, kappa_tau, kappa_epsilon,'base_alt',fix,gamma_gravit
   ```
-- Line 197: lon
+- Line 184: lon
   ```
   [~,o_lin] =  GMM_wrapper_gravity( p_lin, kappa_tau, kappa_epsilon,'base',fix,gamma_gravity,'all' );
   ```
-- Line 198: lon
+- Line 185: lon
   ```
   start = size(o_lin.ests2,2)-2*size(o_lin.est_epsilon,2)-1;
   ```
-- Line 200: city
+- Line 187: city
   ```
   h00 = p_overlay_elasticity( p_lin,o_lin, 'theta', '../../Output/test'   );
   ```
-- Line 204: city
+- Line 191: city
   ```
   o_lin.title = 'Constant Elasticity';
   ```
-- Line 219: lon
+- Line 206: lon
   ```
   [~,o4q_Wod] =  GMM_wrapper_gravity( d4q_Wod, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity,'all
   ```
-- Line 221: city
+- Line 208: city
   ```
   h03 = p_overlay_elasticity( d4q_Wod,o4q_Wod, 'theta', '../../Output/test'   );
   ```
-- Line 223: city
+- Line 210: city
   ```
   p_overlay_elasticity( d4q_Wod,o4q_Wod,  'theta_quad_nose'  ,'../../Output/F3d1_Cross_' );
   ```
-- Line 224: city
+- Line 211: city
   ```
   p_overlay_elasticity( d4q_Wod,o4q_Wod,  'theta_quadA'  ,'../../Output/F3d1_Cross_' );
   ```
-- Line 225: city
+- Line 212: city
   ```
   p_overlay_elasticity( d4q_Wod,o4q_Wod,  'theta_quadB'  ,'../../Output/F3d1_Cross_' );
   ```
-- Line 226: city
+- Line 213: city
   ```
   p_overlay_elasticity( d4q_Wod,o4q_Wod,  'extensive_quad'  ,'../../Output/F3d1_Cross_' );
   ```
-- Line 235: lon
+- Line 222: lon
   ```
   [~,o4q_Wod_l] =  GMM_wrapper_gravity( d4q_Wod_l, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity,
   ```
-- Line 236: city
+- Line 223: city
   ```
   h02 = p_overlay_elasticity( d4q_Wod_l,o4q_Wod_l, 'theta_quad', '../../Output/test'   );
   ```
-- Line 248: lon
+- Line 235: lon
   ```
   [~,oo4q_Wod] =  GMM_wrapper_gravity( d4oq_Wod, kappa_tau, kappa_epsilon,'test',fix,gamma_gravity,'al
   ```
-- Line 260: city
+- Line 247: city
   ```
   legend([ aa bb  dd ],{'Constant Elasticity - 1 Group','Semiparametric - 1 Group', ...
   ```
-- Line 261: loc, location
+- Line 248: loc, location
   ```
   'Semiparametric - 4 Groups'},'FontSize',14,'NumColumns',1,'Location','northeast')
   ```
-- Line 272: lon
+- Line 259: lon
   ```
   [~,o_k4] =  GMM_wrapper_gravity( d_k4, kappa_tau, kappa_epsilon,'base_alt',fix,gamma_gravity,'all');
   ```
-- Line 284: lon
+- Line 271: lon
   ```
   [~,o_k5] =  GMM_wrapper_gravity( d_k5, kappa_tau, kappa_epsilon,'base_alt',fix,gamma_gravity,'all');
   ```
-- Line 297: lon
+- Line 284: lon
   ```
   kappa2_epsilon_f = 1/((sigma-1)*kappa2_tau+kappa2_f);
   ```
-- Line 299: lon
+- Line 286: lon
   ```
   [~,obasekf1] =  GMM_wrapper_gravity( basekf1, kappa2_tau, kappa2_epsilon_f,'test',fix,gamma_gravity,
   ```
-- Line 304: lon
+- Line 291: lon
   ```
   start = size(obasekf1.ests2,2)-2*size(obasekf1.est_epsilon,2)-1;
   ```
-- Line 313: lon
+- Line 300: lon
   ```
   [~,o2q_Wof] =  GMM_wrapper_gravity( d2q_Wof, kappa2_tau, kappa2_epsilon_f,'test',fix ,gamma_gravityf
   ```
-- Line 322: lon
+- Line 309: lon
   ```
   kappa2_epsilon_f = 1/((sigma-1)*kappa2_tau+kappa2_f);
   ```
-- Line 324: lon
+- Line 311: lon
   ```
   [~,obasekf5] =  GMM_wrapper_gravity( basekf1, kappa2_tau, kappa2_epsilon_f,'test',fix,gamma_gravity,
   ```
-- Line 329: lon
+- Line 316: lon
   ```
   start = size(obasekf5.ests2,2)-2*size(obasekf5.est_epsilon,2)-1;
   ```
-- Line 339: lon
+- Line 326: lon
   ```
   [~,o2q_Wof] =  GMM_wrapper_gravity( d2q_Wof, kappa2_tau, kappa2_epsilon_f,'test',fix ,gamma_gravityf
   ```
-- Line 348: lon
+- Line 335: lon
   ```
   [~,os_s24] =  GMM_wrapper_gravity( ps_s24, kappa_tau, kappa_epsilon,'base',fix,gamma_guess,'all' );
   ```
-- Line 349: lon
+- Line 336: lon
   ```
   start = size(os_s24.ests2,2)-2*size(os_s24.est_epsilon,2)-1;
   ```
-- Line 354: lon
+- Line 341: lon
   ```
   [~,os_s24] =  GMM_wrapper_gravity( ps_s24, kappa_tau, kappa_epsilon,'base',0,gamma_gravity_s24,'all'
   ```
-- Line 365: lon
-  ```
-  [~,o2q_Wos24] =  GMM_wrapper_gravity( d2q_Wos24, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_
-  ```
-- Line 373: lon
+- Line 351: lon
   ```
   [~,os_s34] =  GMM_wrapper_gravity( ps_s34, kappa_tau, kappa_epsilon,'base',fix,gamma_guess,'all' );
   ```
-- Line 374: lon
+- Line 352: lon
   ```
   start = size(os_s34.ests2,2)-2*size(os_s34.est_epsilon,2)-1;
   ```
-- Line 380: lon
+- Line 358: lon
   ```
   [~,os_s34] =  GMM_wrapper_gravity( ps_s34, kappa_tau, kappa_epsilon,'base',0,gamma_gravity_s34,'all'
   ```
-- Line 391: lon
-  ```
-  [~,o2q_Wos34] =  GMM_wrapper_gravity( d2q_Wos34, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_
-  ```
-- Line 401: lon
+- Line 371: lon
   ```
   [~,os_10] =  GMM_wrapper_gravity( ps_10, kappa_tau, kappa_epsilon,'base',fix,gamma_guess,type );
   ```
-- Line 402: lon
+- Line 372: lon
   ```
   start = size(os_10.ests2,2)-2*size(os_10.est_epsilon,2)-1;
   ```
-- Line 406: lon
+- Line 376: lon
   ```
   [~,os_10] =  GMM_wrapper_gravity( ps_10, kappa_tau, kappa_epsilon,'base',0,gamma_gravity_2010,type )
   ```
-- Line 417: lon
-  ```
-  [~,o2q_Wos10] =  GMM_wrapper_gravity( d2q_Wos10, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_
-  ```
-- Line 428: lon
+- Line 390: lon
   ```
   [~,os_14] =  GMM_wrapper_gravity( ps_14, kappa_tau, kappa_epsilon,'base',fix,gamma_guess,type );
   ```
-- Line 429: lon
+- Line 391: lon
   ```
   start = size(os_14.ests2,2)-2*size(os_14.est_epsilon,2)-1;
   ```
-- Line 433: lon
+- Line 395: lon
   ```
   [~,os_14] =  GMM_wrapper_gravity( ps_14, kappa_tau, kappa_epsilon,'base',0,gamma_gravity_2014,type )
   ```
-- Line 444: lon
-  ```
-  [~,o2q_Wos14] =  GMM_wrapper_gravity( d2q_Wos14, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_
-  ```
-- Line 454: lon
+- Line 408: lon
   ```
   [~,os_12B] =  GMM_wrapper_gravity( ps_12B, kappa_tau, kappa_epsilon,'base',fix,gamma_guess,type );
   ```
-- Line 455: lon
+- Line 409: lon
   ```
   start = size(os_12B.ests2,2)-2*size(os_12B.est_epsilon,2)-1;
   ```
-- Line 459: lon
+- Line 413: lon
   ```
   [~,os_12B] =  GMM_wrapper_gravity( ps_12B, kappa_tau, kappa_epsilon,'base',0,gamma_gravity_2012T,typ
   ```
-- Line 474: name
-  ```
-  %     basefile_Sf = '2012_Tuw_h0.csv'; name_Sf = '2012_T_h0';
-  ```
-- Line 479: lon
-  ```
-  %     [~,obase_Sf] =  GMM_wrapper_gravity( base_Sf, kappa_tau, kappa_epsilon,['base'],fix,[.3 .3],'d
-  ```
-- Line 480: lon
-  ```
-  %     start = size(obase_Sf.ests2,2)-2*size(obase_Sf.est_epsilon,2)-1;
-  ```
-- Line 484: name
+- Line 427: name
   ```
   basefile_Sf = '2012_Tuw_h0.csv'; name_Sf = '2012_T_h0';
   ```
-- Line 485: name
-  ```
-  %     basefile_Sf = '2012_Tetiuw_h0.csv'; name_Sf = '2012_Teti_h0';
-  ```
-- Line 491: lon
+- Line 433: lon
   ```
   [~,obase_Sf] =  GMM_wrapper_gravity( base_Sf, kappa_tau, kappa_epsilon,'base',fix,gamma_guessHS,'all
   ```
-- Line 492: lon
+- Line 434: lon
   ```
   start = size(obase_Sf.ests2,2)-2*size(obase_Sf.est_epsilon,2)-1;
   ```
-- Line 500: lon
+- Line 442: lon
   ```
   graph_overlay([ o obase_Sf],[ d base_Sf],'epsilon','../../Output/F4_HS_all',  "", 0)
   ```
-- Line 505: name
+- Line 447: name
   ```
   basefile_Sf = '2012_Tuw_h0.csv'; name_Sf = '2012_T_h0';
   ```
-- Line 506: name
-  ```
-  %     basefile_Sf = '2012_Tetiuw_h0.csv'; name_Sf = '2012_Teti_h0';
-  ```
-- Line 514: lon
+- Line 455: lon
   ```
   [~,o2q_Wo_S] =  GMM_wrapper_gravity( d2q_Wo_S, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_HS
   ```
-- Line 522: lon
+- Line 461: lon
   ```
   [~,o2q_Wd_S] =  GMM_wrapper_gravity( d2q_Wd_S, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_HS
-  ```
-- Line 527: lon
-  ```
-  %     [~,o2oq_Wd_S] =  GMM_wrapper_gravity( d2q_Wod_S, kappa_tau, kappa_epsilon,'test',fix ,gamma_gr
   ```
 
 **/replication-package/Code/GMM_estimation_v3/Simulation_Data_v10.m**
@@ -2257,123 +2145,123 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   o(i).epsilon = d(i).Deriv*o(i).ests2(d1R1)';
   ```
-- Line 24: lon
+- Line 23: lon
   ```
   o(i).UB_eps = o(i).epsilon + o(i).SE_EQ_eps*percentile_se(2);
   ```
-- Line 25: lon
+- Line 24: lon
   ```
   o(i).LB_eps = o(i).epsilon - o(i).SE_EQ_eps*percentile_se(2);
   ```
-- Line 30: lon
+- Line 29: lon
   ```
   rho1 = o(i).rho;         epsilon1 = o(i).epsilon;
   ```
-- Line 31: lon
+- Line 30: lon
   ```
   o(i).theta = (1-d(i).sigma)*(1+rho1 - epsilon1)./epsilon1;
   ```
-- Line 38: lon
+- Line 37: lon
   ```
   grad = [(1-d(i).sigma)*(-1/epsilon1(j).^2-rho1(j)/epsilon1(j).^2) ; (1-d(i).sigma)/epsilon1(j)];
   ```
-- Line 48: lon
+- Line 47: lon
   ```
   grad = [(1/epsilon1(j).^2) ];
   ```
-- Line 52: lon
+- Line 51: lon
   ```
   o(i).UB_extensive = -1./o(i).epsilon + o(i).SE_EQ_T'*percentile_se(2);
   ```
-- Line 53: lon
+- Line 52: lon
   ```
   o(i).LB_extensive = -1./o(i).epsilon - o(i).SE_EQ_T'*percentile_se(2);
   ```
-- Line 58: lon
+- Line 57: lon
   ```
   grad = [(rho1(j)/epsilon1(j).^2) ; (-1/epsilon1(j))];
   ```
-- Line 61: lon
+- Line 60: lon
   ```
   o(i).UB_intensive = 1-o(i).rho./o(i).epsilon + o(i).SE_EQ_T'*percentile_se(2);
   ```
-- Line 62: lon
+- Line 61: lon
   ```
   o(i).LB_intensive = 1-o(i).rho./o(i).epsilon - o(i).SE_EQ_T'*percentile_se(2);
   ```
-- Line 75: lon
+- Line 74: lon
   ```
   o(i).epsilon= o(i).epsilon(ts);
   ```
-- Line 106: lon
+- Line 105: lon
   ```
   case 'epsilon'
   ```
-- Line 110: lon
+- Line 109: lon
   ```
   a(i) = plot(d(i).R_nE_ij,o(i).epsilon,'-','LineWidth',3,'Color',z(i).color);
   ```
-- Line 116: lon
+- Line 115: lon
   ```
   ylabel('\partial ln \epsilon (n ) / \partial ln (n)','FontSize',18)
   ```
-- Line 146: lat
+- Line 145: lat
   ```
   ylabel('$\theta^{c}$','FontSize',24,'Interpreter','Latex')
   ```
-- Line 167: lat
+- Line 166: lat
   ```
   ylabel('$\theta(\sigma-1)$','FontSize',24,'Interpreter','Latex')
   ```
-- Line 186: lat
+- Line 185: lat
   ```
   ylabel('$\theta(\sigma-1)$','FontSize',24,'Interpreter','Latex')
   ```
-- Line 210: lat
+- Line 209: lat
   ```
   ylabel('$\theta(\sigma-1)$','FontSize',24,'Interpreter','Latex')
   ```
-- Line 213: loc, location
+- Line 212: loc, location
   ```
   legend([a(1) b5(1) a(2) b5(2)],{[d(1).type0],[d(1).type1],[d(2).type0 ' - Sectoral'],[d(2).type1 ' -
   ```
-- Line 215: loc, location
+- Line 214: loc, location
   ```
   legend('boxoff','Location', 'Best')
   ```
-- Line 221: lon
+- Line 220: lon
   ```
   a(i) = plot(d(i).R_nE_ij,(1-d(i).sigma)*(1-o(i).rho./o(i).epsilon)  ,'-','LineWidth',3,'Color',z(i).
   ```
-- Line 236: city
+- Line 235: city
   ```
   ylabel('Intensive Margin Elasticity','FontSize',18)
   ```
-- Line 242: lon
+- Line 241: lon
   ```
   a(i) = plot(d(i).R_nE_ij,(1-d(i).sigma)*1./o(i).epsilon  ,'-','LineWidth',3,'Color',z(i).color);
   ```
-- Line 258: city
+- Line 257: city
   ```
   %         ylabel('Extensive Margin Elasticity','FontSize',18)
   ```
-- Line 259: lat
+- Line 258: lat
   ```
   ylabel('$\theta^{e}(\sigma-1)$','FontSize',24,'Interpreter','Latex')
   ```
-- Line 286: name
+- Line 285: name
   ```
   switch filename
   ```
-- Line 297: loc, location
+- Line 296: loc, location
   ```
   legend(a,titles,'FontSize',18,'Location', 'Best')
   ```
-- Line 301: loc, location
+- Line 300: loc, location
   ```
   legend(a,titles,'FontSize',18,'Location', 'Best')
   ```
-- Line 306: name
+- Line 305: name
   ```
   saveas(a(i),[filename,type],'epsc')
   ```
@@ -2384,110 +2272,110 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   kappa_epsilon = 1/((sigma-1)*kappa_tau+kappa_f);
   ```
-- Line 54: lon
+- Line 53: lon
   ```
   [~,o_hs] =  GMM_wrapper_gravity( d_hs, kappa_tau, kappa_epsilon,['base'],fix,gamma_gravity_HS,'all')
   ```
-- Line 56: city
+- Line 55: city
   ```
   p_overlay_elasticity( d_hs,o_hs,'theta'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat(title))
   ```
-- Line 57: city, lon
+- Line 56: city, lon
   ```
   p_overlay_elasticity( d_hs,o_hs,'epsilon'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat('Extens
   ```
-- Line 58: city
+- Line 57: city
   ```
   p_overlay_elasticity( d_hs,o_hs,'rho'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat(title))
   ```
-- Line 59: city
+- Line 58: city
   ```
   p_overlay_elasticity( d_hs,o_hs,'extensive'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat(title
   ```
-- Line 68: lon
+- Line 65: lon
   ```
   [~,o_split_hs] =  GMM_wrapper_gravity( d_split_hs, kappa_tau, kappa_epsilon,['test'],fix ,gamma_grav
   ```
-- Line 69: city
+- Line 66: city
   ```
   p_overlay_elasticity( d_split_hs,o_split_hs,'theta_split'       ,['../../Output/F6_HS_' int2str(hs)]
   ```
 
 **/replication-package/Code/GMM_estimation_v3/make_data_combo.m**
 
-- Line 47: lon
+- Line 40: lon
   ```
   d.colony    = (M(filter,13));
   ```
-- Line 92: lon
+- Line 85: lon
   ```
   Zknots = [ Zknots1b Zknots2b d.fta_wto d.comcur d.comlang d.colony];
   ```
-- Line 94: lon
+- Line 87: lon
   ```
   Zknots = [ Zknots1b Zknots2b d.fta_wto d.comcur d.comlang d.colony];
   ```
-- Line 97: lon
+- Line 90: lon
   ```
   Zknots = [ Zknots1b Zknots2b d.fta_wto d.comcur d.comlang d.colony];
   ```
-- Line 108: name
+- Line 101: name
   ```
   % different variable names
   ```
-- Line 184: lon
+- Line 174: lon
   ```
   disp('discrete measure of Language + Colonial')
   ```
-- Line 185: lon
+- Line 175: lon
   ```
   d.category = d.colony | d.comlang;
   ```
-- Line 192: lon
+- Line 181: lon
   ```
   d.type1 = 'Language or Colony';
   ```
-- Line 193: lon
+- Line 182: lon
   ```
   d.type0 = 'No Language or Colony';
   ```
-- Line 195: lon
+- Line 184: lon
   ```
   case 'colony'
   ```
-- Line 196: lat, lon
+- Line 185: lat, lon
   ```
   disp('discrete measure of colonial relationship')
   ```
-- Line 197: lon
+- Line 186: lon
   ```
   d.category = d.colony;
   ```
-- Line 200: lon
+- Line 188: lon
   ```
   d.ZA_K = [Zknots Zknots.*repmat(d.colony,1,size(Zknots,2))  d.FEA  d.colony];
   ```
-- Line 201: lon
+- Line 189: lon
   ```
   d.ZB_K = [Zknots Zknots.*repmat(d.colony,1,size(Zknots,2))  d.FEB  d.colony];
   ```
-- Line 202: lon
+- Line 190: lon
   ```
   d.X_K  = [Xknots Xknots.*repmat(d.colony,1,size(Xknots,2)) ];
   ```
-- Line 204: lat, lon
+- Line 192: lat, lon
   ```
   d.type1 = 'Colonial Relationship';
   ```
-- Line 205: lat, lon
+- Line 193: lat, lon
   ```
   d.type0 = 'No Colonial Relationship';
   ```
-- Line 207: lat
+- Line 195: lat
   ```
   disp('discrete measure of Border relationship')
   ```
-- Line 371: son
+- Line 356: son
   ```
   %     CHECK IF THIS SEEMS REASONABLE (SHOULDN'T BE TOO BIG)
   ```
@@ -2498,61 +2386,57 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   d.colony    = (M(filter,13));
   ```
-- Line 131: lon
+- Line 103: lon
   ```
   Zknots = [ Zknots1b Zknots2b d.fta_wto d.comcur d.comlang d.colony];
   ```
-- Line 133: lon
+- Line 105: lon
   ```
   Zknots = [ Zknots1b Zknots2b d.fta_wto d.comcur d.comlang d.colony];
   ```
-- Line 136: lon
+- Line 108: lon
   ```
   Zknots = [ Zknots1b Zknots2b d.fta_wto d.comcur d.comlang d.colony];
   ```
-- Line 145: name
+- Line 117: name
   ```
   % different variable names
   ```
-- Line 172: lon
+- Line 144: lon
   ```
   case 'colony'
   ```
-- Line 173: lat, lon
+- Line 145: lat, lon
   ```
   disp('discrete measure of colonial relationship')
   ```
-- Line 176: lon
+- Line 148: lon
   ```
   d.ZA_K = [Zknots Zknots.*repmat(d.colony,1,size(Zknots,2))  d.FEA  ];
   ```
-- Line 177: lon
+- Line 149: lon
   ```
   d.ZB_K = [Zknots Zknots.*repmat(d.colony,1,size(Zknots,2))  d.FEB  ];
   ```
-- Line 178: lon
+- Line 150: lon
   ```
   d.X_K  = [Xknots Xknots.*repmat(d.colony,1,size(Zknots,2)) ];
   ```
-- Line 179: lon
+- Line 151: lon
   ```
   d.category = d.colony;
   ```
-- Line 181: lat, lon
+- Line 153: lat, lon
   ```
   d.type1 = 'Colonial Relationship';
   ```
-- Line 182: lat, lon
+- Line 154: lat, lon
   ```
   d.type0 = 'No Colonial Relationship';
   ```
-- Line 184: lat
+- Line 156: lat
   ```
   disp('discrete measure of Border relationship')
-  ```
-- Line 311: son
-  ```
-  % CHECK IF THIS SEEMS REASONABLE (SHOULDN'T BE TOO BIG)
   ```
 
 **/replication-package/Code/GMM_estimation_v3/make_elasticity_combo.m**
@@ -2561,11 +2445,11 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   function [ epsilon_elast,rho_elast,theta,x ] = make_elasticity_combo(x,k,d,o,sigma,interaction)
   ```
-- Line 83: lon
+- Line 82: lon
   ```
   epsilon_elast = o.PRED_eps;
   ```
-- Line 85: lon
+- Line 84: lon
   ```
   theta = (1-sigma)*(1+rho_elast - epsilon_elast)./epsilon_elast;
   ```
@@ -3126,119 +3010,119 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   disp(['Output written to file: ' filename]);
   ```
-- Line 41: lat
+- Line 34: lat
   ```
   %% Relative Outcomes
   ```
-- Line 60: lat
+- Line 53: lat
   ```
   ylabel({'${\log {\hat{X}^{Semi}_{ij}}}/{\log {\hat{X}^{Constant}_{ij}}} - 1$'},'FontSize',16,'Interp
   ```
-- Line 67: lat
+- Line 60: lat
   ```
   ylabel({'${\log {\bar{\hat{x}_{ij}}^{Semi}_{ij}}}/{\log {\bar{\hat{x}_{ij}}^{Constant}_{ij}}} - 1$'}
   ```
-- Line 74: lat
+- Line 67: lat
   ```
   ylabel({'${\log {\hat{n}^{Semi}_{ij}}}/{\log {\hat{n}^{Constant}_{ij}}} - 1$'},'FontSize',16,'Interp
   ```
-- Line 84: name
+- Line 77: name
   ```
   T = array2table(Results_main,'VariableNames', {'x_ii' ,'mean n_ij', 'Welfare', ...
   ```
-- Line 92: name
+- Line 85: name
   ```
   T = array2table(Results_main,'VariableNames', {'x_ii' ,'mean n_ij', 'Welfare', ...
   ```
-- Line 108: lat
+- Line 101: lat
   ```
   %% Correlations
   ```
-- Line 131: lat
+- Line 122: lat
   ```
   ylabel({'$(\log \hat{W}_{Semi} - \log \hat{W}_{Constant})/{ \log \hat{W}_{Constant}}$'},'FontSize',1
   ```
-- Line 132: loc, location
+- Line 123: loc, location
   ```
   legend([a b ],{'Developed Countries', 'Developing Countries'},'FontSize',14,'Location','best')
   ```
-- Line 133: lat
+- Line 124: lat
   ```
   exportgraphics(f, ROOT + "/Output/trelative_12345_" + results_linear.file + ".pdf")
   ```
-- Line 138: loc, location
+- Line 129: loc, location
   ```
   legend([a b ],{'Developed Countries', 'Developing Countries'},'FontSize',14,'Location','best')
   ```
-- Line 139: lat
+- Line 130: lat
   ```
   ylabel({'$({\log \hat{W}^{Neoclassical}_{Semi} - \log \hat{W}^{Neoclassical}_{Constant}})/{ \log \ha
   ```
-- Line 140: lat
+- Line 131: lat
   ```
   exportgraphics(f,ROOT + "/Output/trelative_123_" + results_linear.file + ".pdf")
   ```
-- Line 145: loc, location
+- Line 136: loc, location
   ```
   legend([a b ],{'Developed Countries', 'Developing Countries'},'FontSize',14,'Location','best')
   ```
-- Line 146: lat
+- Line 137: lat
   ```
   ylabel({'$({\log \hat{W}^{Firm}_{Semi} - \log \hat{W}^{Firm}_{Constant}})/{ \log \hat{W}_{Constant}}
   ```
-- Line 147: lat
+- Line 138: lat
   ```
   exportgraphics(f,ROOT + "/Output/trelative_45_" + results_linear.file + ".pdf")
   ```
-- Line 153: loc, location
+- Line 144: loc, location
   ```
   legend({'Technology', 'Terms of Trade','Demand Substitution','Firm Entry','Firm Selection'},'FontSiz
   ```
-- Line 168: lat
+- Line 159: lat
   ```
   % ylabel({'$\hat{N}_i$'},'FontSize',16,'Interpreter','Latex');
   ```
-- Line 169: city, lat
+- Line 160: city, lat
   ```
   % ylabel({'$Elasticity: \partial \hat{N}_i / \partial {shock}$'},'FontSize',16,'Interpreter','Latex'
   ```
-- Line 170: city, lat
+- Line 161: city, lat
   ```
   ylabel({'$Elasticity:  {N}_i $'},'FontSize',16,'Interpreter','Latex');
   ```
-- Line 179: city, lat
+- Line 170: city, lat
   ```
   ylabel({'$Elasticity: {n}_{ii}$'},'FontSize',16,'Interpreter','Latex');
   ```
-- Line 189: lat
+- Line 180: lat
   ```
   ylabel({'$Mean_{j \ne i}^{weight=x_{ij}^{0}} \log  \hat{n}_{ij} / \log {shock}$'},'FontSize',16,'Int
   ```
-- Line 190: city, lat
+- Line 181: city, lat
   ```
   ylabel({'Mean Elasticity$ _{j \ne i}^{weight=x_{ij}^{0}}   {n}_{ij} $'},'FontSize',16,'Interpreter',
   ```
-- Line 201: lat
+- Line 192: lat
   ```
   ylabel({'$Mean_{i \ne j}^{weight=x_{ij}^{0}} \log  \hat{n}_{ij} / \log {shock}$'},'FontSize',16,'Int
   ```
-- Line 202: city, lat
+- Line 193: city, lat
   ```
   ylabel({'Mean Elasticity$ _{i \ne j}^{weight=x_{ij}^{0}}   {n}_{ij} $'},'FontSize',16,'Interpreter',
   ```
-- Line 213: lat
+- Line 204: lat
   ```
   ylabel({'$Mean_{i \ne j}^{weight=x_{ij}^{0}} \log  \hat{n}_{ij} / \log {shock}$'},'FontSize',16,'Int
   ```
-- Line 214: city, lat
+- Line 205: city, lat
   ```
   ylabel({'Mean Elasticity$ _{i}^{weight=x_{ij}^{0}}   {n}_{ij} $'},'FontSize',16,'Interpreter','Latex
   ```
-- Line 223: lat
+- Line 212: lat
   ```
   ylabel({'$Mean_{i \ne j}^{weight=x_{ij}^{0}} (\rho_{ij}^0 + 1 )\log  \hat{n}_{ij} / \log {shock}$'},
   ```
-- Line 224: city, lat
+- Line 213: city, lat
   ```
   ylabel({'Mean Elasticity$ _{i \ne j}^{weight=x_{ij}^{0} (\rho_{ij}^0 + 1 )}   {n}_{ij} $'},'FontSize
   ```
@@ -3251,89 +3135,77 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
 - Line 44: name
   ```
-  % labels      = importdata([ ROOT '/Data/Int/WIOD_sampleB/Names_' file_base ]);
-  ```
-- Line 49: name
-  ```
   labels      = importdata([ data_dir 'Names_' file_base ]);
   ```
-- Line 67: second
+- Line 62: second
   ```
   % first is vector; second is matrix on i dimention
   ```
-- Line 95: lon
+- Line 90: lon
   ```
   elast_epsilon   = elast_e;
   ```
-- Line 97: lon
+- Line 92: lon
   ```
   Gelast_epsilon   = @(x,G) elast_epsilon(x);
   ```
-- Line 99: lon
+- Line 94: lon
   ```
   Gtheta           = @(n,G) (1-sigma)*(1+elast_rho(n) - elast_epsilon(n))./elast_epsilon(n);
   ```
-- Line 106: lon
+- Line 101: lon
   ```
   kappa_epsilon = 1/((sigma-1)*kappa_tau+kappa_f);
   ```
-- Line 127: lon
+- Line 122: lon
   ```
   [~,o] =  GMM_wrapper_gravity( d, kappa_tau, kappa_epsilon,'CF_SPLINE',fix ,gamma_gravity,'all');
   ```
-- Line 140: lon
+- Line 135: lon
   ```
   [~,o] =  GMM_wrapper_gravity( d, kappa_tau, kappa_epsilon,'CF_SPLINE',fix ,gamma_gravity,'all');
   ```
-- Line 154: lon
+- Line 149: lon
   ```
   [~,o] =  GMM_wrapper_gravity( d, kappa_tau, kappa_epsilon,'CF_SPLINE',fix ,gamma_gravity,'all');
   ```
-- Line 155: city
-  ```
-  %p_overlay_elasticity( d,o,'rho_split'       ,'test' );
-  ```
-- Line 172: lon
+- Line 166: lon
   ```
   [~,o] =  GMM_wrapper_gravity( d, kappa_tau, kappa_epsilon,'CF_SPLINE',fix ,gamma_gravity,'all');
   ```
-- Line 173: city
-  ```
-  %p_overlay_elasticity( d,o,'rho_split'       ,'test' );
-  ```
-- Line 181: lon
+- Line 174: lon
   ```
   Gelast_epsilon   = @(x,G) reshape( GDerivitive((x(:)),G(:))*o.est_epsilon',dim,dim);
   ```
-- Line 183: lon
+- Line 176: lon
   ```
   Gtheta           = @(n,G) (1-sigma)*(1+Gelast_rho(n,G) - Gelast_epsilon(n,G))./Gelast_epsilon(n,G);
   ```
-- Line 255: lat
+- Line 248: lat
   ```
   %% Setup interpolation
   ```
-- Line 266: lon
+- Line 259: lon
   ```
   Gepsilon_barA0 = @(nn) Gepsilon_barA(nn,(g-1));
   ```
-- Line 268: lon
+- Line 261: lon
   ```
   botf0 = arrayfun(@(lb,ub) integral(GrhoA0,lb,ub)  , zeros(1,2000)+buffer,x)./Gepsilon_barA0(x);
   ```
-- Line 412: lon
+- Line 404: lon
   ```
   ./Gelast_epsilon(n_ij,G_ij)    ;
   ```
-- Line 415: lon
+- Line 407: lon
   ```
   dlnN = dln_L - sum(y_ij.*dln_f,2)+sum(y_ij.*Gtheta(n_ij,G_ij).*Gelast_epsilon(n_ij,G_ij).*dlnn./(sig
   ```
-- Line 416: lon
+- Line 408: lon
   ```
   dlnx_bar = dln_f + repmat(dlnw,1,dim) + (Gelast_rho(n_ij,G_ij)-Gelast_epsilon(n_ij,G_ij)).*dlnn;
   ```
-- Line 451: lon
+- Line 441: lon
   ```
   %compute x,y,i; epsilon,rho;theta
   ```
@@ -5144,27 +5016,27 @@ This appendix lists all detected instances of potential personally identifiable 
 
 **/replication-package/Code/p03_Create_Tariffs.do**
 
-- Line 33: name
+- Line 36: name
   ```
   rename (exporter importer) (iso3_o iso3_d)
   ```
-- Line 42: name
+- Line 47: name
   ```
   rename exporter iso3_o
   ```
-- Line 43: name
+- Line 48: name
   ```
   rename importer is3_d
   ```
-- Line 44: name
+- Line 49: name
   ```
   rename hs6 hs92
   ```
-- Line 48: name
+- Line 53: name
   ```
   rename is3_d iso3_d
   ```
-- Line 122: name
+- Line 128: name
   ```
   rename (exporter importer) (iso3_o iso3_d)
   ```
@@ -5195,538 +5067,534 @@ This appendix lists all detected instances of potential personally identifiable 
   ```
   // Bilateral Trade Flows
   ```
-- Line 92: country
+- Line 91: country
   ```
   fcollapse (sum) v* ,by(Country) fast
   ```
-- Line 95: country, loc
+- Line 94: country, loc
   ```
   levelsof Country, local(c) clean
   ```
-- Line 103: country, lon
+- Line 101: country, lon
   ```
   reshape long sum_, i(Country) j(Destination) string
   ```
-- Line 105: country, name
+- Line 103: country, name
   ```
   rename Country iso3_o
   ```
-- Line 106: name
+- Line 104: name
   ```
   rename Destination iso3_d
   ```
-- Line 108: name
+- Line 106: name
   ```
   rename sum_ WIOD_X_ij
   ```
-- Line 112: country
+- Line 110: country
   ```
   saveold "$ROOT/Data/Int/country_list_small", replace
   ```
-- Line 123: country
+- Line 121: country
   ```
   keep country_code iso_3digit_alpha
   ```
-- Line 124: country
+- Line 122: country
   ```
   replace iso_3digit_alpha = "TWN" if country_code == 490
   ```
-- Line 125: country, name
+- Line 123: country, name
   ```
   rename (country_code iso_3digit_alpha) (iso3num_o iso3_o)
   ```
-- Line 131: country
+- Line 129: country
   ```
   keep country_code iso_3digit_alpha
   ```
-- Line 132: country
+- Line 130: country
   ```
   replace iso_3digit_alpha = "TWN" if country_code == 490
   ```
-- Line 133: country, name
+- Line 131: country, name
   ```
   rename (country_code iso_3digit_alpha) (iso3num_d iso3_d)
   ```
-- Line 148: name
+- Line 146: name
   ```
   rename (i j t) (iso3num_o iso3num_d year)
   ```
-- Line 175: country
+- Line 173: country
   ```
   gsort country year_diff -time
   ```
-- Line 176: country
+- Line 174: country
   ```
   by country: keep if _n == 1
   ```
-- Line 179: loc, location
+- Line 175: loc, location
   ```
   keep location   v12    value
   ```
-- Line 180: name
+- Line 176: name
   ```
   rename v12 SSIS_year
   ```
-- Line 181: loc, location, name
+- Line 177: loc, location, name
   ```
   rename location iso3_o
   ```
-- Line 182: name
+- Line 178: name
   ```
   rename value SSIS_N_ii
   ```
-- Line 192: country
+- Line 188: country
   ```
   gsort country year_diff -time
   ```
-- Line 193: country
+- Line 189: country
   ```
   by country: keep if _n == 1
   ```
-- Line 196: country, loc, location
+- Line 191: country, loc, location
   ```
   keep location country variable time value flags
   ```
-- Line 197: name
+- Line 192: name
   ```
   rename time SDBS_year
   ```
-- Line 198: loc, location, name
+- Line 193: loc, location, name
   ```
   rename location iso3_o
   ```
-- Line 211: country
+- Line 206: country
   ```
   gen country = "United States"
   ```
-- Line 213: name
+- Line 208: name
   ```
   rename  company value
   ```
-- Line 216: census
+- Line 211: census
   ```
   gen source = "2012 US Census"
   ```
-- Line 217: census
+- Line 212: census
   ```
   saveold "$ROOT/Data/Int/Census`year'_small", replace
   ```
-- Line 220: country
+- Line 215: country
   ```
   drop country
   ```
-- Line 221: name
+- Line 216: name
   ```
   rename value SDBS_N_ii
   ```
-- Line 225: name
+- Line 220: name
   ```
   rename source source_SDBS
   ```
-- Line 245: sex
+- Line 240: sex
   ```
   keep economy year percentoffirmsexportingdirectlya
   ```
-- Line 246: name
+- Line 241: name
   ```
   rename year source_year_ENT
   ```
-- Line 248: country, name
+- Line 243: country, name
   ```
   rename economy country
   ```
-- Line 249: name, sex
+- Line 244: name, sex
   ```
   rename percentoffirmsexportingdirectlya export_probability
   ```
-- Line 254: country
+- Line 249: country
   ```
   drop country
   ```
-- Line 272: name
+- Line 266: name
   ```
   rename y source_year_EDD
   ```
-- Line 273: name
+- Line 267: name
   ```
   rename c iso3_o
   ```
-- Line 283: name
+- Line 277: name
   ```
   rename y source_year_EDD
+  ```
+- Line 278: name
+  ```
+  rename c iso3_o
   ```
 - Line 284: name
   ```
-  rename c iso3_o
-  ```
-- Line 290: name
-  ```
   rename y source_year_EDD
   ```
-- Line 291: name
+- Line 285: name
   ```
   rename c iso3_o
   ```
-- Line 300: name
+- Line 294: name
   ```
   rename d iso3_d
   ```
-- Line 347: name
+- Line 340: name
   ```
   rename time source_year_TEC
   ```
-- Line 349: name
+- Line 342: name
   ```
   rename valueN TEC_N_ij
   ```
-- Line 350: name
+- Line 343: name
   ```
   rename valueX TEC_X_ij
   ```
-- Line 351: name
+- Line 344: name
   ```
   rename  reporter  iso3_o
   ```
-- Line 352: name
+- Line 345: name
   ```
   rename  partner iso3_d
   ```
-- Line 357: name
+- Line 350: name
   ```
   rename TEC_N_ij TEC_N_iE
   ```
-- Line 358: name
+- Line 351: name
   ```
   rename TEC_X_ij TEC_X_iE
   ```
-- Line 406: name
+- Line 399: name
   ```
   rename time source_year_TEC
   ```
-- Line 408: name
+- Line 401: name
   ```
   rename valueN TEC_TOTAL_N_ij
   ```
-- Line 409: name
+- Line 402: name
   ```
   rename valueX TEC_TOTAL_X_ij
   ```
-- Line 410: name
+- Line 403: name
   ```
   rename  reporter  iso3_o
   ```
-- Line 411: name
+- Line 404: name
   ```
   rename  partner iso3_d
   ```
-- Line 416: name
+- Line 409: name
   ```
   rename TEC_TOTAL_N_ij TEC_TOTAL_N_iE
   ```
-- Line 417: name
+- Line 410: name
   ```
   rename TEC_TOTAL_X_ij TEC_TOTAL_X_iE
   ```
-- Line 434: name
+- Line 427: name
   ```
   rename NumberofEnterprisesunit CHN_N_ii
+  ```
+- Line 428: name
+  ```
+  rename Year year
   ```
 - Line 435: name
   ```
   rename Year year
   ```
-- Line 442: name
-  ```
-  rename Year year
-  ```
-- Line 446: name
+- Line 439: name
   ```
   rename NumberofEnterprisesunit CHN_N_ij
   ```
-- Line 447: name
+- Line 440: name
   ```
   rename BusinessRevenue CHN_X_ij_yuan
   ```
-- Line 458: name
+- Line 451: name
   ```
   rename n CHN_N_ij
   ```
-- Line 459: name
+- Line 452: name
   ```
   rename value CHN_X_ij_USD
   ```
-- Line 461: name
+- Line 454: name
   ```
   rename isocode iso3_d
   ```
-- Line 487: country
+- Line 480: country
   ```
   drop ROW Dest_Country
   ```
-- Line 488: lon
+- Line 481: lon
   ```
   reshape long N_ij_ T_ij_ X_ij_, i(iso3_o  iso3_d) j(year)
   ```
-- Line 489: name
+- Line 482: name
   ```
   rename N_ij_ AUS_N_ij
   ```
-- Line 490: name
+- Line 483: name
   ```
   rename T_ij_ AUS_T_ij
   ```
-- Line 491: name
+- Line 484: name
   ```
   rename X_ij_ AUS_X_ij
   ```
-- Line 515: name
+- Line 508: name
   ```
   rename iso_o iso3_o
   ```
-- Line 516: name
+- Line 509: name
   ```
   rename iso_d iso3_d
   ```
-- Line 546: name
+- Line 539: name
   ```
   rename iso3_o iso3_d
   ```
-- Line 547: name
+- Line 540: name
   ```
   rename iso3_o_n iso3_d_n
   ```
-- Line 595: loc, location, name
+- Line 588: loc, location, name
   ```
   rename  LOCATION iso3_o
   ```
-- Line 596: name
+- Line 589: name
   ```
   rename  Value SurvivalRate2
   ```
-- Line 607: loc, location, name
+- Line 600: loc, location, name
   ```
   rename  LOCATION iso3_o
   ```
-- Line 608: name
+- Line 601: name
   ```
   rename  Value SurvivalRate3
   ```
-- Line 619: loc, location, name
+- Line 612: loc, location, name
   ```
   rename  LOCATION iso3_o
   ```
-- Line 620: name
+- Line 613: name
   ```
   rename  Value SurvivalRate1
   ```
-- Line 857: country
-  ```
-  // for each country
-  ```
-- Line 970: name
+- Line 912: name
   ```
   rename exporter_code iso3_o
   ```
-- Line 971: name
+- Line 913: name
   ```
   rename (*_gsp) (gsp_ind*)
   ```
-- Line 975: name
+- Line 917: name
   ```
   rename exporter_code iso3_o
   ```
-- Line 976: name
+- Line 918: name
   ```
   rename (*_gsp_rate) (gsp_rate*)
   ```
-- Line 980: name
+- Line 922: name
   ```
   rename exporter_code iso3_o
   ```
-- Line 981: name
+- Line 923: name
   ```
   rename (*_mfn_rate) (mfn_rate*)
   ```
-- Line 985: name
+- Line 927: name
   ```
   rename exporter_code iso3_o
   ```
-- Line 986: name
+- Line 928: name
   ```
   rename (*_gsp_rate) (gsp_rate_wt*)
   ```
-- Line 991: name
+- Line 933: name
   ```
   rename exporter_code iso3_o
   ```
-- Line 992: name
+- Line 934: name
   ```
   rename (*_mfn_rate) (mfn_rate_wt*)
   ```
-- Line 1005: lon
+- Line 947: lon
   ```
   reshape long gsp_ind gsp_rate mfn_rate gsp_rate_wt mfn_rate_wt, i(iso3_o) j(iso3_d) string
   ```
-- Line 1023: name
+- Line 965: name
   ```
   rename iso3_d iso3_d2
   ```
-- Line 1032: name
+- Line 974: name
   ```
   syntax [namelist], year(integer)
   ```
-- Line 1101: name
+- Line 1031: name
   ```
   rename SurvivalRate1 SurvivalRate_OECD
   ```
-- Line 1102: name
+- Line 1032: name
   ```
   rename SurvivalRate1_average SurvivalRate_imputed
   ```
-- Line 1176: lon
+- Line 1106: lon
   ```
   keep  oN dN lN_ij lx_bar ltariff_use gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d co
   ```
-- Line 1177: lon
+- Line 1107: lon
   ```
   order oN dN lN_ij lx_bar ltariff_use gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d co
   ```
-- Line 1205: lon
+- Line 1135: lon
   ```
   keep  oN dN lN_ij lx_bar ltariff_use gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d co
   ```
-- Line 1206: lon
+- Line 1136: lon
   ```
   order oN dN lN_ij lx_bar ltariff_use gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d co
   ```
-- Line 1259: lon
+- Line 1174: lon
   ```
   keep  oN dN lN_ij lx_bar ltariff_use gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d co
   ```
-- Line 1260: lon
+- Line 1175: lon
   ```
   order oN dN lN_ij lx_bar ltariff_use gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d co
   ```
-- Line 1363: lon
+- Line 1278: lon
   ```
   keep  oN dN lN_ij lx_bar ltariff_use gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d co
   ```
-- Line 1364: lon
+- Line 1279: lon
   ```
   order oN dN lN_ij lx_bar ltariff_use gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d co
   ```
-- Line 1384: lon
+- Line 1299: lon
   ```
   keep  oN dN lN_ij lx_bar ltariff_IV gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d col
   ```
-- Line 1385: lon
+- Line 1300: lon
   ```
   order oN dN lN_ij lx_bar ltariff_IV gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d col
   ```
-- Line 1414: lon
+- Line 1329: lon
   ```
   keep  oN dN lN_ij lx_bar ltariff_IV gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d col
   ```
-- Line 1415: lon
+- Line 1330: lon
   ```
   order oN dN lN_ij lx_bar ltariff_IV gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d col
   ```
-- Line 1439: lon
+- Line 1354: lon
   ```
   keep  oN dN lN_ij lx_bar ldistw gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d colony 
   ```
-- Line 1440: lon
+- Line 1355: lon
   ```
   order oN dN lN_ij lx_bar ldistw gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d colony 
   ```
-- Line 1450: lon
+- Line 1365: lon
   ```
   keep  oN dN lN_ij lx_bar ldistw gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d colony 
   ```
-- Line 1451: lon
+- Line 1366: lon
   ```
   order oN dN lN_ij lx_bar ldistw gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij gdp_o gdp_d colony 
   ```
-- Line 1461: lon
+- Line 1376: lon
   ```
   keep  oN dN lN_ij lx_bar ldistw gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij_survival3 gdp_o gdp
   ```
-- Line 1462: lon
+- Line 1377: lon
   ```
   order oN dN lN_ij lx_bar ldistw gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij_survival3 gdp_o gdp
   ```
-- Line 1472: lon
+- Line 1387: lon
   ```
   keep  oN dN lN_ij lx_bar ldistw gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij_allsurvival gdp_o g
   ```
-- Line 1473: lon
+- Line 1388: lon
   ```
   order oN dN lN_ij lx_bar ldistw gdpcap_o_2 gdpcap_d_2  rich_orig rich_dest ln_ij_allsurvival gdp_o g
   ```
-- Line 1485: name
+- Line 1400: name
   ```
   syntax [namelist], year(integer)
   ```
-- Line 1534: name
+- Line 1449: name
   ```
   rename (delta delta_ind delta_wt) (gsp_delta gsp_delta_ind gsp_delta_wt )
   ```
-- Line 1552: name
+- Line 1467: name
   ```
   rename x X_ij_EORA
   ```
-- Line 1553: name
+- Line 1468: name
   ```
   rename (origin destination) (iso3_o iso3_d)
   ```
-- Line 1795: name
+- Line 1706: name
   ```
   rename iso3_d iso3
   ```
-- Line 1796: name
+- Line 1707: name
   ```
   rename E_j E_i
   ```
-- Line 1803: name
+- Line 1714: name
   ```
   rename iso3 iso3
   ```
 
 **/replication-package/Code/p05_Sample_Creation_HS2.do**
 
-- Line 26: name
+- Line 25: name
   ```
   rename c iso3_o
   ```
-- Line 27: name
+- Line 26: name
   ```
   rename d iso3_d
   ```
-- Line 28: name
+- Line 27: name
   ```
   rename y year
   ```
-- Line 29: name
+- Line 28: name
   ```
   rename A1 N_ij_h2
   ```
-- Line 30: name
+- Line 29: name
   ```
   rename A6i x_ij_h2
   ```
-- Line 165: lon
+- Line 164: lon
   ```
   keep  oN dN lN_ij lx_bar ltariff_useUW gdpcap_o gdpcap_d  rich_orig rich_dest ln_ij gdp_o gdp_d colo
   ```
-- Line 166: lon
+- Line 165: lon
   ```
   order oN dN lN_ij lx_bar ltariff_useUW gdpcap_o gdpcap_d  rich_orig rich_dest ln_ij gdp_o gdp_d colo
   ```
-- Line 194: lon
+- Line 193: lon
   ```
   keep  oN dN lN_ij lx_bar Tltariff_useUW gdpcap_o gdpcap_d  rich_orig rich_dest ln_ij gdp_o gdp_d col
   ```
-- Line 195: lon
+- Line 194: lon
   ```
   order oN dN lN_ij lx_bar Tltariff_useUW gdpcap_o gdpcap_d  rich_orig rich_dest ln_ij gdp_o gdp_d col
   ```

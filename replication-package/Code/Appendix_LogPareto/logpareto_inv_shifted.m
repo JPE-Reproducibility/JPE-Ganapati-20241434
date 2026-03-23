@@ -9,9 +9,7 @@ function y = logpareto_inv_shifted(p, k, alpha, mu)
         error('Probabilities must be between 0 and 1.');
     end
     
-%     if k <= 0 || alpha <= 0
-%         error('Scale (k) and shape (alpha) parameters must be positive.');
-%     end
+
 
     % Calculate the standard log-Pareto value
     x = exp(k ./ (1 - p).^(1/alpha));

@@ -11,9 +11,6 @@ if knots>2
     Deriv1a =Deriv1t(d.category==0,:);
     Deriv1b =Deriv1t(d.category==1,:);
 
-%     [Xknots1a,k1a,Deriv1a] = evknots(knots,x(d.category==0),type) ;
-%     [Xknots1b,k1b,Deriv1b] = evknots(knots,x(d.category==1),type) ;
-
     d.k = [k1a k1b  ];
     d.k1a = k1a;    d.k1b = k1b;
     d.kG{1} = k1a;    d.kG{2} = k1b;

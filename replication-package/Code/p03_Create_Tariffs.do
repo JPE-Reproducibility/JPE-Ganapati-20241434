@@ -10,18 +10,21 @@ set type double, perm
 /////////////////////////////
 ///Final dataset Collapse ///
 /////////////////////////////
+cap mkdir "$ROOT/Data/TRAINS/collapsed"
 forvalues year=2002(2)2014 {
-	use "$ROOT/Data/TRAINS/cleaned_data/T`year'.dta", clear
-	cap mkdir "$ROOT/Data/TRAINS/collapsed"
-	preserve
-	gcollapse (mean) simpleAHS_w = simpleAHS simpleMFN_w = simpleMFN [aw=imports_trains], by(exporter importer year)
-	tempfile t1
-	saveold `t1', replace
-	restore
-	gcollapse (mean) simpleAHS_uw = simpleAHS simpleMFN_uw = simpleMFN (count) simpleAHS_obs = simpleAHS (sum) imports_trains, by(exporter importer year)
-	merge 1:1 exporter importer year using `t1', nogen
-	replace simpleAHS_w = simpleAHS_uw if simpleAHS_w == .
-	saveold "$ROOT/Data/TRAINS/collapsed/T`year'.dta", replace
+	cap confirm file "$ROOT/Data/TRAINS/collapsed/T`year'.dta"
+	if _rc {
+		use "$ROOT/Data/TRAINS/cleaned_data/T`year'.dta", clear
+		preserve
+		gcollapse (mean) simpleAHS_w = simpleAHS simpleMFN_w = simpleMFN [aw=imports_trains], by(exporter importer year)
+		tempfile t1
+		saveold `t1', replace
+		restore
+		gcollapse (mean) simpleAHS_uw = simpleAHS simpleMFN_uw = simpleMFN (count) simpleAHS_obs = simpleAHS (sum) imports_trains, by(exporter importer year)
+		merge 1:1 exporter importer year using `t1', nogen
+		replace simpleAHS_w = simpleAHS_uw if simpleAHS_w == .
+		saveold "$ROOT/Data/TRAINS/collapsed/T`year'.dta", replace
+	}
 }
 
 // Stack Tariff Data
@@ -38,16 +41,19 @@ saveold "$ROOT/Data/TRAINS/collapsed/T_all_collapse.dta", replace
 
 // Merge in Teti Data
 forvalues year=2010(2)2014 {
-	use "$ROOT/Data/TRAINS/cleaned_data/T`year'.dta", clear
-	rename exporter iso3_o
-	rename importer is3_d
-	rename hs6 hs92
-	destring hs92, force replace
-	merge 1:1 year hs92 iso3_o is3_d using "$ROOT/Data/Teti/tariff`year'_beta1-2024-12.dta", keep(master match)
-	keep if _merge == 3
-	rename is3_d iso3_d
-	saveold "$ROOT/Data/TRAINS/collapsed/Teti_`year'_merged.dta", replace
-  cap erase  "$ROOT/Data/Teti/tariff`year'_beta1-2024-12.dta"
+	cap confirm file "$ROOT/Data/TRAINS/collapsed/Teti_`year'_merged.dta"
+	if _rc {
+		use "$ROOT/Data/TRAINS/cleaned_data/T`year'.dta", clear
+		rename exporter iso3_o
+		rename importer is3_d
+		rename hs6 hs92
+		destring hs92, force replace
+		merge 1:1 year hs92 iso3_o is3_d using "$ROOT/Data/Teti/tariff`year'_beta1-2024-12.dta", keep(master match)
+		keep if _merge == 3
+		rename is3_d iso3_d
+		saveold "$ROOT/Data/TRAINS/collapsed/Teti_`year'_merged.dta", replace
+		cap erase  "$ROOT/Data/Teti/tariff`year'_beta1-2024-12.dta"
+	}
 }
 
 // Stack Teti Data

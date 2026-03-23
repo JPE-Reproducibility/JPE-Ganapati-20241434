@@ -45,7 +45,6 @@ function [ epsilon_elast,rho_elast,theta,x ] = make_elasticity_combo(x,k,d,o,sig
             Deriv(d.category==1,:)=Deriv1b;
             Deriv(d.category==2,:)=Deriv1c;
             Deriv(d.category==3,:)=Deriv1d;
-%             Deriv = [Deriv  Deriv.*repmat(d.rich_I,1,size(d.Xknots,2)) Deriv.*repmat(d.rich_J,1,size(d.Xknots,2)) Deriv.*repmat(d.rich_I.*d.rich_J,1,size(d.Xknots,2))];
 
             dc0 = repmat(d.category==0,1,size(Xknots,2));
             dc1 = repmat(d.category==1,1,size(Xknots,2));

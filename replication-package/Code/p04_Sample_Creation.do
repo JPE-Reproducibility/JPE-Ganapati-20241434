@@ -12,7 +12,7 @@ program define MAIN
   make_CEPII
 
   setup_WIOD  
-  forvalues y = 2000(1)2014 {
+  forvalues y = 2000(2)2014 {
     di "`y'"
     global year = `y'
     make_WIOD_small, year(${year})
@@ -82,7 +82,6 @@ program define make_WIOD_small
 syntax, year(integer)
 
   use "$ROOT/Data/WIOD/wiot_stata_Nov16/WIOT`year'_October16_ROW.dta", clear
-  // gen Icode1 = substr(IndustryCode,1,1)
   preserve
     keep IndustryCode IndustryDescription
     duplicates drop
@@ -95,7 +94,6 @@ syntax, year(integer)
   levelsof Country, local(c) clean
   foreach i in `c' "ROW" {
     di "`i'"
-    * drop sum_`i'
     cap egen sum_`i' = rowtotal(v`i'*)
     cap drop v`i'*
   }
@@ -174,8 +172,6 @@ syntax, year(integer)
     gen year_diff = abs(time - `year')
     gsort country year_diff -time
     by country: keep if _n == 1
-    // DIE
-    // keep if time == `year'
     keep location   v12    value
     rename v12 SSIS_year
     rename location iso3_o
@@ -191,7 +187,6 @@ syntax, year(integer)
     gen year_diff = abs(time - `year')
     gsort country year_diff -time
     by country: keep if _n == 1
-    // keep if time == `year'
     compress
     keep location country variable time value flags
     rename time SDBS_year
@@ -267,7 +262,6 @@ syntax, year(integer)
     use "$ROOT/Data/EDD_Data/CY_manuf/CY_manuf.dta", clear
     gen EDD_N_iE = A1
     label var EDD_N_iE "Number of Total Exporters"
-    // label var lN_iE "Log Number of Total Exporters"
     keep y c  EDD_N_iE
     rename y source_year_EDD
     rename c iso3_o
@@ -340,7 +334,6 @@ syntax, year(integer)
       assert _merge == 3
       drop _merge
 
-      // drop  powercodecode referenceperiodcode flagcodes flow  unit indicator sector
       reshape wide value, j(type) i(reporter partner time) string
 
       gen year = `year'
@@ -472,7 +465,7 @@ syntax, year(integer)
     drop _merge
     replace CHN_X_ij_USD = CHN_X_ij_yuan/US_FX if CHN_X_ij_USD == .
     drop US_FX
-    saveold "$ROOT/DATA/Int/CHN_`year'", replace
+    saveold "$ROOT/Data/Int/CHN_`year'", replace
 
 
 
@@ -491,7 +484,7 @@ syntax, year(integer)
     rename X_ij_ AUS_X_ij
     destring  AUS*, ignore(",-np") replace
 
-    saveold "$ROOT/DATA/Int/AUS_all", replace
+    saveold "$ROOT/Data/Int/AUS_all", replace
 
     gen year_diff = abs(year - `year')
     gsort iso3_d year_diff -year
@@ -500,7 +493,7 @@ syntax, year(integer)
     replace AUS_X_ij = AUS_X_ij/US_FX
     drop year year_diff _merge US_FX
 
-    saveold "$ROOT/DATA/Int/AUS_`year'", replace
+    saveold "$ROOT/Data/Int/AUS_`year'", replace
 
   end
 
@@ -597,7 +590,7 @@ syntax, year(integer)
   label var SurvivalRate2 "OECD 2-year survival rate"
   keep iso3_o SurvivalRate2
   drop if SurvivalRate2 >= 100
-  saveold "$ROOT/DATA/Int/SurvivalRate2${year}", replace
+  saveold "$ROOT/Data/Int/SurvivalRate2${year}", replace
 
   insheet using "$ROOT/Data/OECD/SDBS Business Demography Indicators/SDBS_BDI_ISIC4_11042019204932050.csv", clear names case
   keep  if Variable == "3-year survival rate"
@@ -609,7 +602,7 @@ syntax, year(integer)
   label var SurvivalRate3 "OECD 2-year survival rate"
   keep iso3_o SurvivalRate3
   drop if SurvivalRate3 >= 100
-  saveold "$ROOT/DATA/Int/SurvivalRate3${year}", replace
+  saveold "$ROOT/Data/Int/SurvivalRate3${year}", replace
 
   insheet using "$ROOT/Data/OECD/SDBS Business Demography Indicators/SDBS_BDI_ISIC4_11042019204932050.csv", clear names case
   keep  if Variable == "1-year survival rate"
@@ -621,15 +614,15 @@ syntax, year(integer)
   label var SurvivalRate1 "OECD 1-year survival rate"
   keep iso3_o SurvivalRate1
   drop if SurvivalRate1>= 100
-  merge 1:1 iso3_o using "$ROOT/DATA/Int/SurvivalRate2${year}", nogen
-  merge 1:1 iso3_o using "$ROOT/DATA/Int/SurvivalRate3${year}", nogen
-  capture egen SurvivalRate1_average = mean(SurvivalRate1)
-  capture label var SurvivalRate1_average "Average OECD 1-year survival rate"
-  capture egen SurvivalRate2_average = mean(SurvivalRate2)
-  capture label var SurvivalRate2_average "Average OECD 2-year survival rate"
-  capture egen SurvivalRate3_average = mean(SurvivalRate3)
-  capture label var SurvivalRate3_average "Average OECD 5-year survival rate"
-  saveold "$ROOT/DATA/Int/SurvivalRate${year}", replace
+  merge 1:1 iso3_o using "$ROOT/Data/Int/SurvivalRate2${year}", nogen
+  merge 1:1 iso3_o using "$ROOT/Data/Int/SurvivalRate3${year}", nogen
+  egen SurvivalRate1_average = mean(SurvivalRate1)
+  label var SurvivalRate1_average "Average OECD 1-year survival rate"
+  egen SurvivalRate2_average = mean(SurvivalRate2)
+  label var SurvivalRate2_average "Average OECD 2-year survival rate"
+  egen SurvivalRate3_average = mean(SurvivalRate3)
+  label var SurvivalRate3_average "Average OECD 5-year survival rate"
+  saveold "$ROOT/Data/Int/SurvivalRate${year}", replace
 
 end
 
@@ -644,7 +637,6 @@ syntax, year(integer)
 
 
   // Start with the Diagonals
-  // global year = ${year}
   use "$ROOT/Data/Int/WIOT${year}_small", replace
   gen year = ${year}
 
@@ -656,26 +648,6 @@ syntax, year(integer)
   merge 1:m iso3_o iso3_d year using "$ROOT/Data/Int/BACI${year}_small"
   drop _merge
   drop year
-  
-
-  // We Dont Use This
-  /* 
-  // Trade Cost Data
-  gen year = ${year}
-  merge 1:m iso3_o iso3_d year using "$ROOT/Data/Freight data/gravity_freight_data_unmerged", keep(master matched)
-  keep if year == ${year}
-  tab iso3_d _merge
-  drop _merge
-  drop year
-
-  // Trade Cost Data
-  cap gen year = ${year}
-  merge 1:m iso3_o iso3_d year using "$ROOT/Data/Freight data/gravity_ESCAP_WB_TC_square" //, keep(master matched)
-  keep if year == ${year}
-  tab iso3_d _merge
-  drop _merge
-  drop year 
-  */
 
   // Origin OECD Export Statistics
   merge m:1 iso3_o using "$ROOT/Data/Int/OECDTEC_CY1_MAN_${year}", keep(master matched)
@@ -755,7 +727,6 @@ syntax, year(integer)
 
 
   // Distribute imputed survival rates
-  // To Do: get better survival rate data
   replace SurvivalRate1_average = 85 if SurvivalRate1_average == . // For years without data
   replace SurvivalRate2_average = 75  if SurvivalRate2_average == . // For years without data
   replace SurvivalRate3_average = 65   if SurvivalRate3_average == . // For years without data
@@ -850,12 +821,6 @@ syntax, year(integer)
   replace x_bar = X_ij/N_ij if iso3_o == iso3_d  & missing(x_bar)
   replace x_bar_source = X_ij_source +" + "+N_ij_source if !missing(x_bar) & x_bar_source == ""
 
-  // DO we need to adjust the X_ii for the diagonals
-  // Rodrigo, 10:20 AM
-  // To merge the datasets, I would jsut scale X_ii such that the ratio of total exports in WIOD and our data
-  // So that the trade matrix is all cosnsitent
-  // for each country
-
   // Use a Consistent X_ij
   replace X_ij = x_bar*N_ij
   replace X_ij = BACI_v if X_ij == .
@@ -864,16 +829,6 @@ syntax, year(integer)
 
   replace x_bar = X_ij/N_ij if missing(x_bar)
   replace x_bar_source = X_ij_source +" + "+N_ij_source if !missing(x_bar) & x_bar_source == ""
-
-  // Diagnostics
-  // gen X_ij_1 = x_bar*N_ij
-  // gen lX_ij_1 = log(X_ij_1)
-  // gen lWIOD_X_ij = log(WIOD_X_ij)
-  // gen lBACI_v = log(BACI_v)
-  // corr lX_ij_1 lWIOD_X_ij lBACI_v
-  // regress lX_ij_1 lWIOD_X_ij
-  // order lX_ij_1 lWIOD_X_ij X_ij_1 WIOD_X_ij
-  // br if iso3_o == "CHN" || iso3_o == "DEU"
 
   gen n_ij = N_ij/N_ii*SurvivalRate1_combined
   gen n_ij_survival2 = N_ij/N_ii*SurvivalRate2_combined
@@ -907,7 +862,7 @@ capture program drop STACK_ALL_YEARS
 program define STACK_ALL_YEARS
 
   clear
-  forvalues y = 2000(1)2014 {
+  forvalues y = 2000(2)2014 {
     di "`y'"
     global year = `y'
     append using "$ROOT/Data/Int/stack_data_${year}_B"
@@ -928,19 +883,6 @@ program define STACK_ALL_YEARS
   gen rich_dest = cond(gdpcap_d_2000>9000,1,0)
   gen rich_orig = cond(gdpcap_o_2000>9000,1,0)
 
-  // preserve
-  //   keep if year == 2000
-  //   keep iso3_d gdpcap_d
-  //   duplicates drop
-  //   summ gdpcap_d, d
-  //   di "`r(p50)'"
-  //   global CUTOFF  `r(p50)'
-  // restore
-  // gen rich_dest = cond(gdpcap_d_2000>$CUTOFF,1,0)
-  // gen rich_orig = cond(gdpcap_o_2000>$CUTOFF,1,0)
-  // bys iso3_o iso3_d: egen count = count(lx_bar)
-  // tab count
-  // keep if count == 15
 
   label var lx_bar "ln(x_ij_bar)"
   label var lN_ij "ln(N_ij)"
@@ -1032,25 +974,13 @@ program define DATA_EXPORT_AGG
     syntax [namelist], year(integer)
 
   global year = `year'
-   // global year = 2012
-  // use "$ROOT/Data/Int/stack_data_${year}", clear
-
 
   use  "$ROOT/Data/Int/stack_data_B", clear
   drop o d
   egen group = group(iso3_o iso3_d)
   tsset group year
-  gen simpleAHS_w_l5 = l5.simpleAHS_w 
-  gen simpleMFN_w_l5 = l5.simpleMFN_w
-  gen simpleAHS_uw_l5 = l5.simpleAHS_uw 
-  gen simpleMFN_uw_l5 = l5.simpleMFN_uw
-  gen simpleAHS_uw_l10 = l10.simpleAHS_uw 
+
   gen simpleMFN_uw_l10 = l10.simpleMFN_uw
-
-
-  gen fta_wto_l5     = l5.fta_wto
-  gen gatt_o_l5      = l5.gatt_o
-  gen gatt_d_l5      = l5.gatt_d
   gen fta_wto_l10     = l10.fta_wto
   gen gatt_o_l10      = l10.gatt_o
   gen gatt_d_l10      = l10.gatt_d
@@ -1208,21 +1138,6 @@ program define DATA_EXPORT_AGG
     outsheet using "$ROOT/Data/Int/WIOD_sampleB/${year}_Tetiuw.csv", replace non nol comma
     outsheet using "$ROOT/Data/Int/WIOD_sampleB/${year}_Tetiuw_lab.csv", replace 
   restore
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1600,11 +1515,9 @@ program define DATA_EXPORT_CF_BIG
 
     // First impute using distance and trade flows
     cap drop ln_ij_predicted
-    /* regress ln_ij ldistw lX_ij_imputed i.o i.d */
     regress ln_ij ldistw lX_ij_imputed fta_wto comcur comrelig  sibling tdiff contig lGDP_diff i.o i.d rich_dest#rich_orig
     predict  ln_ij_predicted, xb
     summ ln_ij
-    /* replace ln_ij_predicted = `r(max)' if ln_ij_predicted > `r(max)' */
     replace ln_ij_predicted = . if iso3_o == iso3_d
     summ ln_ij_predicted
     gen double n_ij_imputed = cond(n_ij!=. & n_ij!=0,n_ij,exp(ln_ij_predicted))
@@ -1632,8 +1545,6 @@ program define DATA_EXPORT_CF_BIG
     reshape wide n_ij_imputed, i(iso3_o) j(iso3_d) string
     keep iso3_o
     outsheet using "$ROOT/Data/Int/WIOD_sampleB/l_i_${year}B.csv", replace non comma
-
-    
 
     // Matrix: Column is destination; Row is Origin
 
@@ -1811,18 +1722,13 @@ program define DATA_EXPORT_CF_BIG
 
     use "$ROOT/Data/Int/stack_data_B", clear
     keep if year == 2012
-    /* keep if iso3_d == iso3_o */
     tempfile A 
     saveold `A', replace
 
     use "$ROOT/Data/Int/n_ij_imputed", clear
-    /* keep if iso3_d == iso3_o */
     merge 1:1 iso3_d iso3_o using `A',  keepusing(gdp_o gdpcap_o area_o lN_ii)   keep(master match) 
     assert _merge == 3
 
-    /* use $ROOT/Data/Int/stack_data_${year}, clear */
-
-    // gen lN_ii = log(N_ii)
     gen lgdp_o = log(gdp_o)
     gen lgdpcap_o = log(gdpcap_o)
     gen larea_o   = log(area_o)
@@ -1831,7 +1737,6 @@ program define DATA_EXPORT_CF_BIG
     predict lN_ii_imputed, xb
     gen N_ii_imputed = exp(lN_ii_imputed)
     order N_ii N_ii_imputed
-    // scatter N_ii_imputed N_ii
 
     keep iso3* N_ii_imputed
     format N* %15.0fc

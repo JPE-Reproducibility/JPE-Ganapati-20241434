@@ -2,23 +2,18 @@ function [standard_errors] = CC_se_splines(R1,ests2,d,uhat,G_bar,W,Lambda,V)
 %% Standard Errors full functional form
 % Code From CC 2017 QE
 
-%         [Psixx,~,Deriv] =evknots_make(d.k,d.x);
     
         % Cubic B-splines, plot over 5%-95% empirical quantiles
         r = d.r;
         xtemp = (0.05:0.001:0.95)';
-%         xtemp = (0.01:0.001:0.99)';
 
         [Psixx, Deriv] = bspline(xtemp, 0, r, d.k);
         % Rescale because of normalization to [0, 1] as before, trimming
         % very extreme quantiles
-%         scale_upper = quantile(d.R_nE_ij, 0.999);
-%         scale_lower = quantile(d.R_nE_ij, 0.001);
 
         scale_upper = d.scale_upper;
         scale_lower = d.scale_lower;
-%         scale_upper = 1; %%%%%%%%
-%         scale_lower = 0; %%%%%%%%
+
 
         d.x = xtemp * (scale_upper - scale_lower) + scale_lower;
         % Rescale derivative 
@@ -89,13 +84,6 @@ function [standard_errors] = CC_se_splines(R1,ests2,d,uhat,G_bar,W,Lambda,V)
         UB_GMM      = Prediction + SE_EQ_1_GMM'*percentile_se(2);
         LB_GMM      = Prediction - SE_EQ_1_GMM'*percentile_se(2);
         
-%         % Plot Data - Levels
-%         p=plot(d.x,UB_CC(:,:),'-',...
-%                 d.x,Prediction,'.',...
-%                 d.x,LB_CC(:,:),'-',...
-%                 d.x,UB_GMM,'.',...
-%                 d.x,Prediction,'.',...
-%                 d.x,LB_GMM,'.');
 
         Deriv_predicted = Deriv*ests2(R1)';
 
@@ -107,13 +95,7 @@ function [standard_errors] = CC_se_splines(R1,ests2,d,uhat,G_bar,W,Lambda,V)
         Deriv_UB_GMM      = Deriv_predicted + SE_EQ_Deriv_GMM*percentile_se(2);
         Deriv_LB_GMM      = Deriv_predicted - SE_EQ_Deriv_GMM*percentile_se(2);
         
-%         % Plot Data - Elasticities
-%         p=plot(d.x,Deriv_LB_CC(:,:),'-',...
-%          d.x,Deriv_predicted,'-',...
-%          d.x,Deriv_UB_CC(:,:),'-',...
-%          d.x,Deriv_LB_GMM,'.',...
-%          d.x,Deriv_predicted,'.',...
-%          d.x,Deriv_UB_GMM,'.');
+
      
         standard_errors.Prediction      = Prediction;
         standard_errors.LB_CC           = LB_CC;

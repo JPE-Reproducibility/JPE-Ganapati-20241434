@@ -20,9 +20,7 @@
     kappa_epsilon = 1/((sigma-1)*kappa_tau+kappa_f);
     gamma_guess = [.2 0 0 0 0 .2 0 0 0 0];
 
-    %basefile = '2012_Tuw.csv'; name = '2012_T';  grav_spec = 'all';
     basefile = '2012_Tetiuw.csv'; name = '2012_Teti';  grav_spec = 'all';
-    % basefile = '2012_Tetiuw.csv'; name = '2012_Teti';  grav_spec = 'dist';
 
 %% ADD EXPLANATORY VARIABLES
     fix = 2;
@@ -36,11 +34,6 @@
     p_overlay_elasticity( d,o,'theta'       ,'../../Output/full_SE' );
 
     o.title = '+ Gravity (FTA + common curr + language + colony)';     
-    % p_overlay_elasticity( d,o,'theta'       ,'../../Output/test' );
-%    (from Teti Tariffs) gamma_gravity = [ 0.3520   -0.0214   -0.0189   -0.2324   -0.1502    0.2812   -0.0834   -0.0015   -0.0576   -0.0471];
-%    (from Base Tariffs) gamma_gravity = [ 0.3920   -0.0408   -0.0131   -0.2596   -0.1635    0.3402   -0.1012    0.0039   -0.0985   -0.0671];
-%    (from Replication ) gamma_gravity = [ 0.3558   -0.0216   -0.0200   -0.2365   -0.1511    0.2860   -0.0832   -0.0047   -0.0636   -0.0478];
-
 
 %% Run Programs
     Simulation_Data_v10
@@ -101,10 +94,6 @@
     [~,o2q_Wo] =  GMM_wrapper_gravity( d2q_Wo, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity,'all');
     p_overlay_elasticity( d2q_Wo,o2q_Wo,'theta_split'       ,'../../Output/test' );
     Figure_Sequencer(d2q_Wo,o2q_Wo,'F3a_origin','_split')
-    
-    % figure;
-    % p_overlay_elasticity( d2q_Wo,o2q_Wo, 'intensive_split', '../../Output/F3a_'   );
-    % p_overlay_elasticity( d2q_Wo,o2q_Wo, 'extensive_split', '../../Output/F3a_'   );
 
 
 %% Wealth Origin with IV
@@ -119,7 +108,6 @@
 % Simultaneous
     fix = 0;
     knots = 33;
-%     knots = 3;
     d2q_Wd = make_data_combo(M_base,knots,'cubic','wealth_dI','',0,'all'); 
     d2q_Wd.sigma = sigma;  d2q_Wd.x = x;
     [~,o2q_Wd] =  GMM_wrapper_gravity( d2q_Wd, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity,'all');
@@ -151,8 +139,7 @@
     base_alt = make_data_combo(M_alt,knots,'cubic','','',0,'all');     base_alt.sigma = sigma;       base_alt.x = x;
     [~,obase_alt] =  GMM_wrapper_gravity( base_alt, kappa_tau, kappa_epsilon,'base_alt',fix,gamma_gravity,'all');
     o.title = 'Baseline';     
-    obase_alt.title = 'Assume n_{ii} = 1';     
-    % Figure_Sequencer(base_alt,obase_alt,'F5_nii1','')
+    obase_alt.title = 'Assume n_{ii} = 1';
     types = {'rho','theta','extensive'};
     for t = 1:1:size(types,2)
         graph_overlay([ o obase_alt],[ d base_alt],types{t},'../../Output/F5_nii1',  "", 0)
@@ -357,15 +344,6 @@
         graph_overlay([ o os_s24],[ d ps_s24],types{t},'../../Output/F5_sigma24',  "", 0)
     end
 
-    %{
-    % Wealth Origin
-    fix = 0;
-    knots = 33;
-    d2q_Wos24 = make_data_combo(M_base,knots,'cubic','wealth_oI','',0,'all');     d2q_Wos24.sigma = ps_s24.sigma;  d2q_Wos24.x = x;
-    [~,o2q_Wos24] =  GMM_wrapper_gravity( d2q_Wos24, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_s24,'all');
-    Figure_Sequencer(d2q_Wos24,o2q_Wos24,'F5_sigma24','_split')
-    %}
-
 %% Sigma 3.4
     fix = 2;
     knots = 3;
@@ -383,14 +361,6 @@
         graph_overlay([ o os_s34],[ d ps_s34],types{t},'../../Output/F5_sigma34',  "", 0)
     end
 
-    %{
-    % Wealth Origin
-    fix = 0;
-    knots = 33;
-    d2q_Wos34 = make_data_combo(M_base,knots,'cubic','wealth_oI','',0,'all');    d2q_Wos34.sigma = ps_s34.sigma;  d2q_Wos34.x = x;
-    [~,o2q_Wos34] =  GMM_wrapper_gravity( d2q_Wos34, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_s34,'all');
-    Figure_Sequencer(d2q_Wos34,o2q_Wos34,'F5_sigma34','_split')
-    %}
 
 %% 2010
     fix = 2;
@@ -409,14 +379,6 @@
         graph_overlay([ o os_10],[ d ps_10],types{t},'../../Output/F5_y2010',  "", 0)
     end
     
-    %{
-    % Wealth Origin
-    fix = 0;
-    knots = 33;
-    d2q_Wos10 = make_data_combo(M2010,knots,'cubic','wealth_oI','',0,type);    d2q_Wos10.sigma = ps_14.sigma;  d2q_Wos10.x = x;
-    [~,o2q_Wos10] =  GMM_wrapper_gravity( d2q_Wos10, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_2010,type);
-    Figure_Sequencer(d2q_Wos10,o2q_Wos10,'F5_y2010','_split')
-    %}
 
 
 %% 2014
@@ -436,14 +398,6 @@
         graph_overlay([ o os_14],[ d ps_14],types{t},'../../Output/F5_y2014',  "", 0)
     end
 
-    %{
-    % Wealth Origin
-    fix = 0;
-    knots = 33;
-    d2q_Wos14 = make_data_combo(M2014,knots,'cubic','wealth_oI','',0,type);    d2q_Wos14.sigma = ps_14.sigma;  d2q_Wos14.x = x;
-    [~,o2q_Wos14] =  GMM_wrapper_gravity( d2q_Wos14, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_2014,type);
-    Figure_Sequencer(d2q_Wos14,o2q_Wos14,'F5_y2014','_split')
-    %}
 
 %% Base 2012
     fix = 2;
@@ -470,19 +424,7 @@
 
 
 %% HS
-
-%     basefile_Sf = '2012_Tuw_h0.csv'; name_Sf = '2012_T_h0';
-%     M_Sf = csvread(strcat(data_dir,basefile_Sf));
-%     knot_Sf = 3;
-%     fix = 2; % Fix = 2: means allow gamma to be estimated internally
-%     base_Sf = make_data_combo_hs_multi(M_Sf,knot_Sf,'cubic','','',0,'dist' );     base_Sf.sigma = sigma;       base_Sf.x = x;
-%     [~,obase_Sf] =  GMM_wrapper_gravity( base_Sf, kappa_tau, kappa_epsilon,['base'],fix,[.3 .3],'dist' );
-%     start = size(obase_Sf.ests2,2)-2*size(obase_Sf.est_epsilon,2)-1;
-%     gamma_gravity_HS = obase_Sf.ests2((end-start):end)
-%     Figure_Sequencer(base_Sf,obase_Sf,'F4_HS','')
-
     basefile_Sf = '2012_Tuw_h0.csv'; name_Sf = '2012_T_h0';
-%     basefile_Sf = '2012_Tetiuw_h0.csv'; name_Sf = '2012_Teti_h0';
     M_Sf = csvread(strcat(data_dir,basefile_Sf));
     knot_Sf = 3;
     fix = 2; % Fix = 2: means allow gamma to be estimated internally
@@ -503,7 +445,6 @@
 % Wealth-Origin - HS Level
 % Wealth Origin-Destination
    basefile_Sf = '2012_Tuw_h0.csv'; name_Sf = '2012_T_h0';
-%     basefile_Sf = '2012_Tetiuw_h0.csv'; name_Sf = '2012_Teti_h0';
     
     M_Sf = csvread(strcat(data_dir,basefile_Sf));
     fix = 0;
@@ -514,40 +455,22 @@
     [~,o2q_Wo_S] =  GMM_wrapper_gravity( d2q_Wo_S, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_HS,'all');
     Figure_Sequencer(d2q_Wo_S,o2q_Wo_S,'F4b_HS_origin','_split')
 
-%     d2q_Wo.h = [];
-%     graph_overlay([ o2q_Wo o2q_Wo_S],[ d2q_Wo d2q_Wo_S],'theta_split','../../Output/F4b_HS_origin',  "", 0)
 
     d2q_Wd_S = make_data_combo_hs_multi(M_Sf,knot_S,'cubic','wealth_dI','',0,'all') ; 
     d2q_Wd_S.sigma = sigma;  d2q_Wd_S.x = x;
     [~,o2q_Wd_S] =  GMM_wrapper_gravity( d2q_Wd_S, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_HS,'all');
     Figure_Sequencer(d2q_Wd_S,o2q_Wd_S,'F4b_HS_destination','_split')
 
-%     d2q_Wod_S = make_data_combo_hs_multi(M_Sf,knot_S,'cubic','wealth_odI','',0,'all') ; 
-%     d2q_Wod_S.sigma = sigma;  d2q_Wod_S.x = x;
-%     [~,o2oq_Wd_S] =  GMM_wrapper_gravity( d2q_Wod_S, kappa_tau, kappa_epsilon,'test',fix ,gamma_gravity_HS,'all');
-%     Figure_Sequencer(d2q_Wod_S,o2oq_Wd_S,'F4b_HS_od','_quad')
-
-
 
 
 %% HS
-
     hs = 3 ;  hs_routine_gravity; %  Foodstuffs
     hs = 4 ;  hs_routine_gravity; %  Mineral Products
     hs = 5 ;  hs_routine_gravity; %  Chemicals & Allied Industries
     hs = 6 ;  hs_routine_gravity; %  Plastics / Rubbers
-    % hs = 7 ;  hs_routine_gravity; %  Raw Hides, Skins, Leather, & Furs -
-    % merged with textiles
-
     hs = 8 ;  hs_routine_gravity; %  Wood & Wood Products
     hs = 9 ;  hs_routine_gravity; %  Textiles
-    % hs = 10;  hs_routine_gravity; %  Footwear / Headgear
-        % merged with textiles
-
-    % hs = 11;  hs_routine_gravity; %  Stone / Glass
     hs = 12;  hs_routine_gravity; %  Metals
-        % merged with  Mineral Products
-
     hs = 13;  hs_routine_gravity; %  Machinery / Electrical
     hs = 14;  hs_routine_gravity; %  Transportation
     

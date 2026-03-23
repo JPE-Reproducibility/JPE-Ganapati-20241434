@@ -10,11 +10,8 @@ We found the following set of hard coded numbers. This may be completely legitim
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/Master_script_gravity_v3.m**
 
-- Line 40, : %    (from Teti Tariffs) gamma_gravity = [ 0.3520   -0.0214   -0.0189   -0.2324   -0.1502    0.2812   -0.0834   -0.0015   -0.0576   -0.0471];
-- Line 41, : %    (from Base Tariffs) gamma_gravity = [ 0.3920   -0.0408   -0.0131   -0.2596   -0.1635    0.3402   -0.1012    0.0039   -0.0985   -0.0671];
-- Line 42, : %    (from Replication ) gamma_gravity = [ 0.3558   -0.0216   -0.0200   -0.2365   -0.1511    0.2860   -0.0832   -0.0047   -0.0636   -0.0478];
-- Line 243, : % gamma_alt_UW =    0.3161    0.2699
-- Line 490, : gamma_guessHS = [0.5533   -0.0410   -0.0557   -0.4006   -0.3545    0.2085   -0.0830   -0.0148   -0.0016    0.06080];
+- Line 230, : % gamma_alt_UW =    0.3161    0.2699
+- Line 432, : gamma_guessHS = [0.5533   -0.0410   -0.0557   -0.4006   -0.3545    0.2085   -0.0830   -0.0148   -0.0016    0.06080];
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/CC_se_thetae.m**
 
@@ -36,16 +33,13 @@ We found the following set of hard coded numbers. This may be completely legitim
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/CC_se_splines.m**
 
-- Line 9, : xtemp = (0.05:0.001:0.95)';
-- Line 10, : %         xtemp = (0.01:0.001:0.99)';
-- Line 15, : %         scale_upper = quantile(d.R_nE_ij, 0.999);
-- Line 16, : %         scale_lower = quantile(d.R_nE_ij, 0.001);
-- Line 35, : alpha = [ 0.9500 ];
-- Line 88, : percentile_se = norminv([0.025 0.975]);
+- Line 8, : xtemp = (0.05:0.001:0.95)';
+- Line 30, : alpha = [ 0.9500 ];
+- Line 83, : percentile_se = norminv([0.025 0.975]);
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/make_elasticity_combo.m**
 
-- Line 75, : percentile_se = norminv([0.025 0.975]);
+- Line 74, : percentile_se = norminv([0.025 0.975]);
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/LogCorrected/plot_theta_combined.m**
 
@@ -81,7 +75,7 @@ We found the following set of hard coded numbers. This may be completely legitim
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/CC_se.m**
 
 - Line 17, : alpha = [ 0.9500 ];
-- Line 71, : percentile_se = norminv([0.025 0.975]);
+- Line 70, : percentile_se = norminv([0.025 0.975]);
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/MonteCarlo/functions/GFT_fct_general_fast.m**
 
@@ -112,29 +106,28 @@ We found the following set of hard coded numbers. This may be completely legitim
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/p04_Sample_Creation.do**
 
-- Line 1670, : replace G4_ij = 3 if rich_orig == 0 & gdpcap_o <= 2995 // 7.3140e+03
-- Line 1671, : replace G4_ij = 2 if rich_orig == 0 & gdpcap_o <= 755 // 2.9217e+03
+- Line 1581, : replace G4_ij = 3 if rich_orig == 0 & gdpcap_o <= 2995 // 7.3140e+03
+- Line 1582, : replace G4_ij = 2 if rich_orig == 0 & gdpcap_o <= 755 // 2.9217e+03
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/graph_overlay.m**
 
-- Line 21, : %         percentile_se = norminv([0.025 0.975]);
-- Line 120, : %                 a(num+1)=plot(ln_ij,elast_e_pareto(range1),'-','LineWidth',2,'Color',[0 0.4470 0.7410]	);
-- Line 121, : a(num+1)=plot(ln_ij,elast_e_tpareto(range1),'--','LineWidth',2,'Color',[0.8500 0.3250 0.0980]	);
-- Line 122, : a(num+2)=plot(ln_ij,elast_e_logn(range1),':','LineWidth',2,'Color',[0.9290 0.6940 0.1250]);
-- Line 123, : a(num+3)=plot(log(unif_EKK(range2)),smoothdata(elast_e_EKK(range2),'gaussian',20),'-.','LineWidth',2,'Color',[0.4940 0.1840 0.5560]);
-- Line 139, : %                 a(num+1)=plot(ln_ij,elast_r_pareto(range1),'-','LineWidth',2,'Color',[0 0.4470 0.7410]	);
-- Line 140, : a(num+1)=plot(ln_ij,elast_r_tpareto(range1),'--','LineWidth',2,'Color',[0.8500 0.3250 0.0980]	);
-- Line 141, : a(num+2)=plot(ln_ij,elast_r_logn(range1),':','LineWidth',2,'Color',[0.9290 0.6940 0.1250]);
-- Line 142, : a(num+3)=plot(log(unif_EKK(range2)),smoothdata(elast_r_EKK(range2),'gaussian',20),'-.','LineWidth',2,'Color',[0.4940 0.1840 0.5560]	);
-- Line 161, : %                 a(num+1)=plot(ln_ij,theta_pareto(range1),'-','LineWidth',2,'Color',[0 0.4470 0.7410]	);
-- Line 162, : a(num+1)=plot(ln_ij,theta_tpareto(range1),'--','LineWidth',2,'Color',[0.8500 0.3250 0.0980]	);
-- Line 163, : a(num+2)=plot(ln_ij,theta_logn(range1),':','LineWidth',2,'Color',[0.9290 0.6940 0.1250]);
-- Line 164, : a(num+3)=plot(log(unif_EKK(range2)),smoothdata(theta_EKK(range2),'gaussian',20),'-.','LineWidth',2,'Color',[0.4940 0.1840 0.5560]		);
-- Line 251, : %             a(num+1)=plot(ln_ij,(1-d(i).sigma)*1./elast_e_pareto(range1),'-','LineWidth',2,'Color',[0 0.4470 0.7410]);
-- Line 252, : a(num+1)=plot(ln_ij,(1-d(i).sigma)*1./elast_e_tpareto(range1),'-','LineWidth',2,'Color',[0.8500 0.3250 0.0980]);
-- Line 253, : a(num+2)=plot(ln_ij,(1-d(i).sigma)*1./elast_e_logn(range1),'-','LineWidth',2,'Color',[0.9290 0.6940 0.1250]);
-- Line 254, : a(num+3)=plot(log(unif_EKK(range2)),(1-d(i).sigma)*1./smoothdata(elast_e_EKK(range2),'gaussian',10),'-','LineWidth',2,'Color',[0.4940 0.1840 0.5560]	);
-- Line 269, : ax.XTick   = [-9.210340372 -6.907755279  -4.605170186  -2.302585093  0 ];
+- Line 119, : %                 a(num+1)=plot(ln_ij,elast_e_pareto(range1),'-','LineWidth',2,'Color',[0 0.4470 0.7410]	);
+- Line 120, : a(num+1)=plot(ln_ij,elast_e_tpareto(range1),'--','LineWidth',2,'Color',[0.8500 0.3250 0.0980]	);
+- Line 121, : a(num+2)=plot(ln_ij,elast_e_logn(range1),':','LineWidth',2,'Color',[0.9290 0.6940 0.1250]);
+- Line 122, : a(num+3)=plot(log(unif_EKK(range2)),smoothdata(elast_e_EKK(range2),'gaussian',20),'-.','LineWidth',2,'Color',[0.4940 0.1840 0.5560]);
+- Line 138, : %                 a(num+1)=plot(ln_ij,elast_r_pareto(range1),'-','LineWidth',2,'Color',[0 0.4470 0.7410]	);
+- Line 139, : a(num+1)=plot(ln_ij,elast_r_tpareto(range1),'--','LineWidth',2,'Color',[0.8500 0.3250 0.0980]	);
+- Line 140, : a(num+2)=plot(ln_ij,elast_r_logn(range1),':','LineWidth',2,'Color',[0.9290 0.6940 0.1250]);
+- Line 141, : a(num+3)=plot(log(unif_EKK(range2)),smoothdata(elast_r_EKK(range2),'gaussian',20),'-.','LineWidth',2,'Color',[0.4940 0.1840 0.5560]	);
+- Line 160, : %                 a(num+1)=plot(ln_ij,theta_pareto(range1),'-','LineWidth',2,'Color',[0 0.4470 0.7410]	);
+- Line 161, : a(num+1)=plot(ln_ij,theta_tpareto(range1),'--','LineWidth',2,'Color',[0.8500 0.3250 0.0980]	);
+- Line 162, : a(num+2)=plot(ln_ij,theta_logn(range1),':','LineWidth',2,'Color',[0.9290 0.6940 0.1250]);
+- Line 163, : a(num+3)=plot(log(unif_EKK(range2)),smoothdata(theta_EKK(range2),'gaussian',20),'-.','LineWidth',2,'Color',[0.4940 0.1840 0.5560]		);
+- Line 250, : %             a(num+1)=plot(ln_ij,(1-d(i).sigma)*1./elast_e_pareto(range1),'-','LineWidth',2,'Color',[0 0.4470 0.7410]);
+- Line 251, : a(num+1)=plot(ln_ij,(1-d(i).sigma)*1./elast_e_tpareto(range1),'-','LineWidth',2,'Color',[0.8500 0.3250 0.0980]);
+- Line 252, : a(num+2)=plot(ln_ij,(1-d(i).sigma)*1./elast_e_logn(range1),'-','LineWidth',2,'Color',[0.9290 0.6940 0.1250]);
+- Line 253, : a(num+3)=plot(log(unif_EKK(range2)),(1-d(i).sigma)*1./smoothdata(elast_e_EKK(range2),'gaussian',10),'-','LineWidth',2,'Color',[0.4940 0.1840 0.5560]	);
+- Line 268, : ax.XTick   = [-9.210340372 -6.907755279  -4.605170186  -2.302585093  0 ];
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/LogCorrected/plot_theta_c_vs_log_n.m**
 
@@ -165,8 +158,8 @@ We found the following set of hard coded numbers. This may be completely legitim
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/LinearCF_v3/LinearCF.m**
 
-- Line 107, : %    (from Teti Tariffs) gamma_gravity = [ 0.3520   -0.0214   -0.0189   -0.2324   -0.1502    0.2812   -0.0834   -0.0015   -0.0576   -0.0471];
-- Line 108, : %    (from Base Tariffs) gamma_gravity = [ 0.3920   -0.0408   -0.0131   -0.2596   -0.1635    0.3402   -0.1012    0.0039   -0.0985   -0.0671];
+- Line 102, : %    (from Teti Tariffs) gamma_gravity = [ 0.3520   -0.0214   -0.0189   -0.2324   -0.1502    0.2812   -0.0834   -0.0015   -0.0576   -0.0471];
+- Line 103, : %    (from Base Tariffs) gamma_gravity = [ 0.3920   -0.0408   -0.0131   -0.2596   -0.1635    0.3402   -0.1012    0.0039   -0.0985   -0.0671];
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/LogCorrected/plot_logcorr_pareto.m**
 
@@ -180,19 +173,19 @@ We found the following set of hard coded numbers. This may be completely legitim
 
 - Line 26, : % gamma_gravity = [ 0.3920   -0.0408   -0.0131   -0.2596   -0.1635    0.3402   -0.1012    0.0039   -0.0985   -0.0671];
 - Line 27, : % gamma_gravity =    [0.3520   -0.0214   -0.0189   -0.2324   -0.1502    0.2812   -0.0834   -0.0015   -0.0576   -0.0471];
-- Line 436, : tau        = 1.83; % https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20130351 page 1128
-- Line 440, : H          = 2.85; % From https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20130351
-- Line 502, : % https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.104.5.310
-- Line 593, : a  = scatter(xmetric(rich),ymetric1(rich),[],[0.6350 0.0780 0.1840],'filled','o');
-- Line 596, : b  = scatter(xmetric(poor),ymetric1(poor),[],[0 0.4470 0.7410],'filled','square');
-- Line 607, : a  = scatter(xmetric(rich),ymetric1(rich),[],[0.6350 0.0780 0.1840],'filled','o');
-- Line 610, : b  = scatter(xmetric(poor),ymetric1(poor),[],[0 0.4470 0.7410],'filled','square');
-- Line 621, : a  = scatter(xmetric(rich),ymetric1(rich),[],[0.6350 0.0780 0.1840],'filled','o');
-- Line 624, : b  = scatter(xmetric(poor),ymetric1(poor),[],[0 0.4470 0.7410],'filled','square');
-- Line 639, : a  = scatter(xmetric(rich),ymetric1(rich),[],[0.6350 0.0780 0.1840],'filled','o');
-- Line 642, : b  = scatter(xmetric(poor),ymetric1(poor),[],[0 0.4470 0.7410],'filled','square');
-- Line 659, : a  = scatter(xmetric(rich),ymetric1(rich),[],[0.6350 0.0780 0.1840],'filled','o');
-- Line 662, : b  = scatter(xmetric(poor),ymetric1(poor),[],[0 0.4470 0.7410],'filled','square');
+- Line 390, : tau        = 1.83; % https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20130351 page 1128
+- Line 394, : H          = 2.85; % From https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20130351
+- Line 456, : % https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.104.5.310
+- Line 540, : a  = scatter(xmetric(rich),ymetric1(rich),[],[0.6350 0.0780 0.1840],'filled','o');
+- Line 543, : b  = scatter(xmetric(poor),ymetric1(poor),[],[0 0.4470 0.7410],'filled','square');
+- Line 554, : a  = scatter(xmetric(rich),ymetric1(rich),[],[0.6350 0.0780 0.1840],'filled','o');
+- Line 557, : b  = scatter(xmetric(poor),ymetric1(poor),[],[0 0.4470 0.7410],'filled','square');
+- Line 568, : a  = scatter(xmetric(rich),ymetric1(rich),[],[0.6350 0.0780 0.1840],'filled','o');
+- Line 571, : b  = scatter(xmetric(poor),ymetric1(poor),[],[0 0.4470 0.7410],'filled','square');
+- Line 586, : a  = scatter(xmetric(rich),ymetric1(rich),[],[0.6350 0.0780 0.1840],'filled','o');
+- Line 589, : b  = scatter(xmetric(poor),ymetric1(poor),[],[0 0.4470 0.7410],'filled','square');
+- Line 606, : a  = scatter(xmetric(rich),ymetric1(rich),[],[0.6350 0.0780 0.1840],'filled','o');
+- Line 609, : b  = scatter(xmetric(poor),ymetric1(poor),[],[0 0.4470 0.7410],'filled','square');
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/LogCorrected/plot_Er_vs_log_n.m**
 
@@ -208,5 +201,5 @@ We found the following set of hard coded numbers. This may be completely legitim
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/Appendix_LogPareto/AppendixFigure_LogPareto.m**
 
-- Line 41, : ax.XTick   = [-9.210340372 -6.907755279  -4.605170186  -2.302585093  0 ];
+- Line 38, : ax.XTick   = [-9.210340372 -6.907755279  -4.605170186  -2.302585093  0 ];
 

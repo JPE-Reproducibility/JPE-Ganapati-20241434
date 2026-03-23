@@ -1,6 +1,6 @@
 Monte Carlo Simulation Code 
 
-This readme describes the master script and the main scripts it calls for running Monte Carlo simulations to estimate trade elasticities using GMM and QQ methods across different functional form specifications.
+This readme describes the master script and the main scripts it calls for running Monte Carlo simulations to estimate trade elasticities using GMM and QQ methods across different functional form specifications. I used Claude Opus to help generate this readme file.
 
 ================================================================================
 MASTER FILE

@@ -3,26 +3,23 @@
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/Master_script_gravity_v3.m**
 
 - Line 4, unix : data_dir = '../../Data/Int/WIOD_sampleB/';
-- Line 36, unix : p_overlay_elasticity( d,o,'theta'       ,'../../Output/full_SE' );
-- Line 39, unix : % p_overlay_elasticity( d,o,'theta'       ,'../../Output/test' );
-- Line 56, unix : p_overlay_elasticity( d,o,'epsilon_CC'   ,'../../Output/F2a_base_' );
-- Line 57, unix : p_overlay_elasticity( d,o,'rho_CC'       ,'../../Output/F2a_base_' );
-- Line 58, unix : p_overlay_elasticity( d,o,'extensive_CC'       ,'../../Output/F2a_base_' );
-- Line 59, unix : h01 = p_overlay_elasticity( d,o, 'theta', '../../Output/F2a_base_'   );
-- Line 67, unix : p_overlay_elasticity( dIV,oIV,'theta'       ,'../../Output/F5_IV_' );
-- Line 102, unix : p_overlay_elasticity( d2q_Wo,o2q_Wo,'theta_split'       ,'../../Output/test' );
-- Line 106, unix : % p_overlay_elasticity( d2q_Wo,o2q_Wo, 'intensive_split', '../../Output/F3a_'   );
-- Line 107, unix : % p_overlay_elasticity( d2q_Wo,o2q_Wo, 'extensive_split', '../../Output/F3a_'   );
-- Line 113, unix : p_overlay_elasticity( dIVs,oIVs,'theta_split'       ,'../../Output/F5_IVo_' );
-- Line 200, unix : h00 = p_overlay_elasticity( p_lin,o_lin, 'theta', '../../Output/test'   );
-- Line 221, unix : h03 = p_overlay_elasticity( d4q_Wod,o4q_Wod, 'theta', '../../Output/test'   );
-- Line 223, unix : p_overlay_elasticity( d4q_Wod,o4q_Wod,  'theta_quad_nose'  ,'../../Output/F3d1_Cross_' );
-- Line 224, unix : p_overlay_elasticity( d4q_Wod,o4q_Wod,  'theta_quadA'  ,'../../Output/F3d1_Cross_' );
-- Line 225, unix : p_overlay_elasticity( d4q_Wod,o4q_Wod,  'theta_quadB'  ,'../../Output/F3d1_Cross_' );
-- Line 226, unix : p_overlay_elasticity( d4q_Wod,o4q_Wod,  'extensive_quad'  ,'../../Output/F3d1_Cross_' );
-- Line 236, unix : h02 = p_overlay_elasticity( d4q_Wod_l,o4q_Wod_l, 'theta_quad', '../../Output/test'   );
-- Line 263, unix : saveas(gcf,'../../Output/theta_dist_all2','epsc')
-- Line 325, unix : obasekf5.title = '\kappa_e = 1/2';
+- Line 34, unix : p_overlay_elasticity( d,o,'theta'       ,'../../Output/full_SE' );
+- Line 49, unix : p_overlay_elasticity( d,o,'epsilon_CC'   ,'../../Output/F2a_base_' );
+- Line 50, unix : p_overlay_elasticity( d,o,'rho_CC'       ,'../../Output/F2a_base_' );
+- Line 51, unix : p_overlay_elasticity( d,o,'extensive_CC'       ,'../../Output/F2a_base_' );
+- Line 52, unix : h01 = p_overlay_elasticity( d,o, 'theta', '../../Output/F2a_base_'   );
+- Line 60, unix : p_overlay_elasticity( dIV,oIV,'theta'       ,'../../Output/F5_IV_' );
+- Line 95, unix : p_overlay_elasticity( d2q_Wo,o2q_Wo,'theta_split'       ,'../../Output/test' );
+- Line 102, unix : p_overlay_elasticity( dIVs,oIVs,'theta_split'       ,'../../Output/F5_IVo_' );
+- Line 187, unix : h00 = p_overlay_elasticity( p_lin,o_lin, 'theta', '../../Output/test'   );
+- Line 208, unix : h03 = p_overlay_elasticity( d4q_Wod,o4q_Wod, 'theta', '../../Output/test'   );
+- Line 210, unix : p_overlay_elasticity( d4q_Wod,o4q_Wod,  'theta_quad_nose'  ,'../../Output/F3d1_Cross_' );
+- Line 211, unix : p_overlay_elasticity( d4q_Wod,o4q_Wod,  'theta_quadA'  ,'../../Output/F3d1_Cross_' );
+- Line 212, unix : p_overlay_elasticity( d4q_Wod,o4q_Wod,  'theta_quadB'  ,'../../Output/F3d1_Cross_' );
+- Line 213, unix : p_overlay_elasticity( d4q_Wod,o4q_Wod,  'extensive_quad'  ,'../../Output/F3d1_Cross_' );
+- Line 223, unix : h02 = p_overlay_elasticity( d4q_Wod_l,o4q_Wod_l, 'theta_quad', '../../Output/test'   );
+- Line 250, unix : saveas(gcf,'../../Output/theta_dist_all2','epsc')
+- Line 312, unix : obasekf5.title = '\kappa_e = 1/2';
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/ColombiaTests/QuantilesColombia.m**
 
@@ -42,16 +39,16 @@
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/GMM_wrapper_gravity.m**
 
-- Line 76, unix : Lambda  = Lambda/d.N;
-- Line 156, unix : Lambda  = Lambda/d.N;
+- Line 65, unix : Lambda  = Lambda/d.N;
+- Line 128, unix : Lambda  = Lambda/d.N;
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/hs_routine_gravity.m**
 
-- Line 56, unix : p_overlay_elasticity( d_hs,o_hs,'theta'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat(title))
-- Line 57, unix : p_overlay_elasticity( d_hs,o_hs,'epsilon'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat('Extensive: ',title))
-- Line 58, unix : p_overlay_elasticity( d_hs,o_hs,'rho'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat(title))
-- Line 59, unix : p_overlay_elasticity( d_hs,o_hs,'extensive'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat(title))
-- Line 69, unix : p_overlay_elasticity( d_split_hs,o_split_hs,'theta_split'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat('\theta: ',title))
+- Line 55, unix : p_overlay_elasticity( d_hs,o_hs,'theta'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat(title))
+- Line 56, unix : p_overlay_elasticity( d_hs,o_hs,'epsilon'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat('Extensive: ',title))
+- Line 57, unix : p_overlay_elasticity( d_hs,o_hs,'rho'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat(title))
+- Line 58, unix : p_overlay_elasticity( d_hs,o_hs,'extensive'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat(title))
+- Line 66, unix : p_overlay_elasticity( d_split_hs,o_split_hs,'theta_split'       ,['../../Output/F6_HS_' int2str(hs)] ,strcat('\theta: ',title))
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/LogCorrected/generate_pdf_entry.m**
 
@@ -67,9 +64,9 @@
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/p05_Sample_Creation_HS2.do**
 
-- Line 108, unix : gen tariff_use = simpleAHS_w/100
-- Line 112, unix : gen tariff_useUW = simpleAHS_uw/100
-- Line 116, unix : gen Ttariff_useUW = TsimpleAHS_uw/100
+- Line 107, unix : gen tariff_use = simpleAHS_w/100
+- Line 111, unix : gen tariff_useUW = simpleAHS_uw/100
+- Line 115, unix : gen Ttariff_useUW = TsimpleAHS_uw/100
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/MonteCarlo/functions/GMM_wrapper_gravity.m**
 
@@ -139,10 +136,11 @@
 - Line 215, unix : forvalues year=1995/2018 {
 - Line 266, unix : forvalues year=1995/2018 {
 - Line 301, unix : forvalues year=1995/2018 {
+- Line 340, unix : forvalues year=1995/2018 {
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/GMM_gravity.m**
 
-- Line 52, unix : kappa_r_implied = xi_tilde_epsilon_mean/xi_tilde_rho_mean;
+- Line 51, unix : kappa_r_implied = xi_tilde_epsilon_mean/xi_tilde_rho_mean;
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/p02_quantiles_colombia_firmexports.do**
 
@@ -184,45 +182,45 @@
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/Appendix_LogPareto/logpareto_inv_shifted.m**
 
-- Line 17, unix : x = exp(k ./ (1 - p).^(1/alpha));
+- Line 15, unix : x = exp(k ./ (1 - p).^(1/alpha));
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/p04_Sample_Creation.do**
 
-- Line 157, unix : replace BACI_v = BACI_v/1000
-- Line 158, unix : replace BACI_q = BACI_q/1000
-- Line 460, unix : replace CHN_X_ij_USD = CHN_X_ij_USD/1000000
-- Line 473, unix : replace CHN_X_ij_USD = CHN_X_ij_yuan/US_FX if CHN_X_ij_USD == .
-- Line 500, unix : replace AUS_X_ij = AUS_X_ij/US_FX
-- Line 521, unix : global CEPII_Grav $ROOT/Data/CEPII/Gravity/gravdata_cepii.dta
-- Line 527, unix : global CEPII_Grav $ROOT/Data/CEPII/Gravity_dta_V202102/Gravity_V202102.dta
-- Line 771, unix : replace SurvivalRate`i'_combined = SurvivalRate`i'_combined/100
-- Line 790, unix : gen N_ii_EDD_impute = EDD_N_iE/(export_probability/100)
-- Line 829, unix : gen x_bar = TEC_X_ij/TEC_N_ij
-- Line 837, unix : replace x_bar = A6i/1000000 if missing(x_bar)
-- Line 840, unix : replace x_bar = AUS_X_ij/AUS_N_ij if missing(x_bar)
-- Line 843, unix : replace x_bar = X_ij/AUS_N_ij if missing(x_bar)
-- Line 850, unix : replace x_bar = X_ij/N_ij if iso3_o == iso3_d  & missing(x_bar)
-- Line 865, unix : replace x_bar = X_ij/N_ij if missing(x_bar)
-- Line 881, unix : gen n_ij_allsurvival = N_ij/N_ii
-- Line 1071, unix : gen tariff_use = simpleAHS_w/100
-- Line 1156, unix : gen tariff_use = simpleAHS_uw/100
-- Line 1186, unix : gen tariff_use = TsimpleAHS_uw/100
-- Line 1240, unix : gen tariff_use = TsimpleAHS_uw/100
-- Line 1269, unix : gen tariff_use = simpleAHS_uw/100
-- Line 1293, unix : gen ltariff_use = log(1+simpleAHS_uw/100)
-- Line 1317, unix : gen ltariff_use = log(1+simpleAHS_uw/100)
-- Line 1331, unix : gen ltariff_use = log(1+simpleAHS_uw/100)
-- Line 1350, unix : gen tariff_use = simpleAHS_w/100
-- Line 1365, unix : cap mkdir $ROOT/Data/Int/WIOD_sampleB/
-- Line 1386, unix : cap mkdir $ROOT/Data/Int/WIOD_sampleB/
-- Line 1387, unix : outsheet using $ROOT/Data/Int/WIOD_sampleB/${year}_TuwIV.csv, replace non nol comma
-- Line 1428, unix : gen tariff_use = simpleAHS_uw/100
-- Line 1571, unix : gen lGDP_diff = log(gdpcap_o/gdpcap_d)
-- Line 1591, unix : gen X_ij_share = X_ij/X_ij_total
-- Line 1592, unix : gen count_share = count/count_total
-- Line 1650, unix : gen x_ij = X_ij/E_j
-- Line 1653, unix : gen y_ij = X_ij/Y_i
-- Line 1807, unix : gen kappa_i = Y_i/E_i
+- Line 155, unix : replace BACI_v = BACI_v/1000
+- Line 156, unix : replace BACI_q = BACI_q/1000
+- Line 453, unix : replace CHN_X_ij_USD = CHN_X_ij_USD/1000000
+- Line 466, unix : replace CHN_X_ij_USD = CHN_X_ij_yuan/US_FX if CHN_X_ij_USD == .
+- Line 493, unix : replace AUS_X_ij = AUS_X_ij/US_FX
+- Line 514, unix : global CEPII_Grav $ROOT/Data/CEPII/Gravity/gravdata_cepii.dta
+- Line 520, unix : global CEPII_Grav $ROOT/Data/CEPII/Gravity_dta_V202102/Gravity_V202102.dta
+- Line 742, unix : replace SurvivalRate`i'_combined = SurvivalRate`i'_combined/100
+- Line 761, unix : gen N_ii_EDD_impute = EDD_N_iE/(export_probability/100)
+- Line 800, unix : gen x_bar = TEC_X_ij/TEC_N_ij
+- Line 808, unix : replace x_bar = A6i/1000000 if missing(x_bar)
+- Line 811, unix : replace x_bar = AUS_X_ij/AUS_N_ij if missing(x_bar)
+- Line 814, unix : replace x_bar = X_ij/AUS_N_ij if missing(x_bar)
+- Line 821, unix : replace x_bar = X_ij/N_ij if iso3_o == iso3_d  & missing(x_bar)
+- Line 830, unix : replace x_bar = X_ij/N_ij if missing(x_bar)
+- Line 836, unix : gen n_ij_allsurvival = N_ij/N_ii
+- Line 1001, unix : gen tariff_use = simpleAHS_w/100
+- Line 1086, unix : gen tariff_use = simpleAHS_uw/100
+- Line 1116, unix : gen tariff_use = TsimpleAHS_uw/100
+- Line 1155, unix : gen tariff_use = TsimpleAHS_uw/100
+- Line 1184, unix : gen tariff_use = simpleAHS_uw/100
+- Line 1208, unix : gen ltariff_use = log(1+simpleAHS_uw/100)
+- Line 1232, unix : gen ltariff_use = log(1+simpleAHS_uw/100)
+- Line 1246, unix : gen ltariff_use = log(1+simpleAHS_uw/100)
+- Line 1265, unix : gen tariff_use = simpleAHS_w/100
+- Line 1280, unix : cap mkdir $ROOT/Data/Int/WIOD_sampleB/
+- Line 1301, unix : cap mkdir $ROOT/Data/Int/WIOD_sampleB/
+- Line 1302, unix : outsheet using $ROOT/Data/Int/WIOD_sampleB/${year}_TuwIV.csv, replace non nol comma
+- Line 1343, unix : gen tariff_use = simpleAHS_uw/100
+- Line 1486, unix : gen lGDP_diff = log(gdpcap_o/gdpcap_d)
+- Line 1506, unix : gen X_ij_share = X_ij/X_ij_total
+- Line 1507, unix : gen count_share = count/count_total
+- Line 1561, unix : gen x_ij = X_ij/E_j
+- Line 1564, unix : gen y_ij = X_ij/Y_i
+- Line 1718, unix : gen kappa_i = Y_i/E_i
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/MasterProgram.do**
 
@@ -247,16 +245,16 @@
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/graph_overlay.m**
 
-- Line 48, unix : grad = [(1/epsilon1(j).^2) ];
-- Line 58, unix : grad = [(rho1(j)/epsilon1(j).^2) ; (-1/epsilon1(j))];
-- Line 287, unix : case  'output/F2ab_dual_'
-- Line 289, unix : case  'output/F4b_HS_origin'
+- Line 47, unix : grad = [(1/epsilon1(j).^2) ];
+- Line 57, unix : grad = [(rho1(j)/epsilon1(j).^2) ; (-1/epsilon1(j))];
+- Line 286, unix : case  'output/F2ab_dual_'
+- Line 288, unix : case  'output/F4b_HS_origin'
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/p03_Create_Tariffs.do**
 
-- Line 83, unix : forvalues year=2012/2012 {
-- Line 118, unix : forvalues year=2012/2012 {
-- Line 131, unix : gen hs2 = floor(hs92/1000)
+- Line 89, unix : forvalues year=2012/2012 {
+- Line 124, unix : forvalues year=2012/2012 {
+- Line 137, unix : gen hs2 = floor(hs92/1000)
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/p06_ReducedForm.do**
 
@@ -268,7 +266,6 @@
 
 - Line 5, unix : addpath('../Estimation/GMM_estimation_v3')
 - Line 6, unix : data_dir = '../../Data/Int/WIOD_sampleB/';
-- Line 21, unix : %save '../Code/Parametric Algorithm/baseline_estimate' 'o'
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GFT_v2/GFT_Script_v17_EKK.m**
 
@@ -279,20 +276,15 @@
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/GMM_estimation_v3/make_data_combo.m**
 
-- Line 266, unix : disp('discrete measure of China (1/0)')
+- Line 251, unix : disp('discrete measure of China (1/0)')
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/LinearCF_v3/LinearCF.m**
 
 - Line 5, unix : data_dir = [ '../../Data/Int/WIOD_sampleB/'];
-- Line 40, unix : % n_ij        = csvread([ ROOT '/Data/Int/WIOD_sampleB/n_ij_'     file_base ]);
-- Line 41, unix : % X_ij        = csvread([ ROOT '/Data/Int/WIOD_sampleB/XX_ij_'    file_base ]);
-- Line 42, unix : % N_ii        = csvread([ ROOT '/Data/Int/WIOD_sampleB/N_ii_'     file_base ]);
-- Line 43, unix : % G_ij        = csvread([ ROOT '/Data/Int/WIOD_sampleB/G_ij_'     file_base ]);
-- Line 44, unix : % labels      = importdata([ ROOT '/Data/Int/WIOD_sampleB/Names_' file_base ]);
-- Line 109, unix : load('../GMM_estimation_v3/gamma_gravity.mat');
-- Line 143, unix : G_ijr        = csvread([  '../../Data/Int/WIOD_sampleB/G_ij_'     file_base ]);
-- Line 158, unix : G_ijr        = csvread([  '../../Data/Int/WIOD_sampleB/G_ij_'     file_base ]);
-- Line 176, unix : G_ijr        = csvread([  '../../Data/Int/WIOD_sampleB/G_ij_'     file_base ]);
+- Line 104, unix : load('../GMM_estimation_v3/gamma_gravity.mat');
+- Line 138, unix : G_ijr        = csvread([  '../../Data/Int/WIOD_sampleB/G_ij_'     file_base ]);
+- Line 152, unix : G_ijr        = csvread([  '../../Data/Int/WIOD_sampleB/G_ij_'     file_base ]);
+- Line 169, unix : G_ijr        = csvread([  '../../Data/Int/WIOD_sampleB/G_ij_'     file_base ]);
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/LogCorrected/plot_logcorr_pareto.m**
 
@@ -321,7 +313,7 @@
 - Line 87, windows : fprintf( 'ERROR: % 10.5f\t\n',    mean(abs(W_hat_pareto_simple./W_hat_gen_pareto_alt))-1)
 - Line 153, unix : weights     = weights/sum(weights);
 - Line 191, unix : xlabel('Import Share $\log(1/x_{ii})$','FontSize',16,'Interpreter','Latex');
-- Line 378, unix : xlabel('Import Share $\log(1/x_{ii})$','FontSize',16,'Interpreter','Latex');
+- Line 332, unix : xlabel('Import Share $\log(1/x_{ii})$','FontSize',16,'Interpreter','Latex');
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/MonteCarlo/generate_QQ_plot.m**
 
@@ -336,5 +328,5 @@
 
 **/Users/florianoswald/actions-runner/_work/JPE-Ganapati-20241434/JPE-Ganapati-20241434/replication-package/Code/Appendix_LogPareto/AppendixFigure_LogPareto.m**
 
-- Line 46, unix : saveas(gca,'../../Output/FA_logPareto_Sim','epsc')
+- Line 43, unix : saveas(gca,'../../Output/FA_logPareto_Sim','epsc')
 

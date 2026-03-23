@@ -20,14 +20,7 @@
     mean_n_ij   = mean(n_ij_init-diag(diag(n_ij_init)),2);
     ln_n_ij     = log(mean_n_ij);
 
-    % %% Alternative n_ij (weighted)
-    % w_ij = X_ij_init-diag(diag(X_ij_init));
-    % mean_n_ij   = sum(w_ij.*n_ij_init-diag(diag(w_ij.*n_ij_init)),2)./sum(w_ij,2);
-    % ln_n_ij     = log(mean_n_ij);
-
 %% Metrics
-%     % WORLD_WELFARE = sum(results_linear.Decomp_5(:,1).*weights);
-    % w_term = @(flag,i) results_splin6.Decomp_5(flag,(i+1)) - results_linear.Decomp_5(flag,(i+1)) ;
     IND = results_splin6.G_ij+eye(size(results_splin6.G_ij))*4;
     C3 = [.5 .25  0];         
     C1 = [.5 .5 1];           
@@ -119,10 +112,8 @@ if scenario == 2
         poor_deviation = mean(abs(metric(poor)))
 
         [i1,i2] = sort((metric(rich)))
-        % ll(i2)
 
         [i1,i2] = sort((metric(poor)))
-        % ll(i2)
 
         
     %% Output Plots For 1-2-3-4-5
@@ -216,8 +207,6 @@ if scenario == 2
 
     %% Scatter n_ji
         w_ij = X_ij_init;
-%         ln_ij_hat_w = w_ij.*log(results_splin6.dn_linear);
-%         ln_ji_hat        = sum(ln_ij_hat_w,1)./sum(w_ij,1);
         plot_var = results_splin6.Decomp_5(:,6)./log(1+results_splin6.shock);
         CF_diagnostic
         ylabel({'$Mean_{i \ne j}^{weight=x_{ij}^{0}} (\rho_{ij}^0 + 1 )\log  \hat{n}_{ij} / \log {shock}$'},'FontSize',16,'Interpreter','Latex');           

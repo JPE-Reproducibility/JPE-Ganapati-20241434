@@ -34,7 +34,7 @@ cap mkdir "$DATA/WorldBankData/Clean data/"
 // If you do not have these packages installed, please run the following code to install them before running the rest of the code
 // If you have these packages installed, you can skip this step
 // Note that some of these packages have dependencies on other packages, so you may need to install those as well
-foreach pkg in estout gtools ftools texsave moremata reghdfe {
+foreach pkg in estout require gtools ftools texsave moremata reghdfe {
     cap which `pkg'
     if _rc {
         ssc install `pkg', replace

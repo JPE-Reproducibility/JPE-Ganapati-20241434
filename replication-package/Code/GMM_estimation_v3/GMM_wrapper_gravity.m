@@ -60,17 +60,6 @@ disp("First Stage Estimates")
     LambdaB = (d.ZB_K'.*repmat(U.G_B,1,DZ_K)')*(repmat(U.G_B,1,DZ_K).*d.ZB_K);
     toc
 
-% % Loop Manually      
-%     LambdaA = zeros(size(d.ZA_K,2));
-%     LambdaB = zeros(size(d.ZB_K,2));
-%     tic
-%     for i=1:size(U.G_A,1)
-%         LambdaA = LambdaA +d.ZA_K(i,:)'*U.G_A(i)*U.G_A(i)'*d.ZA_K(i,:);
-%         LambdaB = LambdaB +d.ZB_K(i,:)'*U.G_B(i)*U.G_B(i)'*d.ZB_K(i,:);
-%     end
-%     toc
-%     sum(sum(abs(LambdaB-LambdaB_a)))
-
     tic
     Lambda  = blkdiag(LambdaA, LambdaB);
     Lambda  = Lambda/d.N;
@@ -133,23 +122,6 @@ disp("First Stage Estimates")
     LambdaAB = (d.ZA_K'.*repmat(U.G_A,1,DZ_K)')*(repmat(U.G_B,1,DZ_K).*d.ZB_K);
     toc
 
-% % Loop Manually      
-%     LambdaA = zeros(size(d.ZA_K,2));
-%     LambdaB = zeros(size(d.ZB_K,2));
-%     LambdaAB= zeros(size(LambdaA,1),size(LambdaB,1));
-%     tic
-%     d.ZA_K = sparse(d.ZA_K);
-%     U.G_A = sparse(U.G_A);
-%     d.ZB_K = sparse(d.ZB_K);
-%     U.G_B = sparse(U.G_B);
-%     for i=1:size(U.G_A,1)
-%         LambdaA = LambdaA +d.ZA_K(i,:)'*U.G_A(i)*U.G_A(i)'*d.ZA_K(i,:);
-%         LambdaB = LambdaB +d.ZB_K(i,:)'*U.G_B(i)*U.G_B(i)'*d.ZB_K(i,:);
-%         LambdaAB = LambdaAB +d.ZA_K(i,:)'*U.G_A(i)*U.G_B(i)'*d.ZB_K(i,:);
-%     end
-%     toc
-%     sum(sum(abs(LambdaAB-LambdaAB_a)))
-
     disp("Standard Errors Computing - Inverting")
     tic
     Lambda = [LambdaA LambdaAB; LambdaAB' LambdaB];
@@ -168,7 +140,6 @@ disp("First Stage Estimates")
         try
             [o.standard_errors1] = CC_se(R1,ests2,d,U.G_A,G_bar,W,Lambda,V);
             [o.standard_errors2] = CC_se(R2,ests2,d,U.G_B,G_bar,W,Lambda,V);
-%             [o.standard_errors_theta_e] = CC_se_thetae(R1,R2,ests2,d,U.G_A,U.G_B,G_bar,W,Lambda,V);
             [o.standard_errors_theta_e] = CC_se_thetae(R1,R2,ests2,d,U.G_A,U.G_B,G_bar,W,Lambda,V);
 
         catch

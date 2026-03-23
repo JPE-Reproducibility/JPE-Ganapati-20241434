@@ -23,7 +23,6 @@ function [standard_errors] = CC_se(R1,ests2,d,uhat,G_bar,W,Lambda,V)
      
         SGl   = SGl(:,1:size(SGl,2)/2);
         
-        %         zalpha= NPIVucbcrit(Psixx,Sxx,SGl,B,uhat,alpha,Nboot,n);
         %   bootstrap subroutine
         zb   = zeros(Nboot,1);
         for i = 1:Nboot
@@ -72,14 +71,6 @@ function [standard_errors] = CC_se(R1,ests2,d,uhat,G_bar,W,Lambda,V)
         UB_GMM      = Prediction + SE_EQ_1_GMM'*percentile_se(2);
         LB_GMM      = Prediction - SE_EQ_1_GMM'*percentile_se(2);
         
-        % % Plot Data - Levels
-        % p=plot(d.x,UB_CC(:,:),'-',...
-        %         d.x,Prediction,'.',...
-        %         d.x,LB_CC(:,:),'-',...
-        %         d.x,UB_GMM,'.',...
-        %         d.x,Prediction,'.',...
-        %         d.x,LB_GMM,'.');
-
         Deriv_predicted = Deriv*ests2(R1)';
 
         SE_EQ_Deriv_GMM = zeros(size(Deriv,1),1);
@@ -98,16 +89,6 @@ function [standard_errors] = CC_se(R1,ests2,d,uhat,G_bar,W,Lambda,V)
          d.x,Deriv_LB_GMM,'.',...
          d.x,Deriv_predicted,'.',...
          d.x,Deriv_UB_GMM,'.');
-
-
-
-
-
-        % % Plot Data - Elasticities
-        % p=plot(d.x,Deriv_LB_CC(:,:),'-',...
-        %  d.x,Deriv_predicted,'-',...
-        %  d.x,Deriv_UB_CC(:,:),'-',...
-        %  d.x,Deriv_predicted,'.');
 
         standard_errors.Prediction      = Prediction;
         standard_errors.LB_CC           = LB_CC;

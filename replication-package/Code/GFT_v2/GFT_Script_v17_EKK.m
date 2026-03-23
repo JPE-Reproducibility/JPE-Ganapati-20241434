@@ -86,7 +86,6 @@
         text(ln_n_ij(all),metric(all),labels(all),'VerticalAlignment','top','HorizontalAlignment','right')
         hold off
         xlabel('Average Exporter Share','FontSize',16,'Interpreter','Latex')
-        % xlim([-.05 .010]);ylim([-.05 .010]);
         f =gca;
         legend([a b ],{'Developed', 'Developing'},'FontSize',14,'Location','best')
         f.XTick   = -9:-3;f.XTickLabel = {'0.01%' ,'0.03%','0.09%','0.25%','0.67%','1.8%','5%'};
@@ -94,22 +93,3 @@
     ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{EKK}})/{ \log \hat{W}_{EKK}}$'},'FontSize',16,'Interpreter','Latex');        
     exportgraphics(f,"../../Output/relative_12345_GFT_EKK.pdf")
     mean(abs(metric(all)))
-% 
-%     metric = @(c) (w_term_2(c,0)-w_term_EKK(c,0))./w_term_EKK(c,0);
-%     GFT_agg_plot
-%     ylabel({'$({\log \hat{W}_{Constant} - \log \hat{W}_{EKK}})/{ \log \hat{W}_{EKK}}$'},'FontSize',16,'Interpreter','Latex');        
-%     ylim([-1 1]);
-%     exportgraphics(f,"../../Output/crelative_12345_GFT_EKK.pdf")
-% 
-%     metric = @(c) (w_term_1(c,0)-w_term_EKK(c,0))./w_term_1(c,0);
-%     GFT_agg_plot
-%     ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{EKK}})/{ \log \hat{W}_{Semi}}$'},'FontSize',16,'Interpreter','Latex');        
-%     ylim([-1 1]);
-%     exportgraphics(f,"../../Output/crelative_12345_GFT_EKK_1.pdf")
-%     
-%     metric = @(c) (w_term_1(c,0)-w_term_EKK(c,0))./w_term_2(c,0);
-%     GFT_agg_plot
-%     ylabel({'$({\log \hat{W}_{Semi} - \log \hat{W}_{EKK}})/{ \log \hat{W}_{Constant}}$'},'FontSize',16,'Interpreter','Latex');        
-%     ylim([-1.2 1]);
-%     exportgraphics(f,"../../Output/crelative_12345_GFT_EKK_2.pdf")
-    
