@@ -1,4 +1,6 @@
-# JPE/Ganapati-20241434/1
+# JPE/Ganapati-20241434/2
+
+[![Run Precheck](https://github.com/JPE-Reproducibility/JPE-Ganapati-20241434/actions/workflows/precheck.yml/badge.svg)](https://github.com/JPE-Reproducibility/JPE-Ganapati-20241434/actions/workflows/precheck.yml)
 
 [![Run Precheck](https://github.com/JPE-Reproducibility/JPE-Ganapati-20241434/actions/workflows/precheck.yml/badge.svg)](https://github.com/JPE-Reproducibility/JPE-Ganapati-20241434/actions/workflows/precheck.yml)
 
