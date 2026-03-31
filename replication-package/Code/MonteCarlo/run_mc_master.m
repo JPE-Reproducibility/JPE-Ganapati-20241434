@@ -125,8 +125,8 @@ if isempty(project_path) || strtrim(project_path) == ""
     project_path = string(pwd);
 end
 
-create_simulation = 1;
-do_GFT = 1;
+create_simulation = 0;
+do_GFT = 0;
 run_gmm = 1;
 run_qq  = 1;
 

@@ -9,6 +9,8 @@ if  "`c(username)'" == "user" {
   global ROOT "XXXXXX"
 }
 
+global ROOT "/files/JPE-Ganapati-20241434/replication-package/"
+
 clear all
 set type double, perm
 global DATA   $ROOT/Data/

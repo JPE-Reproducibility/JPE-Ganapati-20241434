@@ -613,6 +613,7 @@ syntax, year(integer)
   rename  Value SurvivalRate1
   label var SurvivalRate1 "OECD 1-year survival rate"
   keep iso3_o SurvivalRate1
+<<<<<<< Updated upstream
   drop if SurvivalRate1>= 100
   merge 1:1 iso3_o using "$ROOT/Data/Int/SurvivalRate2${year}", nogen
   merge 1:1 iso3_o using "$ROOT/Data/Int/SurvivalRate3${year}", nogen
@@ -623,6 +624,37 @@ syntax, year(integer)
   egen SurvivalRate3_average = mean(SurvivalRate3)
   label var SurvivalRate3_average "Average OECD 5-year survival rate"
   saveold "$ROOT/Data/Int/SurvivalRate${year}", replace
+=======
+  drop if SurvivalRate1 >= 100
+  cap merge 1:1 iso3_o using "$ROOT/Data/Int/SurvivalRate2${year}", nogen
+  cap merge 1:1 iso3_o using "$ROOT/Data/Int/SurvivalRate3${year}", nogen
+ 
+  count
+  if r(N) == 0 {
+    clear
+    set obs 1
+    gen iso3_o = ""
+    gen SurvivalRate1 = .
+    gen SurvivalRate2 = .
+    gen SurvivalRate3 = .
+    gen SurvivalRate1_average = .
+    gen SurvivalRate2_average = .
+    gen SurvivalRate3_average = .
+    drop in 1
+  }
+  
+  else {
+    egen SurvivalRate1_average = mean(SurvivalRate1) 
+    label var SurvivalRate1_average "Average OECD 1-year survival rate"
+    egen SurvivalRate2_average = mean(SurvivalRate2)
+    label var SurvivalRate2_average "Average OECD 2-year survival rate"
+    egen SurvivalRate3_average = mean(SurvivalRate3)
+    label var SurvivalRate3_average "Average OECD 5-year survival rate"
+  }
+  
+  saveold "$ROOT/Data/Int/SurvivalRate${year}", replace
+
+>>>>>>> Stashed changes
 
 end
 

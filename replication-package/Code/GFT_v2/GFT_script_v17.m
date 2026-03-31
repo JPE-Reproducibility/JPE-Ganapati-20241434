@@ -4,8 +4,8 @@
 %% Using Estimates
     year = '2012B';    
     addpath( '../GMM_estimation_v3')
-    data_dir  =  '../../Data/Int/WIOD_sampleB/';
-    excel_output = [ '../../Output/GFT_results_revision_' year '.xlsx'];
+    data_dir  =  '/files/JPE-Ganapati-20241434/replication-package/Data/Int/WIOD_sampleB/';
+    excel_output = [ '/files/JPE-Ganapati-20241434/replication-package/Output/GFT_results_revision_' year '.xlsx'];
     basefile = '2012_Tetiuw.csv';
 
 
