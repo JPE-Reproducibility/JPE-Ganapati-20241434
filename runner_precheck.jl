@@ -8,10 +8,10 @@ vars = YAML.load_file(joinpath(ENV["GITHUB_WORKSPACE"], "_variables.yml"))
 dest_path = joinpath(ENV["GITHUB_WORKSPACE"], "replication-package")
 
 # ── Remote path: download via public Dropbox link ─────────────────────
-url = get(vars, "dropbox_download_url", nothing)
+url = get(ENV, "DROPBOX_DOWNLOAD_URL", nothing)
 
 downloaded_ok = if !isnothing(url)
-    @info "Downloading package from Dropbox link..." url
+    @info "Downloading package from secret Dropbox link..."
     t0 = time()
     try
         run(`curl -fsSL -o package.zip $url`)
@@ -66,6 +66,9 @@ if downloaded_ok && isfile("package.zip")
         @info "Unzipping $pkg_zip..."
         try
             run(`unzip -oq $pkg_zip -d $dest_path`)
+            if isdir(dest_path)
+                rm_git(dest_path)
+            end
         catch e
             @warn "unzip of $pkg_zip exited non-zero" exception=e
         end
@@ -89,7 +92,7 @@ if pkg_size > max_pkg_size
     pkg_dir, manifest = PackageScanner.prepare_package_for_precheck(
         dest_path, size_threshold_gb=max_file_size, interactive=false)
     PackageScanner.precheck_package(pkg_dir, pre_manifest=manifest,
-                                    no_data_scan=["TRAINS/raw_data", "__MACOSX", "renv"])
+                                    no_data_scan=["", "__MACOSX", "renv"])
 else
     @info "Unzipping files in $dest_path"
     try
@@ -99,6 +102,6 @@ else
         @warn "Unzip had issues (may be okay)" exception=e
     end
     @info "Running precheck on $dest_path"
-    PackageScanner.precheck_package(dest_path, no_data_scan=["TRAINS/raw_data", "__MACOSX", "renv"])
+    PackageScanner.precheck_package(dest_path, no_data_scan=["", "__MACOSX", "renv"])
     @info "✓ Precheck complete"
 end
