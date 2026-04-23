@@ -92,7 +92,7 @@ if pkg_size > max_pkg_size
     pkg_dir, manifest = PackageScanner.prepare_package_for_precheck(
         dest_path, size_threshold_gb=max_file_size, interactive=false)
     PackageScanner.precheck_package(pkg_dir, pre_manifest=manifest,
-                                    no_data_scan=["", "__MACOSX", "renv"])
+                                    no_data_scan=["__MACOSX", "renv"])
 else
     @info "Unzipping files in $dest_path"
     try
@@ -102,6 +102,6 @@ else
         @warn "Unzip had issues (may be okay)" exception=e
     end
     @info "Running precheck on $dest_path"
-    PackageScanner.precheck_package(dest_path, no_data_scan=["", "__MACOSX", "renv"])
+    PackageScanner.precheck_package(dest_path, no_data_scan=["__MACOSX", "renv"])
     @info "✓ Precheck complete"
 end
