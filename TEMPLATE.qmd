@@ -51,8 +51,8 @@ In assessing compliance with our [Data and Code Availability Policy](https://www
 - [X] List of tables and programs
 - [X] References (Optional, but recommended) 
 
- **Comment**: My compliments on the changes to the README, it definitely improved a lot. Especially the dependency path is great and a good idea for a complicated package like this.
-
+ **Comment**: Once again my compliments on the README, the document improved even further and is very detailed and has all the necessary information. 
+ 
 # High-level Description of Research Project
 
 *This research project...*
@@ -112,7 +112,11 @@ In assessing compliance with our [Data and Code Availability Policy](https://www
   - Stata 16.1/MP
   - Matlab 2023a
 - [x] Computational Requirements specified as follows:
-  - OS X environment (M2 processor with 16 cores and 32 GB) and a 1 TB SSD for all the programs except `run_mc_master' which was run on an external Linux cluster with 100 available cores (32 GB addressable each). Programs do require z-shell scripting, so they do need an *nix/OSX environment.
+  - These programs were run on an OS X environment (M2 processor with 16 cores and 32 GB RAM) and a 1 TB SSD.
+  - `Master_script_gravity_v3.m`: Requires approximately 32 GB RAM. The sectoral (HS2-level) robustness estimations are the most memory-intensive stage. With less memory, MATLAB may crash partway through the robustness specifications.
+  - `LinearCF_wrapper_v3.m` and `GFT_script_v17.m`: Require approximately 16 GB RAM each.
+  - `run_mc_master.m`: Designed for a cluster environment. Was run on an external Linux cluster with 100 available cores (32 GB addressable each). To run on a single workstation, reduce `sims` (default 100) and set `cores` to match available resources in `run_mc_master.m`. For example, `sims = 10; cores = 4` will complete in a few hours on a 32 GB machine, though Monte Carlo results will be noisier.
+  
 - [x] Time Requirements specified as follows:
   - 8-24 hours
 
@@ -136,7 +140,7 @@ In assessing compliance with our [Data and Code Availability Policy](https://www
 
 ## Code description
 
-- There are eight Stata do-files, six Matlab .m files and one master do-file (Stata and Matlab combined).
+- There are eight Stata do-files, six Matlab master .m files and one master do-file (Stata and Matlab combined).
 
 {{< include generated/report-cloc.md >}}
 
@@ -200,45 +204,7 @@ The table below provides an overview of all intermediate and final datasets gene
 
 - Downloaded code and data from dropbox.
 - unzipped all the necessary datafiles. 
-- Ran the master do-file as per README, in Stata. Master do-file did not run smoothly in one go, I had to make some minor changes:
-
-
-### p04_Sample_Creation.do
-
-- The authors said they found the issue in the block between lines 584 and 632 and solved it. However, I am now expierincing a new error `__000001 not found`. For some years, no survival rate data exists in the OECD dataset. When the code filtered for a specific year using `keep if TIME == ${year}`, this resulted in a dataset with 0 observations. This caused Stata to crash with the error `__000001 not found`, because `egen mean()` can't run on an empty dataset. Additionally, `saveold` saved an empty file, which then caused the merge in `stack_data` to fail.
-
-To fix this, I added a `count` check after the merges. If the dataset is empty, I create a placeholder dataset with the correct variable structure but 0 observations. If data exists, the `egen` averages are computed as normal. This solved the issue, the code ran fine afterwards. 
-
-```stata
-count
-if r(N) == 0 {
-    clear
-    set obs 1
-    gen iso3_o = ""
-    gen SurvivalRate1 = .
-    gen SurvivalRate2 = .
-    gen SurvivalRate3 = .
-    gen SurvivalRate1_average = .
-    gen SurvivalRate2_average = .
-    gen SurvivalRate3_average = .
-    drop in 1
-}
-else {
-    egen SurvivalRate1_average = mean(SurvivalRate1)
-    label var SurvivalRate1_average "Average OECD 1-year survival rate"
-    egen SurvivalRate2_average = mean(SurvivalRate2)
-    label var SurvivalRate2_average "Average OECD 2-year survival rate"
-    egen SurvivalRate3_average = mean(SurvivalRate3)
-    label var SurvivalRate3_average "Average OECD 5-year survival rate"
-}
-```
-- Furthermore, the README states that all TRAIN zip files must be manually unzipped before starting the replication. However, the code apparently already performs the unzipping, so this instruction can either be removed or adjusted accordingly?
-
-```stata
-unzipfile "TRAINS`year'.zip", replace
-local files : dir "`c(pwd)'" files "*TRAINS`year'*.dta"
-
-```
+- Ran the master do-file as per README, in Stata. Earlier problems are now solved, the code ran smoothly and without any errors. 
 
 ## Matlab
 
@@ -246,11 +212,7 @@ local files : dir "`c(pwd)'" files "*TRAINS`year'*.dta"
 - unzipped all the necessary datafiles. 
 - Ran the scripts per README. Most of the scripts ran fine and without any error. 
 
-`Master_script_gravity_v3.m`: Code seem to run fine and was able to generate some output but crashed at some point. I tried to run in multiple times but Matlab constantly shuts down at some point. I ran this part with 16CPUs and 64GB memory. As a result, I can't located figures OA.13,14,15 & 16 in my output. 
-
-`LinearCF_wrapper_v3.m`: Code seems to run fine, however looking at the output it seems to generate only a few files. Figure 6, Table 1, and Figures OA.29–OA.31 and Table OA.6 could not be located.
-
-`run_mc_master.m` ran with 16 CPUs and 64GB of memory but Matlab constantly breaks down at the run_gmm step due to insufficient memory. Therefore, I was not able to replicate this part of the replication. 
+`Master_script_gravity_v3.m`: The same issue as in the previous round, the code generates some output but breaks down at a certain point. As the authors mention in the README this is probably caused due to the lack of RAM. Nuvolos has a maximum of 16GB RAM, while the authors state that this code needs approximately 32GB RAM. I was therefore not able to generate figures OA.13, OA.14, OA.15, OA.16. 
 
 
 # Findings {#sec-findings}
@@ -275,14 +237,14 @@ You can copy the section above, amended if necessary.
 - Code/p02_eora_trade_matrix_clean.do ran without any error. 
 - Code/p02_ChinaData_Morrow.do ran without any error.
 - Code/p03_Create_Tariffs.do ran without any error. 
-- Code/p04_Sample_Creation.do broke down with described error, after a minor change it ran without any error.
+- Code/p04_Sample_Creation.do ran without any error.
 - Code/p05_Sample_Creation_HS2.do ran without any error. 
 - Code/p06_ReducedForm.do ran without any error.
-- Code/GMM_estimation_v3/Master_script_gravity_v3.m ran but breaks down at some point, does not generate all output. 
+- Code/GMM_estimation_v3/Master_script_gravity_v3.m breaks down due to limited RAM. 
 - Code/GFT_v2/GFT_script_v17.m ran without any error.
-- Code/LinearCF_v3/LinearCF_wrapper_v3.m ran without any error but did not generate all expected output; Figure 6, Table 1, and Figures OA.29–OA.33 and Table OA.6 could not be located.
+- Code/LinearCF_v3/LinearCF_wrapper_v3.m ran without any error.
 - Code/ColombiaTests/Quantiles_Colombia_Wrapper.m ran without any error.
-Code/MonteCarlo/run_mc_master.m ran with 16 CPUs and 64GB of memory but Matlab constantly breaks down at the run_gmm step due to insufficient memory.
+Code/MonteCarlo/run_mc_master.m ran without error but with only 10 sims and only 16 cores. 
 - Code/LogCorrected/plots.m ran without any error.
 - Code/Appendix_LogCorrected/AppendixFigure_LogPareto.m ran without any error.
 
@@ -293,17 +255,17 @@ Code/MonteCarlo/run_mc_master.m ran with 16 CPUs and 64GB of memory but Matlab c
 | Figure/Table # | Program | Reproduced? |
 |----------------|---------|-------------|
 | Figure 1       | Matlab  | Yes         |
-| Figure 2       | Matlab  | No (MC)     |
+| Figure 2       | Matlab  | Yes     |
 | Figure 3       | Matlab  | Yes         |
 | Figure 4       | Matlab  | Yes         |
 | Figure 5       | Matlab  | Yes         |
-| Figure 6       | Matlab  | No          |
-| Table 1        | Matlab  | No          |
+| Figure 6       | Matlab  | Yes          |
+| Table 1        | Matlab  | Yes          |
 | Figure OA.1    | Matlab  | Yes         |
 | Figure OA.2    | Matlab  | Yes         |
-| Figure OA.3    | Matlab  | No (MC)     |
-| Figure OA.4    | Matlab  | No (MC)     |
-| Figure OA.5    | Matlab  | No (MC)     |
+| Figure OA.3    | Matlab  | No     |
+| Figure OA.4    | Matlab  | Yes     |
+| Figure OA.5    | Matlab  | Yes     |
 | Figure OA.6    | Stata   | Yes         |
 | Table OA.1     | -       | N/A         |
 | Table OA.2     | Stata   | No          |
@@ -330,9 +292,9 @@ Code/MonteCarlo/run_mc_master.m ran with 16 CPUs and 64GB of memory but Matlab c
 | Figure OA.26   | Matlab  | Yes         |
 | Figure OA.27   | Matlab  | Yes         |
 | Figure OA.28   | Matlab  | Yes         |
-| Figure OA.29   | Matlab  | No          |
-| Figure OA.30   | Matlab  | No          |
-| Figure OA.31   | Matlab  | No          |
+| Figure OA.29   | Matlab  | Yes          |
+| Figure OA.30   | Matlab  | Yes          |
+| Figure OA.31   | Matlab  | Yes          |
 | Figure OA.32   | Matlab  | Yes         |
 | Figure OA.33   | Matlab  | Yes         |
 | Table OA.4     | Stata   | No          |
@@ -340,33 +302,35 @@ Code/MonteCarlo/run_mc_master.m ran with 16 CPUs and 64GB of memory but Matlab c
 | Table OA.6     | Matlab  | No          |
 
 
-- Figures OA.13, OA.14, OA.15, OA.16, OA.29, OA.30, OA.31, Figure 6, Table 1, and Table OA.6 were not generated by the corresponding codes (`LinearCF_wrapper_v3.m` and `Master_script_gravity_v3.m`). Therefore, these outputs can't be verified in this replication round. 
+- Figures OA.13, OA.14, OA.15, OA.16 were not generated by the corresponding code (`Master_script_gravity_v3.m`). Therefore, these outputs can't be verified in this replication round. 
 
 - The tables below were generated by the corresponding code but showed discrepancies in their output compared to the tables in the paper. See the explanations and screenshots for further details.
 
 
+- Figure OA.3: Figure a & c are completely different. However, this is most likely caused by the lower number of sims (10 instead of 100) and cores (16 instead of 100) in the Monte Carlo script. 
 
+![Figure OA.3a](images/ao3a.png)  
 
-- Table 1: Output seems completely different than table in the paper.
-![Table 1](images/table1.png)
+![Figure OA.3c](images/ao3c.png)
 
-- Table OA.2: The tables are identical except for the number of destinations, where BFA (53 vs 52), CMR (87 vs 86), and KEN (112 vs 108), 
+- Table OA.2: The tables are identical except for the number of destinations, where BFA (53 vs 52), CMR (87 vs 86), and KEN (112 vs 108). Same discrepancies as last round. 
 
 ![Table 2](images/Table OA.2.png)
 
-- Table OA.4: A lot of discrepancies in the generated output. 
+- Table OA.4: A lot of discrepancies in the generated output, same as last round. 
 ![Table OA.4](images/Table OA.4.png)
+- Table OA.6: Few discrepancies in the coefficients: 61,2 vs 61,3 & 121,8 vs 120,6. 
+
+![Table OA.6](images/oa6.png)
 
 
 ## Other Issues
 
-The authors have significantly improved the README. As noted in the report, I encountered difficulties when running several of the Matlab scripts. This might partly be due to the limited computational capacity of the Nuvolos applications (at least for the Monte Carlo script), it would be helpful if the authors could verify the other two scripts, as they were able to generate some output but crashed afterwards. 
-
+README improved even further and the authors solved several issues in the code. I am not able to generate output from a few scripts, however this is most likely caused due to limited computational capacity. Still a few discrepancies in the output, majority of the output matches. 
 
 
 # Classification
 
-As stated earlier in the report I was not able to complete the necessary scripts for the data preparation and was therefore not able to produce any output. 
 
 - [ ] full reproduction
 - [ ] full reproduction with minor issues
@@ -377,7 +341,7 @@ As stated earlier in the report I was not able to complete the necessary scripts
 
 - [ ] None.
 - [x] `Discrepancy in output` (either figures or numbers in tables or text differ)
-- [x] `Bugs in code` that were fixable by the replicator (but should be fixed in the final deposit)
+- [ ] `Bugs in code` that were fixable by the replicator (but should be fixed in the final deposit)
 - [ ] `Code missing`, in particular if it prevented the replicator from completing the reproducibility check
   - [ ] `Data preparation code missing` should be checked if the code missing seems to be data preparation code
 - [ ] `Code not functional` is more severe than a simple bug: it prevented the replicator from completing the reproducibility check
