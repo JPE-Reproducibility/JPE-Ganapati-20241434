@@ -192,7 +192,7 @@ The table below provides an overview of all intermediate and final datasets gene
 
 ## Computing Environment of the Replicator
 
-- Nuvolos 16vCPU 64GB
+- Nuvolos 16vCPU 64GB RAM
 
 - Stata/MP 16.0
 - Matlab R2023a
@@ -212,7 +212,7 @@ The table below provides an overview of all intermediate and final datasets gene
 - unzipped all the necessary datafiles. 
 - Ran the scripts per README. Most of the scripts ran fine and without any error. 
 
-`Master_script_gravity_v3.m`: The same issue as in the previous round, the code generates some output but breaks down at a certain point. As the authors mention in the README this is probably caused due to the lack of RAM. Nuvolos has a maximum of 16GB RAM, while the authors state that this code needs approximately 32GB RAM. I was therefore not able to generate figures OA.13, OA.14, OA.15, OA.16. 
+`Master_script_gravity_v3.m`: The same issue as in the previous round, the code generates some output but breaks down at a certain point. As the authors mention in the README this is probably caused due to the lack of RAM. However, the README states that this script needs approximately 32GB RAM and my Nuvolos system for Matlab has a total of 64GB. So this set-up should've been able to run this code, but still breaks down. I was therefore not able to generate figures OA.13, OA.14, OA.15, OA.16. 
 
 
 # Findings {#sec-findings}
@@ -326,7 +326,7 @@ Code/MonteCarlo/run_mc_master.m ran without error but with only 10 sims and only
 
 ## Other Issues
 
-README improved even further and the authors solved several issues in the code. I am not able to generate output from a few scripts, however this is most likely caused due to limited computational capacity. Still a few discrepancies in the output, majority of the output matches. 
+README improved even further and the authors solved several issues in the code. I am not able to generate output from a few scripts, this is most likely caused due to limited computational capacity. However, I would like another look at the `Master_script_gravity_v3.m` script, as my Matlab setup with 64GB RAM should be able to run this (according to the README). Still a few discrepancies in the output, majority of the output matches. 
 
 
 # Classification
